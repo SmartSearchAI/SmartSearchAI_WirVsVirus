@@ -1,9 +1,8 @@
 <section>
     <div>This is the Trial Ara</div>
 </section>
-<section>
+<section class="col-md-6">
     <h2>Find Trials by ID</h2>
-    <label>Example: NCT01874691</label>
     <input name="id" [(ngModel)]="id" type="text" class="form-control" placeholder="Trial ID">
     <div class="form-group">
         <button (click)="getTrial()" class="btn btn-dark">Get Trial</button>
@@ -15,13 +14,19 @@
         </div>
     </section>
 </section>       
-<section>
+<section class="col-md-6" *ngIf="false">
     <h2>FindTrials by expression and get Fields</h2>
     <form>
         <label>Search Expression</label>
-        <input name="expr" [(ngModel)]="expr" type="text" placeholder="Expression for search">
+        <div class="form-control">
+             <input name="expr" [(ngModel)]="expr" type="text" placeholder="Expression for search">
+        </div>
         <label>Fields of Interest</label>
-        <input name="fields" [(ngModel)]="fields" type="text" placeholder="Expression for search">
+        <div class="form-control">
+            <input name="fields" [(ngModel)]="fields" type="text" placeholder="Fields of Interest">
+        </div>
+
+ search">
     </form>
         <div class="form-group">
             <button (click)="findTrials()" class="btn btn-dark">Get Trial</button>

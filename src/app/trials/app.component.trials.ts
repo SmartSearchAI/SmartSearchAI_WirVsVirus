@@ -7,20 +7,27 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.trials.scss']
 })
 export class TrialComponent {
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
   title = 'TrialComponent';
-  id = "1";
-  expr = "2";
-  fields = "3";
+  //Parameter
+  id = "NCT01874691";
+  expr = "heart+attack";
+  fields = "NCTId,Condition,BriefTitle";
+  //Results
   trial = "Empty";
-  trials = [];
+  trials = "";
   getTrial() {
     let url = 'http://127.0.0.1:5000/trial';
     let request = this.http.get(url, { params: {id: this.id} });
 
     request.subscribe(data => this.trial = JSON.stringify(data));
   }
+  
   findTrials() {
-
+    let url = 'https://clinicaltrials.gov/api/query/study_fields';
+    let request = this.http.get(url, { params: {expr: this.expr, fileds: this.fields} });
+    request.subscribe(
+      data => this.trials = JSON.stringify(data)
+      );
   }
 }
