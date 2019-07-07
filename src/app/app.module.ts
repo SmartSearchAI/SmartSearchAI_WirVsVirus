@@ -6,13 +6,14 @@ import { HttpClientModule }    from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TrialComponent } from './trials/app.component.trials';
-
+import { AWSComponent } from './aws/app.component.aws';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrialComponent
+    TrialComponent,
+    AWSComponent
   ],
   imports: [
     BrowserModule,

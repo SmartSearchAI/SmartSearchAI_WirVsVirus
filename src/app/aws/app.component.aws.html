@@ -1,0 +1,16 @@
+<section>
+    <div>This is the Trial Ara</div>
+</section>
+<section class="col-md-6">
+    <h2>Find Trials by ID</h2>
+    <textarea rows="10" name="text" [(ngModel)]="text" type="text" class="form-control" placeholder="Text">
+    <div class="form-group">
+        <button (click)="translateTextToJSON()" class="btn btn-dark">Transform Text</button>
+    </div>
+    <section>
+        <h2>Results</h2>
+        <div>
+            <textarea id="TrialResult" [(ngModel)]="result" rows="5"> </textarea>
+        </div>
+    </section>
+</section>
