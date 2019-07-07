@@ -1,0 +1,13 @@
+<div class="list-group" *ngFor="let cat of categories">
+    <a *ngIf="getAttributes(cat).length" href="#" class="list-group-item list-group-item-primary flex-column align-items-start">   
+        <h5 class="mb-1 inline-block">{{cat.value}}
+                <span class="badge badge-black">{{getAttributes(cat).length}}</span>
+        </h5>
+    </a>
+
+    <a href="#" class="list-group-item" *ngFor="let attr of getAttributes(cat)" >
+      {{attr.Text}}
+      {{attr.Name}}
+    </a>
+</div>
+

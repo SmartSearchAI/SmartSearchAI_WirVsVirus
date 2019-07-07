@@ -1,20 +1,16 @@
-<section>
-    <div>This is the Trial Ara</div>
-</section>
-<section class="col-md-6">
+<div class="container-fluid">
     <h2>Find Trials by ID</h2>
-    <input name="id" [(ngModel)]="id" type="text" class="form-control" placeholder="Trial ID">
-    <div class="form-group">
-        <button (click)="getTrial()" class="btn btn-dark">Get Trial</button>
-    </div>
-    <section>
-        <h2>Results</h2>
-        <div>
-            <textarea id="TrialResult" [(ngModel)]="trial" rows="5"> </textarea>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <button (click)="getTrial()" class="btn btn-dark" type="button">Button</button>
         </div>
-    </section>
-</section>       
-<section class="col-md-6" *ngIf="false">
+        <input name="id" [(ngModel)]="id" type="text" class="form-control" placeholder="Trial ID">
+    </div>     
+    <div>
+        <textarea rows="10" class="form-control" id="TrialResult" [(ngModel)]="trial" > </textarea>
+    </div>
+</div>       
+<div class="container-fluid" *ngIf="false">
     <h2>FindTrials by expression and get Fields</h2>
     <form>
         <label>Search Expression</label>
@@ -35,4 +31,4 @@
             <h2>Trial List</h2>
             <div>{{trials.length}}</div>
     </section>
-</section>
+</div>
