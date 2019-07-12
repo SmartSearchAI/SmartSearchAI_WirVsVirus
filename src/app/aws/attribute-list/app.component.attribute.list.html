@@ -5,9 +5,9 @@
         </h5>
     </a>
 
-    <a href="#" class="list-group-item" *ngFor="let attr of getAttributes(cat)" >
-    {{attr.Text}}
-    {{attr.Name}}
-    </a>
+    <div href="#" class="list-group-item" *ngFor="let attr of getAttributes(cat)" >
+        {{attr.Text}}
+        <span class="badge badge-primary float-right">{{attr.Type}}</span>   
+    </div>
 </div>
 
