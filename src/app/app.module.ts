@@ -5,7 +5,9 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TrialComponent } from './trials/app.component.trials';
+import { TrialComponent } from './trial/app.component.trial';
+import { TrialList } from './trial/trial-list/app.component.trial.list';
+import { TrialListItem } from './trial/trial-list/app.component.trial.listitem';
 import { AWSComponent } from './aws/app.component.aws';
 import { AttributeList } from './aws/attribute-list/app.component.attribute.list';
 
@@ -13,6 +15,8 @@ import { AttributeList } from './aws/attribute-list/app.component.attribute.list
   declarations: [
     AppComponent,
     TrialComponent,
+    TrialList,
+    TrialListItem,
     AWSComponent,
     AttributeList
   ],
@@ -25,4 +29,5 @@ import { AttributeList } from './aws/attribute-list/app.component.attribute.list
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

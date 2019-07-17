@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-trial-component',
-  templateUrl: './app.component.trials.html',
-  styleUrls: ['./app.component.trials.scss']
+  templateUrl: './app.component.trial.html',
+  styleUrls: ['./app.component.trial.scss']
 })
+
 export class TrialComponent {
   constructor(private http: HttpClient) {}
   title = 'TrialComponent';
@@ -17,10 +19,12 @@ export class TrialComponent {
   trial = "Empty";
   trials = "";
   getTrial() {
-    let url = 'http://127.0.0.1:5000/trial';
-    let request = this.http.get(url, { params: {id: this.id} });
-
-    request.subscribe(data => this.trial = JSON.stringify(data));
+    let url = 'http://127.0.0.1:5000/trials';
+    let request = this.http.get(url, { params: {expr: this.id} });
+    //let request = this.http.get('https://clinicaltrials.gov/api/query/full_studies?expr=NCT01874691&fmt=JSON')
+    request.subscribe(data => 
+      this.trial = JSON.stringify(data)
+      );
   }
   
   findTrials() {
