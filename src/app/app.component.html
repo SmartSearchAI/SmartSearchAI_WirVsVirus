@@ -1,12 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="pos-f-t">
+<div class="d-flex flex-column h-100">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">     
       <h4 class="text-white">Collapsed content</h4>
       <span class="text-muted">Toggleable via the navbar brand.</span>
     </div>
   </div>
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark sticky-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,9 +14,9 @@
       <img src="./assets/logo.png" height="40" class="d-inline-block align-top" alt="">
     </a>
   </nav>
+  <div class="bg-info h-100 flex-grow">
+      <app-mstracer-component clas="container-fluid"></app-mstracer-component>
+  </div>
 </div>
-<div class="container-fluid">
-    <app-trial-component clas="container-fluid"></app-trial-component>
-    <app-aws-component class="container-fluid"></app-aws-component>
-</div>
+
 <router-outlet></router-outlet>

@@ -5,20 +5,12 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TrialComponent } from './trial/app.component.trial';
-import { TrialList } from './trial/trial-list/app.component.trial.list';
-import { TrialListItem } from './trial/trial-list/app.component.trial.listitem';
-import { AWSComponent } from './aws/app.component.aws';
-import { AttributeList } from './aws/attribute-list/app.component.attribute.list';
+import {MSTracerComponent} from './mstracer/app.component.mstracer';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrialComponent,
-    TrialList,
-    TrialListItem,
-    AWSComponent,
-    AttributeList
+    MSTracerComponent
   ],
   imports: [
     BrowserModule,
