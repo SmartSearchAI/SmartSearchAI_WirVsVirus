@@ -1,4 +1,4 @@
-# TrialTinderApp
+# MS Application - Multiples Sclorosis
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
