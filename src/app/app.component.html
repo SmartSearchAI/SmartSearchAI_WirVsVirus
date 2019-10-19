@@ -9,20 +9,20 @@
       <button type="button" id="show-dashboard" class="hidden-button btn btn-secondary" (click)="switch_to('profile-component')">My Profile</button>
     </div>
   </div>
-  <nav class="navbar navbar-dark bg-dark sticky-top">
+  <nav class="navbar navbar-light bg-light sticky-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+       QUALITY OF LIFE
     <a class="navbar-brand" href="#">
-      <img src="./assets/logo.png" height="40" class="d-inline-block align-top" alt="">
+      <img src="./assets/cancer_logo.png" height="50" class="d-inline-block align-top" alt="">
     </a>
   </nav>
   <div class="bg-app h-100 flex-grow" id="main-frame">
     <app-introduction-component class="" id="introduction-component"></app-introduction-component>
-    <app-mstracer-component class="hidden" id="mstracer-component"></app-mstracer-component>
+    <app-dashboard class="hidden" id="mstracer-component"></app-dashboard>
     <app-user-profile class="hidden" id="profile-component"></app-user-profile>
   </div>
-</div>
 
 
 <router-outlet></router-outlet>
