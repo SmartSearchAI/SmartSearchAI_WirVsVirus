@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import NgbDatepicker from '@angular/core';
 
 @Component({
   selector: 'app-introduction-component',

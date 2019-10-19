@@ -24,6 +24,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-regular-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@types/jquery": "^2.0.47",
     "angular-font-awesome": "^3.1.2",
     "angularfire2": "^5.2.1",
     "bootstrap": "^4.3.1",
