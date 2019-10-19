@@ -77,6 +77,12 @@ export class IntroductionComponent implements OnInit {
     this.data["birth_date"] = birth_date
     console.log(this.data)
 
+    localStorage.setItem('role', this.data["role"]);
+    localStorage.setItem('cancer', this.data["cancer"]);
+    localStorage.setItem('first_name', this.data["first_name"]);
+    localStorage.setItem('last_name', this.data["first_nalast_nameme"]);
+    localStorage.setItem('birth_date', this.data["birth_date"]);
+
   }
 
 

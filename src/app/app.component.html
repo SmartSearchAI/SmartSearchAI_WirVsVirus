@@ -3,7 +3,10 @@
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
       <h4 class="text-white">Collapsed content</h4>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
+      <span class="text-muted">Toggleable via the navbar brand.</span><br>
+      <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('introduction-component')">On-Board</button><br>
+      <button type="button" id="show-dashboard" class="hidden-button btn btn-secondary" (click)="switch_to('mstracer-component')">Dash-Board</button><br>
+      <button type="button" id="show-dashboard" class="hidden-button btn btn-secondary" (click)="switch_to('profile-component')">My Profile</button>
     </div>
   </div>
   <nav class="navbar navbar-dark bg-dark sticky-top">
@@ -16,7 +19,8 @@
   </nav>
   <div class="bg-app h-100 flex-grow" id="main-frame">
     <app-introduction-component class="" id="introduction-component"></app-introduction-component>
-    <!--<app-mstracer-component id="mstracer-component"></app-mstracer-component>-->
+    <app-mstracer-component class="hidden" id="mstracer-component"></app-mstracer-component>
+    <app-user-profile class="hidden" id="profile-component"></app-user-profile>
   </div>
 </div>
 

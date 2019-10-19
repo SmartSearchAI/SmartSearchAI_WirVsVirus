@@ -29,4 +29,5 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+}
