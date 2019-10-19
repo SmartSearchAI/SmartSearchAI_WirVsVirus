@@ -1,21 +1,150 @@
 <!--Who are you component-->
-<div class="d-flex flex-column h-100">
-  <div id="who-are-you">
+<div id="who-are-you">
+
+  <!--Welcome message-->
+  <h3>
+    <div id="welcome-message">
+      Welcome to Cancer Fighter
+    </div>
+  </h3>
+
+  <!--Who are you message-->
+  <h3>
+    <div id="title-message">
+      Who are you?
+    </div>
+  </h3>
+
+  <!--who are you buttons-->
+  <div class="container" id="who-are-you-buttons">
     <div class="row">
-      <div class="col-sm">
-        <button type="button" class="btn btn-secondary">Patient</button>
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="patient" (click)="who_i_am_button('patient')">Patient</button>
+        </div>
       </div>
-      <div class="col-sm">
-        <button type="button" class="btn btn-secondary">Doctor</button>
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="doctor" (click)="who_i_am_button('doctor')">Doctor</button>
+        </div>
       </div>
     </div>
     <div class="row" id="second-row">
-      <div class="col-sm">
-        <button type="button" class="btn btn-secondary">Friend/Relative</button>
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="partner" (click)="who_i_am_button('partner')" >Partner</button>
+        </div>
       </div>
-      <div class="col-sm">
-        <button type="button" class="btn btn-secondary">Other</button>
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="other" (click)="who_i_am_button('other')">Other</button>
+        </div>
       </div>
     </div>
   </div>
+
+
+  <!--which disease buttons-->
+  <div class="container hidden" id="which-disease-buttons">
+    <div class="row">
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="patient" (click)="process_cancer_button('colon')">Colon<br>Cancer</button>
+        </div>
+      </div>
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="doctor" (click)="process_cancer_button('breast')">Breast<br>Cancer</button>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="second-row">
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="partner" (click)="process_cancer_button('skin')">Skin<br>Cancer</button>
+        </div>
+      </div>
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="other" (click)="process_cancer_button('brain')">Brain<br>Cancer</button>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="second-row">
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="partner" (click)="process_cancer_button('prostate')">Prostate<br>Cancer</button>
+        </div>
+      </div>
+      <div class="col">
+        <div>
+          <button type="button" class="btn btn-secondary onboard-button" id="other" (click)="process_cancer_button('other')">Other<br>Cancer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--create your profile-->
+  <div class="container hidden" id="profile">
+    <div class="row profile">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+    		<div class="profile-userpic">
+    			<img src="./assets/onboard/siluete.png" class="img-responsive" alt="">
+    		</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- USER INFO -->
+        <div class="" id="playerParameters">
+          <div class="row no-gutters edit-players-row" id="edit-first-name">
+            <div class="col-sm">
+              <h5>First Name: </h5>
+            </div>
+            <div class="col-md padding-0">
+              <input class="form-control" id="first_name" type="text" placeholder="First Name">
+            </div>
+          </div>
+          <div class="row no-gutters edit-players-row" id="edit-last-name">
+            <div class="col-sm">
+              <h5>Short Name: </h5>
+            </div>
+            <div class="col-sm">
+              <input class="form-control" id="last_name" type="text" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="row no-gutters edit-players-row" id="edit-player-number">
+                <div class="col-sm">
+                  <h5>Birth Number: </h5>
+                </div>
+                <div class="col-sm">
+                  <input type="date" id="birth_date" name="birth-date"
+                         value="1900-01-01"
+                         min="1900-01-01" max="2019-01-01">
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div id="submit-button-area">
+                <button type="button" class="btn btn-primary" id="submit-button" (click)="on_submit()">Submit</button>
+              </div>
+            </div>
+        </div>
+				<!-- END MENU -->
+			</div>
+		</div>
+</div>
+
+
+
+  <footer>
+    <div class="footer" id="onboard-footer">
+      <div id=footer-img>
+        <img src="./assets/onboard/health_hackers_logo.png" height="60" width="220">
+        <img src="./assets/onboard/dehub.png" height="60" width="140">
+      </div>
+    </div>
+  </footer>
+
 </div>

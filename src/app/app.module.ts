@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 
 import {MSTracerComponent} from './mstracer/app.component.mstracer';
 import {IntroductionComponent} from './introduction/app.component.introduction';
+import { AuxComponent } from './aux/aux.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MSTracerComponent,
-    IntroductionComponent
+    IntroductionComponent,
+    AuxComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
