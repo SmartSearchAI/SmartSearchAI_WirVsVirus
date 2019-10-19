@@ -7,3 +7,6 @@ $theme-colors: (
   "custom-color": #900,
   "bg-app": #554455
 );
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

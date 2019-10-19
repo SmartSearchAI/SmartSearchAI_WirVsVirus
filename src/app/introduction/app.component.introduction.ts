@@ -79,7 +79,7 @@ export class IntroductionComponent implements OnInit {
     localStorage.setItem('role', this.data["role"]);
     localStorage.setItem('cancer', this.data["cancer"]);
     localStorage.setItem('first_name', this.data["first_name"]);
-    localStorage.setItem('last_name', this.data["first_nalast_nameme"]);
+    localStorage.setItem('last_name', this.data["last_name"]);
     localStorage.setItem('birth_date', this.data["birth_date"]);
 
   }

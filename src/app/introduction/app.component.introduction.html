@@ -1,6 +1,7 @@
 <!--Who are you component-->
 <div id="who-are-you">
 
+
   <!--Welcome message-->
   <h3>
     <div id="welcome-message">
@@ -8,12 +9,14 @@
     </div>
   </h3>
 
+
   <!--Who are you message-->
   <h3>
     <div id="title-message">
       Who are you?
     </div>
   </h3>
+
 
   <!--who are you buttons-->
   <div class="container" id="who-are-you-buttons">
@@ -90,12 +93,25 @@
     <div class="row profile">
 			<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
-    		<div class="profile-userpic">
-    			<img src="./assets/onboard/siluete.png" class="img-responsive" alt="">
-    		</div>
+        <div class="row">
+          <div class="col-6">
+      		  <div class="profile-userpic">
+      			     <img src="./assets/onboard/siluete.png" class="img-responsive" alt="">
+      		  </div>
+          </div>
+          <div class="col-6" id="user-gender">
+            <div id="gender-label">
+              <h5>Gender</h5>
+            </div>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button id="radio-button-1" value="male">male</mat-radio-button>
+              <mat-radio-button id="radio-button-2" value="female">female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
 				<!-- END SIDEBAR USERPIC -->
 				<!-- USER INFO -->
-        <div class="" id="playerParameters">
+        <div class="" id="user-parameters">
           <div class="row no-gutters edit-players-row" id="edit-first-name">
             <div class="col-sm">
               <h5>First Name: </h5>
@@ -106,7 +122,7 @@
           </div>
           <div class="row no-gutters edit-players-row" id="edit-last-name">
             <div class="col-sm">
-              <h5>Short Name: </h5>
+              <h5>Last Name: </h5>
             </div>
             <div class="col-sm">
               <input class="form-control" id="last_name" type="text" placeholder="Last Name">
@@ -116,7 +132,7 @@
             <div class="col-6">
               <div class="row no-gutters edit-players-row" id="edit-player-number">
                 <div class="col-sm">
-                  <h5>Birth Number: </h5>
+                  <h5>Birth Date: </h5>
                 </div>
                 <div class="col-sm">
                   <input type="date" id="birth_date" name="birth-date"
@@ -134,7 +150,7 @@
 				<!-- END MENU -->
 			</div>
 		</div>
-</div>
+  </div>
 
 
 
@@ -147,4 +163,16 @@
     </div>
   </footer>
 
-</div>
+
+
+
+  </div>
+
+
+
+  </div>
+
+
+
+
+<!---->

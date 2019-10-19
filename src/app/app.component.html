@@ -4,9 +4,9 @@
     <div class="bg-dark p-4">
       <h4 class="text-white">Collapsed content</h4>
       <span class="text-muted">Toggleable via the navbar brand.</span><br>
-      <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('introduction-component')">On-Board</button><br>
-      <button type="button" id="show-dashboard" class="hidden-button btn btn-secondary" (click)="switch_to('mstracer-component')">Dash-Board</button><br>
-      <button type="button" id="show-dashboard" class="hidden-button btn btn-secondary" (click)="switch_to('profile-component')">My Profile</button>
+      <button type="button" id="show-dashboard" class="hidden-button btn btn-secondary" (click)="switch_to('dashboard-component')">Dash-Board</button><br>
+      <button type="button" id="show-profile" class="hidden-button btn btn-secondary" (click)="switch_to('profile-component')">My Profile</button><br>
+      <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('introduction-component')">Edit Preferences</button><br>
     </div>
   </div>
   <nav class="navbar navbar-light bg-light sticky-top">
@@ -19,9 +19,10 @@
     </a>
   </nav>
   <div class="bg-app h-100 flex-grow" id="main-frame">
-    <app-introduction-component class="" id="introduction-component"></app-introduction-component>
-    <app-dashboard class="hidden" id="mstracer-component"></app-dashboard>
+    <app-dashboard class="hidden" id="dashboard-component"></app-dashboard>
+    <app-introduction-component class="hidden" id="introduction-component"></app-introduction-component>
     <app-user-profile class="hidden" id="profile-component"></app-user-profile>
+    <app-moodwelcome class="" id="mood-welcome-component"></app-moodwelcome>
   </div>
 
 
