@@ -1,7 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="d-flex flex-column h-100">
+<div class="d-flex flex-column h-100" id="main_frame">
   <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">     
+    <div class="bg-dark p-4">
       <h4 class="text-white">Collapsed content</h4>
       <span class="text-muted">Toggleable via the navbar brand.</span>
     </div>
@@ -15,8 +15,10 @@
     </a>
   </nav>
   <div class="bg-info h-100 flex-grow">
-      <app-mstracer-component clas="container-fluid"></app-mstracer-component>
+      <app-mstracer-component id="mstracer-component"></app-mstracer-component>
+      <app-introduction-component class="container-fluid" id="introduction-component"></app-introduction-component>
   </div>
 </div>
+
 
 <router-outlet></router-outlet>

@@ -5,12 +5,15 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import {MSTracerComponent} from './mstracer/app.component.mstracer';
+import {IntroductionComponent} from './introduction/app.component.introduction';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MSTracerComponent
+    MSTracerComponent,
+    IntroductionComponent
   ],
   imports: [
     BrowserModule,
