@@ -9,9 +9,8 @@ export class DisplayDiaryComponent implements OnInit {
 
   @Input() diary
 
-
-
-  constructor() { }
+  constructor() {
+   }
 
 
   ngOnInit() {

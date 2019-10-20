@@ -18,12 +18,12 @@ export class AppComponent {
   constructor(private db: AngularFireDatabase, private router: Router) {
     this.diary = new Diary();
     var user_data;
-    this.todos$ = [];
+    this.todo$ = [];
 
     db.list('/DiaryEntries').valueChanges().subscribe( (list) => {
-        this.todos$ = list;
+        this.todo$ = list;
         console.log('Values Received ' + list.length);
-        console.log(this.todos$);
+        console.log(this.todo$);
       });
 
     router.events.pipe(

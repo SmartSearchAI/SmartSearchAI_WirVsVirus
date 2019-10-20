@@ -10,6 +10,8 @@ import { Diary_Entry } from '../Models/Diary_Model';
 export class MoodwelcomeComponent implements OnInit {
   @Output() entryOutput = new EventEmitter<Diary_Entry>();
   entry : Diary_Entry;
+  init_x: any;
+  end_x: any;
 
   constructor() {
     this.entry = new Diary_Entry();
