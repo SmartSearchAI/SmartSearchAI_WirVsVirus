@@ -1,0 +1,11 @@
+data:{[
+  date = "",
+  HWPL_Value = {
+    H:,
+    W:50,
+    P:50,
+    L:50
+  }.
+  HWPL_Text=""
+  Mood = 1;
+]}

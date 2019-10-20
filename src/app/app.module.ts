@@ -6,6 +6,8 @@ import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { AngularFireModule } from 'angularfire2'
+import { AngularFireDatabaseModule} from 'angularfire2/database'
 import * as $ from 'jquery';
 
 
@@ -20,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MoodwelcomeComponent } from './moodwelcome/moodwelcome.component';
 import { HWPLDashboardComponent } from './HWPL/HWPL_Dashboard/HWPL_Dashboard_component';
 import { DisplayDiaryComponent } from './display-diary/display-diary.component';
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { DisplayDiaryComponent } from './display-diary/display-diary.component';
     BrowserAnimationsModule,
     MatRadioModule,
     MatSliderModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    AngularFireModule.initializeApp(environment.firebase, "fightclub-20"),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

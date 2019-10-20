@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+
+export interface IHash {
+    [key: string] : any;
+}
 
 @Component({
   selector: 'app-introduction-component',
@@ -7,12 +11,10 @@ import { Component } from '@angular/core';
 })
 export class IntroductionComponent implements OnInit {
 
+  data: IHash = {};
   constructor() {
 
-    this.data = {
-      "role":""
-    }
-
+    this.data["role"] = ""
   }
 
   ngOnInit() {

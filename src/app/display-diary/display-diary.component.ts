@@ -17,4 +17,10 @@ export class DisplayDiaryComponent implements OnInit {
     console.log(this.diary);
   }
 
+  open_diary_entry(event){
+    console.log(event)
+  }
+
+
+
 }

@@ -20,21 +20,38 @@ export class MoodwelcomeComponent implements OnInit {
   ngOnInit() {
   }
 
+
   onSubmit(){
     var DateObj = new Date();
-    var myDate = DateObj.getFullYear() + '-' + ('0' + (DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + DateObj.getDate()).slice(-2);
-    this.entry.Date= new Date();
+    var myDate = ('0' + DateObj.getDate()).slice(-2) + "-" + ('0' + (DateObj.getMonth() + 1)).slice(-2)  + "-" +  DateObj.getFullYear().toString().slice(-2);
+    this.entry.Date = myDate
     this.entry.HWPL_Text = $("#HWPL_Text").val()
     this.service.addEntry(this.entry);
     $("#mood-welcome-component").addClass("hidden")
     $("#dashboard-component").removeClass("hidden")
+    this.entry = new Diary_Entry()
   }
 
-  onChangeValue(target: String){
+  onChangeValue(event, target: String){
     console.log("Change " + target)
     let x = event.clientX;     // Get the horizontal coordinate
     var val = (x-137)/203*100;
-    this.entry.HWPL_Value[target] = val;
+    if(target=="H")
+    {
+    this.entry.HWPL_Value.H = val;
+    }
+    else if (target=="W")
+    {
+    this.entry.HWPL_Value.W = val;
+    }
+    else if (target=="P")
+    {
+    this.entry.HWPL_Value.P = val;
+    }
+    else if (target=="L")
+    {
+    this.entry.HWPL_Value.L = val;
+    }
   }
 
 
