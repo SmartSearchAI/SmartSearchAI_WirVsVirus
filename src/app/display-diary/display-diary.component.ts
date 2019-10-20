@@ -9,7 +9,7 @@ import { Diary } from '../Models/Diary_Model';
 })
 export class DisplayDiaryComponent implements OnInit {
   diary: Diary;
-  constructor(private diary_service: DiaryService) { 
+  constructor(private diary_service: DiaryService) {
       this.diary = diary_service.getDiary();
   }
 

@@ -5,23 +5,38 @@ import { AngularFireDatabase, AngularFireList, listChanges } from 'angularfire2/
   providedIn: 'root'
 })
 export class DiaryService {
-  Diary: Diary;
-  todos$: any[];
-  constructor(private db: AngularFireDatabase) {
-    db.list('/FightClub/DiaryEntries')
-      .valueChanges()
-      .subscribe((list) => {
-        this.todos$ = list;
-        console.log('Values Received ' + list.length);
-        console.log(this.todos$);
-      });
-    this.Diary = new Diary();
-  }
-  addEntry(new_entry: Diary_Entry) {
-    this.Diary.Entries.push(new_entry);
-    console.log(this.Diary);
-  }
-  getDiary() {
-    return this.Diary;
-  }
+    Diary: Diary;
+    todo$: any[];
+    constructor (private db: AngularFireDatabase){
+        console.log("sdfnsdlnfosdlnfosdnfosdnfosnfosnfsd")
+        this.Diary = new Diary();
+        let self = this;
+        db.list('/FightClub/DiaryEntries')
+        .valueChanges()
+        .subscribe((list) => {
+          this.todo$ = list;
+          console.log(this.todo$)
+
+
+          var next_entry;
+          for(var i=0; i<self.todo$.length; i++){
+            console.log(self.todo$[i]);
+            next_entry = new Diary_Entry();
+            next_entry.set_arguments(this.todo$[i].date, this.todo$[i].HWPL_Value_H, this.todo$[i].HWPL_Value_W,
+               self.todo$[i].HWPL_Value_P, this.todo$[i].HWPL_Value_L, this.todo$[i].HWPL_Text, this.todo$[i].Mood);
+            this.Diary.Entries.push(next_entry);
+          }
+
+        });
+    }
+
+    addEntry(new_entry: Diary_Entry) {
+        this.Diary.Entries.push(new_entry);
+        console.log("")
+        console.log(this.Diary);
+    }
+
+    getDiary(){
+        return this.Diary;
+    }
 }

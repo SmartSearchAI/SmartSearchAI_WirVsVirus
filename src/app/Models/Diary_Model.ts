@@ -15,14 +15,27 @@ export class Diary_Entry {
   constructor(){
     this.Date = "";
     this.HWPL_Value = {
-      H:50,
-      W:50,
-      P:50,
-      L:50
+      H:75,
+      W:20,
+      P:40,
+      L:95
     };
     this.HWPL_Text="";
     this.Mood = 1;
   }
+
+  set_arguments(date, h, w, p, l, text, mood,a ){
+    this.Date = date;
+    this.HWPL_Value = {
+      H:h,
+      W:w,
+      P:p,
+      L:l
+    };
+    this.HWPL_Text=text;
+    this.Mood = mood;
+  }
+
 
 };
 

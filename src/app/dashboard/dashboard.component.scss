@@ -2,21 +2,7 @@
 
   background: #AAA;
 }
-.grid-container {
-  grid-gap: 10px;
-  background-color: #EFEFEF;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
 
-}
-
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 20px;
-  font-size: 30px;
-}
 
 .item1 {
   grid-column:  span 4;

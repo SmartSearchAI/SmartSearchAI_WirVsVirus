@@ -1,24 +1,44 @@
 <div>
 
   <div class="container">
-  <table class="table table-striped">
+   <table class="table table-striped">
     <thead>
         <tr>
-          <th width="40%">Date</th>
-          <th width="35%">Mood Message</th>
-          <th width="20%">HPWL Values</th>
+          <th width="30%">Date</th>
+          <th width="50%">HPWL Values</th>
+          <th width="20%">Mood Message</th>
           <th width="5%">Mood</th>
         </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let entry of diary.Entries" (click)="open_diary_entry($event)">
-        <td width="40%">{{ entry.Date }}</td>
-        <td width="35%">{{ entry.HWPL_Text }}</td>
+      <tr *ngFor="let entry of diary.Entries" (click)="open_diary_entry($event)" style="margin-top:8px">
+        <td style="width:25px">
+          <div style="width:100%;margin-top:8px">
+              {{ entry.Date }}
+            </div>
+            </td>
+        <td style="width:100%;display:inline-block">
+        <div style="margin-botton:8px;margin-top:6px;width:85%;background:#AA0000;height:3px" [style.width]="(entry.HWPL_Value.H).toString()+ '%'"></div>
+        <div style="margin-botton:8px;margin-top:6px;width:72%;background:#00AA00;height:3px" [style.width]="(entry.HWPL_Value.W).toString() + '%'"></div>
+        <div style="margin-botton:8px;margin-top:6px;width:60%;background:#0000AA;height:3px" [style.width]="(entry.HWPL_Value.P).toString() + '%'"></div>
+        <div style="margin-botton:8px;margin-top:6px;width:90%;background:#AA0000;height:3px" [style.width]="(entry.HWPL_Value.L).toString() + '%'"></div>
+
+          </td>
+          <td>
+            <div style="width:15%;display:inline-block;margin-top:8px">
+              <img *ngIf="entry.Mood==1" src="../assets/faces/cold.png" style="margin-top:-12px;height:50px">
+              <img *ngIf="entry.Mood==2" src="../assets/faces/sick.png" style="margin-top:-12px;height:50px">
+              <img *ngIf="entry.Mood==3" src="../assets/faces/happy.png" style="margin-top:-12px;height:50px">
+              <img *ngIf="entry.Mood==4" src="../assets/faces/super.png" style="margin-top:-12px;height:50px">
+              </div>
+              </td>
+              <td>{{ entry.HWPL_Text }}</td>
+          </tr>
+        <!--<td width="40%">{{ entry.Date }}</td>
+
         <td width="20%">{{ entry.HWPL_Value["H"] }},{{ entry.HWPL_Value["W"] }},{{ entry.HWPL_Value["P"] }},{{ entry.HWPL_Value["L"] }}</td>
-        <td width="5%">{{ entry.Mood }}</td>
-      </tr>
-    </tbody>
+        <td width="5%">{{ entry.Mood }}</td> -->
+      </tbody>
   </table>
 </div>
-
 </div>
