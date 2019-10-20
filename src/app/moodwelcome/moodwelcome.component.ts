@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {MatSliderModule} from '@angular/material/slider';
+import { Diary_Entry } from '../Models/Diary_Model';
 
 @Component({
   selector: 'app-moodwelcome',
@@ -7,10 +8,10 @@ import {MatSliderModule} from '@angular/material/slider';
   styleUrls: ['./moodwelcome.component.scss']
 })
 export class MoodwelcomeComponent implements OnInit {
-
-  @ViewChild("liabilities_bar")
-
+  @Output() entryOutput = new EventEmitter<Diary_Entry>();
+  entry: Diary_Entry;
   constructor() {
+    this.entry = new Diary_Entry();
     this.init_x = 137;
     this.end_x = 340;
     this.bar_value_1 = 50;
@@ -21,7 +22,9 @@ export class MoodwelcomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onSubmit(){
+    this.entryOutput.emit(this.entry);
+  }
   change_liabilities(){
     console.log("Change Liabilities")
     let x = event.clientX;     // Get the horizontal coordinate

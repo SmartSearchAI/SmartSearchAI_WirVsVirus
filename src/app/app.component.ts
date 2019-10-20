@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Diary_Entry, Diary } from './Models/Diary_Model';
 
 
 @Component({
@@ -9,14 +10,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title = 'Cancer Fighter';
-
+  diary: Diary;
   constructor() {
+    this.diary = new Diary();
     var user_data
   }
 
   ngOnInit(){
   }
-
+  onNewEntry($event: Diary_Entry){
+    this.diary.Entries.push($event);
+  }
   switch_to(id){
 
     //hidden wrong modules and opening the correct one
