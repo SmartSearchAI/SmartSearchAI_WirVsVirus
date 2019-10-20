@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let entry of diary.Entries">
+      <tr *ngFor="let entry of diary.Entries" (click)="open_diary_entry($event)">
         <td width="40%">{{ entry.Date }}</td>
         <td width="35%">{{ entry.HWPL_Text }}</td>
         <td width="20%">{{ entry.HWPL_Value["H"] }},{{ entry.HWPL_Value["W"] }},{{ entry.HWPL_Value["P"] }},{{ entry.HWPL_Value["L"] }}</td>

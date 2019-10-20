@@ -9,11 +9,18 @@ export class DisplayDiaryComponent implements OnInit {
 
   @Input() diary
 
+
+
   constructor() { }
 
 
   ngOnInit() {
   }
+
+  open_diary_entry(event){
+    console.log(event)
+  }
+
 
 
 }

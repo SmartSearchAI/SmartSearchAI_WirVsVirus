@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Diary_Entry, Diary } from './Models/Diary_Model';
-
+import { AngularFireDatabase, AngularFireList, listChanges } from 'angularfire2/database'
 
 @Component({
   selector: 'app-root',
@@ -11,13 +11,25 @@ export class AppComponent {
 
   title = 'Cancer Fighter';
   diary: Diary;
-  constructor() {
+  todo$: any[];
+
+  constructor(private db: AngularFireDatabase) {
     this.diary = new Diary();
-    var user_data
+    var user_data;
+    this.todos$ = [];
+
+    db.list('/books').valueChanges().subscribe( (list) => {
+        this.todos$ = list;
+        console.log('Values Received ' + list.length);
+        console.log(this.todos$);
+      });
+
   }
+
 
   ngOnInit(){
   }
+
 
   onNewEntry($event: Diary_Entry){
     this.diary.Entries.push($event);
@@ -51,6 +63,10 @@ export class AppComponent {
     $('#navbarToggleExternalContent').collapse('toggle');
 
   }
+
+
+
+  //metohd
 
 
 
