@@ -9,8 +9,9 @@ import { Diary_Entry } from '../Models/Diary_Model';
 })
 export class MoodwelcomeComponent implements OnInit {
   @Output() entryOutput = new EventEmitter<Diary_Entry>();
-  entry: Diary_Entry;
-
+  entry:any;
+  init_x: any;
+  end_x: any;
   constructor() {
     this.entry = new Diary_Entry();
     this.init_x = 137;
@@ -30,11 +31,26 @@ export class MoodwelcomeComponent implements OnInit {
     $("#dashboard-component").removeClass("hidden")
   }
 
-  onChangeValue(target: String){
+  onChangeValue(event, target: String){
     console.log("Change " + target)
     let x = event.clientX;     // Get the horizontal coordinate
     var val = (x-137)/203*100;
-    this.entry.HWPL_Value[target] = val;
+    if(target=="H")
+    {
+    this.entry.HWPL_Value.H = val;
+    }
+    else if (target=="W")
+    {
+    this.entry.HWPL_Value.W = val;
+    }
+    else if (target=="P")
+    {
+    this.entry.HWPL_Value.P = val;
+    }
+    else if (target=="L")
+    {
+    this.entry.HWPL_Value.L = val;
+    }
   }
 
 
