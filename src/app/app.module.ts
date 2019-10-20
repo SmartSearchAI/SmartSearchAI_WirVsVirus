@@ -11,8 +11,7 @@ import * as $ from 'jquery';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MSTracerComponent } from './mstracer/app.component.mstracer';
-import {IntroductionComponent} from './introduction/app.component.introduction';
+import { IntroductionComponent} from './introduction/app.component.introduction';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { QuoteComponent } from './quote/quote.component';
@@ -25,7 +24,6 @@ import { DisplayDiaryComponent } from './display-diary/display-diary.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MSTracerComponent,
     IntroductionComponent,
     UserProfileComponent,
     DashboardComponent,
