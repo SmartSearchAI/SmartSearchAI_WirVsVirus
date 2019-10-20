@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { IntroductionComponent} from './introduction/app.component.introduction';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { InfosliderComponent } from './infoslider/infoslider.component';
 import { QuoteComponent } from './quote/quote.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +37,8 @@ import {environment} from "../environments/environment";
     MoodwelcomeComponent,
     HWPLDashboardComponent,
     DisplayDiaryComponent,
-    CMCalenderComponent
+    CMCalenderComponent,
+    InfosliderComponent
   ],
   imports: [
     BrowserModule,
