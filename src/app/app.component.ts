@@ -29,7 +29,7 @@ export class AppComponent {
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
         ).subscribe(() => {
-        //  $('#navbarToggleExternalContent').collapse("hide");
+          $('#navbarToggleExternalContent').collapse("hide");
           console.log(window.location.pathname)
         });
 }
@@ -37,10 +37,4 @@ export class AppComponent {
 
   ngOnInit(){
   }
-
-  onNewEntry($event: Diary_Entry){
-    this.diary.Entries.push($event);
-    console.log(this.diary)
-  }
-
 }

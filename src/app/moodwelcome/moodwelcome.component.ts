@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {MatSliderModule} from '@angular/material/slider';
 import { Diary_Entry } from '../Models/Diary_Model';
+import { DiaryService } from '../Services/diary.service';
 
 @Component({
   selector: 'app-moodwelcome',
@@ -8,12 +9,17 @@ import { Diary_Entry } from '../Models/Diary_Model';
   styleUrls: ['./moodwelcome.component.scss']
 })
 export class MoodwelcomeComponent implements OnInit {
-  @Output() entryOutput = new EventEmitter<Diary_Entry>();
   entry : Diary_Entry;
+<<<<<<< HEAD
   init_x: any;
   end_x: any;
+=======
+  init_x:any;
+  end_x:any;
+>>>>>>> aaf8a1b4d27bca77106150068e0976b642a79406
 
-  constructor() {
+  constructor(private service: DiaryService) {
+    this.service = service;
     this.entry = new Diary_Entry();
     this.init_x = 137;
     this.end_x = 340;
@@ -28,7 +34,7 @@ export class MoodwelcomeComponent implements OnInit {
     var myDate = ('0' + DateObj.getDate()).slice(-2) + "-" + ('0' + (DateObj.getMonth() + 1)).slice(-2)  + "-" +  DateObj.getFullYear().toString().slice(-2);
     this.entry.Date = myDate
     this.entry.HWPL_Text = $("#HWPL_Text").val()
-    this.entryOutput.emit(this.entry);
+    this.service.addEntry(this.entry);
     $("#mood-welcome-component").addClass("hidden")
     $("#dashboard-component").removeClass("hidden")
     this.entry = new Diary_Entry()
