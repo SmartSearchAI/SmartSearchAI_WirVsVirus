@@ -15,10 +15,10 @@ export class Diary_Entry {
   constructor(){
     this.Date = "";
     this.HWPL_Value = {
-      H:50,
-      W:50,
-      P:50,
-      L:50
+      H:75,
+      W:20,
+      P:40,
+      L:95
     };
     this.HWPL_Text="";
     this.Mood = 1;
