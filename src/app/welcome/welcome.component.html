@@ -10,7 +10,10 @@
 <div style="margin-botton:8px;margin-top:6px;width:90%;background:#AA0000;height:3px" [style.width]="(diary.Entries[diary.Entries.length-1].HWPL_Value.L).toString() + '%'"></div>
 </div>
 <div style="width:15%;display:inline-block">
-  <img src="../assets/faces/happy.png" style="margin-top:-12px;height:55px">
+  <img *ngIf="diary.Entries[diary.Entries.length-1].Mood==0" src="../assets/faces/cold.png" style="margin-top:-12px;height:55px">
+  <img *ngIf="diary.Entries[diary.Entries.length-1].Mood==1" src="../assets/faces/sick.png" style="margin-top:-12px;height:55px">
+  <img *ngIf="diary.Entries[diary.Entries.length-1].Mood==2" src="../assets/faces/happy.png" style="margin-top:-12px;height:55px">
+  <img *ngIf="diary.Entries[diary.Entries.length-1].Mood==3" src="../assets/faces/super.png" style="margin-top:-12px;height:55px">
   </div>
   </div>
 <div style="font-size:10pt"> Your are not in a very good mood!</div>
