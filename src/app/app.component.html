@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="d-flex flex-column h-100" id="main_frame">
+<div class="d-flex flex-column" id="main_frame">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
       <h4 class="text-white">Collapsed content</h4>
@@ -7,6 +7,9 @@
       <button type="button" id="show-dashboard" class="hidden-button btn btn-secondary" (click)="switch_to('dashboard-component')">Dash-Board</button><br>
       <button type="button" id="show-profile" class="hidden-button btn btn-secondary" (click)="switch_to('profile-component')">My Profile</button><br>
       <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('introduction-component')">Edit Preferences</button><br>
+      <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('mood-welcome-component')">My Mood</button><br>
+      <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('display-diary-component')">Display Diary</button>
+    </div>
     </div>
   </div>
   <nav class="navbar navbar-light bg-light sticky-top">
@@ -24,5 +27,6 @@
     <app-user-profile class="hidden" id="profile-component"></app-user-profile>
     <app-moodwelcome (entryOutput)="onNewEntry($event)" class="" id="mood-welcome-component"></app-moodwelcome>
     <app-hwpl-dashboard class="hidden" id="hwpl-dashboard-component"></app-hwpl-dashboard>
+    <app-display-diary class="hidden" id="display-diary-component"></app-display-diary>
   </div>
 <router-outlet></router-outlet>

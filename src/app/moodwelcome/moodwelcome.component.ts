@@ -10,52 +10,33 @@ import { Diary_Entry } from '../Models/Diary_Model';
 export class MoodwelcomeComponent implements OnInit {
   @Output() entryOutput = new EventEmitter<Diary_Entry>();
   entry: Diary_Entry;
+
   constructor() {
-    this.entry = new Diary_Entry();
+    this.diary_entry = new Diary_Entry();
     this.init_x = 137;
     this.end_x = 340;
-    this.bar_value_1 = 50;
-    this.bar_value_2 = 50;
-    this.bar_value_3 = 50;
-    this.bar_value_4 = 50;
   }
 
   ngOnInit() {
   }
+
   onSubmit(){
-    this.entryOutput.emit(this.entry);
-  }
-  change_liabilities(){
-    console.log("Change Liabilities")
-    let x = event.clientX;     // Get the horizontal coordinate
-    var val = (x-137)/203*100;
-    this.bar_value_1 = val;
-    localStorage.setItem('bar_value_1', val);
-  }
-
-  change_health(){
-    console.log("Change Health")
-    let x = event.clientX;     // Get the horizontal coordinate
-    var val = (x-137)/203*100;
-    this.bar_value_2 = val;
-    localStorage.setItem('bar_value_2', val);
+    var DateObj = new Date();
+    var myDate = DateObj.getFullYear() + '-' + ('0' + (DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + DateObj.getDate()).slice(-2);
+    this.diary_entry.Date = myDate
+    this.diary_entry.HWPL_Text = $("#HWPL_Text").val()
+    this.entryOutput.emit(this.diary_entry);
+    $("#mood-welcome-component").addClass("hidden")
+    $("#dashboard-component").removeClass("hidden")
   }
 
-  change_fun(){
-    console.log("Change Fun")
+  onChangeValue(target: String){
+    console.log("Change " + target)
     let x = event.clientX;     // Get the horizontal coordinate
     var val = (x-137)/203*100;
-    this.bar_value_3 = val;
-    localStorage.setItem('bar_value_2', val);
+    this.diary_entry.HWPL_Value[target] = val;
   }
 
-  change_love(){
-    console.log("Change Love")
-    let x = event.clientX;     // Get the horizontal coordinate
-    var val = (x-137)/203*100;
-    this.bar_value_4 = val;
-    localStorage.setItem('bar_value_4', val);
-  }
 
   click_cold(){
     $("#cold_face").removeClass("selected")
@@ -63,6 +44,7 @@ export class MoodwelcomeComponent implements OnInit {
     $("#happy_face").removeClass("selected")
     $("#super_face").removeClass("selected")
     $("#cold_face").addClass("selected")
+    this.diary_entry.Mood = 1
     localStorage.setItem('smiley', "cold");
   }
 
@@ -72,17 +54,8 @@ export class MoodwelcomeComponent implements OnInit {
     $("#happy_face").removeClass("selected")
     $("#super_face").removeClass("selected")
     $("#sick_face").addClass("selected")
+    this.diary_entry.Mood = 2
     localStorage.setItem('smiley', "sick");
-  }
-
-
-  click_super(){
-    $("#cold_face").removeClass("selected")
-    $("#sick_face").removeClass("selected")
-    $("#happy_face").removeClass("selected")
-    $("#super_face").removeClass("selected")
-    $("#super_face").addClass("selected")
-    localStorage.setItem('smiley', "super");
   }
 
 
@@ -92,8 +65,22 @@ export class MoodwelcomeComponent implements OnInit {
     $("#happy_face").removeClass("selected")
     $("#super_face").removeClass("selected")
     $("#happy_face").addClass("selected")
+    this.diary_entry.Mood = 3
     localStorage.setItem('smiley', "happy");
   }
+
+
+  click_super(){
+    $("#cold_face").removeClass("selected")
+    $("#sick_face").removeClass("selected")
+    $("#happy_face").removeClass("selected")
+    $("#super_face").removeClass("selected")
+    $("#super_face").addClass("selected")
+    this.diary_entry.Mood = 4
+    localStorage.setItem('smiley', "super");
+  }
+
+
 
 
 

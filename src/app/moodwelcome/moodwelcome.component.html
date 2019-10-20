@@ -4,7 +4,7 @@
   </div>
 
   <div id="input_mood">
-    <input class="form-control" id="first_name" type="text" placeholder="tired, dick, depressed">
+    <input class="form-control" id="HWPL_Text" type="text" [value]="diary_entry.HWPL_Text" placeholder="tired, dick, depressed">
   </div>
 
   <div id="barometer_title">
@@ -17,7 +17,7 @@
         Liabilities
       </div>
       <div class="col-9 mood_slider">
-        <mat-progress-bar mode="determinate" id="liabilities_bar" class="mood_bar" (mousedown)="change_liabilities()" [value]="bar_value_1"></mat-progress-bar>
+        <mat-progress-bar mode="determinate" id="liabilities_bar" class="mood_bar" (mousedown)="onChangeValue('W')" [value]="diary_entry.HWPL_Value['W']"></mat-progress-bar>
       </div>
     </div>
 
@@ -26,7 +26,7 @@
         Health
       </div>
       <div class="col-9 mood_slider">
-        <mat-progress-bar mode="determinate" id="health_bar" class="mood_bar" (mousedown)="change_health()" [value]="bar_value_2"></mat-progress-bar>
+        <mat-progress-bar mode="determinate" id="health_bar" class="mood_bar" (mousedown)="onChangeValue('H')" [value]="diary_entry.HWPL_Value['H']"></mat-progress-bar>
       </div>
     </div>
 
@@ -35,7 +35,7 @@
         Fun
       </div>
       <div class="col-9 mood_slider">
-        <mat-progress-bar mode="determinate" id="fun_bar" class="mood_bar" (mousedown)="change_fun()" [value]="bar_value_3"></mat-progress-bar>
+        <mat-progress-bar mode="determinate" id="fun_bar" class="mood_bar" (mousedown)="onChangeValue('P')" [value]="diary_entry.HWPL_Value['P']"></mat-progress-bar>
       </div>
     </div>
 
@@ -44,7 +44,7 @@
         Love
       </div>
       <div class="col-9 mood_slider">
-        <mat-progress-bar mode="determinate" id="love_bar" class="mood_bar" (mousedown)="change_love()" [value]="bar_value_4" value="50"></mat-progress-bar>
+        <mat-progress-bar mode="determinate" id="love_bar" class="mood_bar" (mousedown)="onChangeValue('L')" [value]="diary_entry.HWPL_Value['L']" value="50"></mat-progress-bar>
       </div>
     </div>
 
@@ -63,6 +63,10 @@
     <div class="col-3">
       <button id="super_face" (click)="click_super()"><img src="./assets/faces/super.png"/></button>
     </div>
+  </div>
+
+  <div id="submit_area">
+    <button class="btn btn-secondary" id="submit_button" (click)="onSubmit()">Submit Data</button>
   </div>
 
 

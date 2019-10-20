@@ -20,6 +20,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MoodwelcomeComponent } from './moodwelcome/moodwelcome.component';
 import { HWPLDashboardComponent } from './HWPL/HWPL_Dashboard/HWPL_Dashboard_component';
+import { DisplayDiaryComponent } from './display-diary/display-diary.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HWPLDashboardComponent } from './HWPL/HWPL_Dashboard/HWPL_Dashboard_com
     WelcomeComponent,
     QuoteComponent,
     MoodwelcomeComponent,
-    HWPLDashboardComponent
+    HWPLDashboardComponent,
+    DisplayDiaryComponent
   ],
   imports: [
     BrowserModule,

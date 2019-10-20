@@ -18,16 +18,21 @@ export class AppComponent {
 
   ngOnInit(){
   }
+
   onNewEntry($event: Diary_Entry){
     this.diary.Entries.push($event);
+    console.log(this.diary)
   }
+
   switch_to(id){
 
     //hidden wrong modules and opening the correct one
     $("#dashboard-component").addClass("hidden")
     $("#introduction-component").addClass("hidden")
     $("#profile-component").addClass("hidden")
-    $("#app-moodwelcome").addClass("hidden")
+    $("#mood-welcome-component").addClass("hidden")
+    $("#hwpl-dashboard-component").addClass("hidden")
+    $("#display-diary-component").addClass("hidden")
     console.log(id)
     $("#"+id).removeClass("hidden")
 
