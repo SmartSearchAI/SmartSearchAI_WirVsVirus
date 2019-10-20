@@ -20,7 +20,7 @@ export class InfosliderComponent implements OnInit {
   {
       this.slideNumber++;
 
-      if(this.slideNumber>4)
+      if(this.slideNumber>2)
       {
         this.slideNumber=1
       }
