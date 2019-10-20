@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {MatSliderModule} from '@angular/material/slider';
 import { Diary_Entry } from '../Models/Diary_Model';
 import { DiaryService } from '../Services/diary.service';
+import { Router, NavigationStart, NavigationEnd} from '@angular/router';
 
 @Component({
   selector: 'app-moodwelcome',
@@ -13,7 +14,7 @@ export class MoodwelcomeComponent implements OnInit {
   init_x:any;
   end_x:any;
 
-  constructor(private service: DiaryService) {
+  constructor(private service: DiaryService, private router: Router) {
     this.service = service;
     this.entry = new Diary_Entry();
     this.init_x = 137;
@@ -33,8 +34,8 @@ export class MoodwelcomeComponent implements OnInit {
     $("#mood-welcome-component").addClass("hidden")
     $("#dashboard-component").removeClass("hidden")
     this.entry = new Diary_Entry()
-    window.history.pushState(null, "/home", "/Dashboard?debug=true");
-    window.location.reload();
+    this.router.navigate(["/Dashboard"])
+    //window.history.pushState(null, "/home", "/Dashboard?debug=true");
   }
 
   onChangeValue(event, target: String){
