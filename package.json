@@ -30,6 +30,7 @@
     "angular-font-awesome": "^3.1.2",
     "angularfire2": "^5.2.1",
     "bootstrap": "^4.3.1",
+    "math":"latest",
     "bootstrap-daterangepicker": "^3.0.5",
     "firebase": "^7.2.1",
     "font-awesome": "^4.7.0",

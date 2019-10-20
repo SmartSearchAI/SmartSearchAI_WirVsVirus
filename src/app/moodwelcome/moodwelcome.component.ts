@@ -22,7 +22,7 @@ export class MoodwelcomeComponent implements OnInit {
 
   onSubmit(){
     var DateObj = new Date();
-    var myDate = DateObj.getFullYear() + '-' + ('0' + (DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + DateObj.getDate()).slice(-2);
+    var myDate = ('0' + DateObj.getDate()).slice(-2) + "-" + ('0' + (DateObj.getMonth() + 1)).slice(-2)  + "-" +  DateObj.getFullYear().toString().slice(-2);
     this.diary_entry.Date = myDate
     this.diary_entry.HWPL_Text = $("#HWPL_Text").val()
     this.entryOutput.emit(this.diary_entry);
@@ -34,7 +34,7 @@ export class MoodwelcomeComponent implements OnInit {
     console.log("Change " + target)
     let x = event.clientX;     // Get the horizontal coordinate
     var val = (x-137)/203*100;
-    this.diary_entry.HWPL_Value[target] = val;
+    this.diary_entry.HWPL_Value[target] = val.toString().slice(0,2);
   }
 
 

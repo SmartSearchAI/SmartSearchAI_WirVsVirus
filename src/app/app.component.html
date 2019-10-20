@@ -27,6 +27,6 @@
     <app-user-profile class="hidden" id="profile-component"></app-user-profile>
     <app-moodwelcome (entryOutput)="onNewEntry($event)" class="" id="mood-welcome-component"></app-moodwelcome>
     <app-hwpl-dashboard class="hidden" id="hwpl-dashboard-component"></app-hwpl-dashboard>
-    <app-display-diary class="hidden" id="display-diary-component"></app-display-diary>
+    <app-display-diary class="hidden" id="display-diary-component" [diary]="diary"></app-display-diary>
   </div>
 <router-outlet></router-outlet>
