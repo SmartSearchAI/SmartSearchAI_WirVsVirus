@@ -32,12 +32,26 @@ export class MoodwelcomeComponent implements OnInit {
     this.entry = new Diary_Entry()
   }
 
-
-  onChangeValue(target: String){
+  onChangeValue(event, target: String){
     console.log("Change " + target)
     let x = event.clientX;     // Get the horizontal coordinate
     var val = (x-137)/203*100;
-    this.entry.HWPL_Value[target] = val.toString().slice(0,2);
+    if(target=="H")
+    {
+    this.entry.HWPL_Value.H = val;
+    }
+    else if (target=="W")
+    {
+    this.entry.HWPL_Value.W = val;
+    }
+    else if (target=="P")
+    {
+    this.entry.HWPL_Value.P = val;
+    }
+    else if (target=="L")
+    {
+    this.entry.HWPL_Value.L = val;
+    }
   }
 
 

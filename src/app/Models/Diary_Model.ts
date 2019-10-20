@@ -4,9 +4,10 @@ export enum Mood {
     High
 }
 
+
 export class Diary_Entry {
 
-  Date: Date;
+  Date: String;
   HWPL_Value: {H: Number, W: Number, P: Number, L: Number};
   HWPL_Text: String;
   Mood: Mood;
