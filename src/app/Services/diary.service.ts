@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Diary, Diary_Entry} from '../Models/Diary_Model';
-
+import { AngularFireDatabase, AngularFireList, listChanges } from 'angularfire2/database';
 @Injectable({
   providedIn: 'root',
 })
 
 export class DiaryService {
     Diary: Diary;
-    constructor (){
+    todos$: any[];
+    constructor (private db: AngularFireDatabase){
+        db.list('/diaryentries')
+        .valueChanges()
+        .subscribe((list) => {
+          this.todos$ = list;
+          console.log('Values Received ' + list.length);
+          console.log(this.todos$);
+        });
         this.Diary = new Diary();
     }
     addEntry(new_entry: Diary_Entry) {
