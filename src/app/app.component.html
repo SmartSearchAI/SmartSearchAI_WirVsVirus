@@ -4,11 +4,21 @@
     <div class="bg-dark p-4">
       <h4 class="text-white">Collapsed content</h4>
       <span class="text-muted">Toggleable via the navbar brand.</span><br>
-      <button type="button" id="show-dashboard" class="hidden-button btn btn-secondary" (click)="switch_to('dashboard-component')">Dash-Board</button><br>
-      <button type="button" id="show-profile" class="hidden-button btn btn-secondary" (click)="switch_to('profile-component')">My Profile</button><br>
-      <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('introduction-component')">Edit Preferences</button><br>
-      <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('mood-welcome-component')">My Mood</button><br>
-      <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('display-diary-component')">Display Diary</button>
+      <a class="nav-link" [routerLink]="['/Introduction']" [queryParams]="{debug: true}" queryParamsHandling="merge">
+        Onboarding
+      </a>
+      <a class="nav-link" [routerLink]="['/Home']" [queryParams]="{debug: true}" queryParamsHandling="merge">
+        Home
+      </a>
+      <a class="nav-link" [routerLink]="['/Dashboard']" [queryParams]="{debug: true}" queryParamsHandling="merge">
+        Dashboard
+      </a>
+      <a class="nav-link" [routerLink]="['/Profile']" [queryParams]="{debug: true}" queryParamsHandling="merge">
+        Profile
+      </a>
+      <a class="nav-link" [routerLink]="['/Diary']" [queryParams]="{debug: true}" queryParamsHandling="merge">
+        Diary
+      </a>
     </div>
     </div>
   </div>
@@ -22,11 +32,5 @@
     </a>
   </nav>
   <div class="bg-app h-100 flex-grow" id="main-frame">
-    <app-dashboard class="hidden" id="dashboard-component"></app-dashboard>
-    <app-introduction-component class="hidden" id="introduction-component"></app-introduction-component>
-    <app-user-profile class="hidden" id="profile-component"></app-user-profile>
-    <app-moodwelcome (entryOutput)="onNewEntry($event)" class="" id="mood-welcome-component"></app-moodwelcome>
-    <app-hwpl-dashboard class="hidden" id="hwpl-dashboard-component"></app-hwpl-dashboard>
-    <app-display-diary class="hidden" id="display-diary-component"></app-display-diary>
+    <router-outlet></router-outlet>
   </div>
-<router-outlet></router-outlet>
