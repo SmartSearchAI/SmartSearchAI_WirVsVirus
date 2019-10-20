@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {faFrown, faSmile} from '@fortawesome/free-regular-svg-icons';
+import { DiaryService } from '../Services/diary.service';
+import { Diary } from '../Models/Diary_Model';
 
 @Component({
   selector: 'app-welcome',
@@ -10,7 +12,11 @@ export class WelcomeComponent implements OnInit {
   faSmile = faSmile
   faFrown = faFrown
   widgetMode = true
-  constructor() { }
+  diary: Diary;
+  constructor(private diary_service: DiaryService) {
+      this.diary = diary_service.getDiary();
+      console.log(this.diary)
+  }
 
   ngOnInit() {
   }
