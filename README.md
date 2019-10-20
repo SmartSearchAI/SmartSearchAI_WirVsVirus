@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+# MS Application - Multiples Sclorosis
+=======
 # Cancer Management Hackathon
+>>>>>>> 4d2426d2f17c073d83ce5c45ff41d7219752266a
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
