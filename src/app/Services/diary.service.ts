@@ -7,21 +7,22 @@ import { AngularFireDatabase, AngularFireList, listChanges } from 'angularfire2/
 
 export class DiaryService {
     Diary: Diary;
-    todos$: any[];
+    todo$: any[];
     constructor (private db: AngularFireDatabase){
 
         this.Diary = new Diary();
+        let self = this;
         db.list('/DiaryEntries')
         .valueChanges()
         .subscribe((list) => {
-          this.todo$ = list;
-          console.log(this.todo$)
+          self.todo$ = list;
+          console.log(self.todo$)
           var next_entry;
-          for(var i=0; i<this.todo$.length; i++){
-            console.log(this.todo$[i]);
+          for(var i=0; i<self.todo$.length; i++){
+            console.log(self.todo$[i]);
             next_entry = new Diary_Entry();
             next_entry.set_arguments(this.todo$[i].date, this.todo$[i].HWPL_Value_H, this.todo$[i].HWPL_Value_W,
-               this.todo$[i].HWPL_Value_P, this.todo$[i].HWPL_Value_L, this.todo$[i].HWPL_Text, this.todo$[i].Mood);
+               self.todo$[i].HWPL_Value_P, this.todo$[i].HWPL_Value_L, this.todo$[i].HWPL_Text, this.todo$[i].Mood);
             this.Diary.Entries.push(next_entry);
           }
 

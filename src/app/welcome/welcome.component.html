@@ -1,16 +1,16 @@
-<div *ngIf="widgetMode">
+<div >
 <div style="background:white;padding:8px" (click)="toggleWidgetMode()">
 
 <div style="font-size:10pt;font-weight:bold">Welcome Susanne!</div>
-<div>
-<div style="width:70%;display:inline-block">
-<div style="margin-botton:8px;margin-top:4px;width:85%;background:#AA0000;height:2px" [style.width]="(diary.Entries[0].HWPL_Value.H/2).toString()+ '%'"></div>
-<div style="margin-botton:8px;margin-top:4px;width:72%;background:#00AA00;height:2px" [style.width]="(diary.Entries[0].HWPL_Value.W/2).toString() + '%'"></div>
-<div style="margin-botton:8px;margin-top:4px;width:60%;background:#0000AA;height:2px" [style.width]="(diary.Entries[0].HWPL_Value.P/2).toString() + '%'"></div>
-<div style="margin-botton:8px;margin-top:4px;width:90%;background:#AA0000;height:2px" [style.width]="(diary.Entries[0].HWPL_Value.L/2).toString() + '%'"></div>
+<div style="height:40px">
+<div style="width:84%;display:inline-block">
+<div style="margin-botton:8px;margin-top:6px;width:85%;background:#AA0000;height:3px" [style.width]="(diary.Entries[diary.Entries.length-1].HWPL_Value.H).toString()+ '%'"></div>
+<div style="margin-botton:8px;margin-top:6px;width:72%;background:#00AA00;height:3px" [style.width]="(diary.Entries[diary.Entries.length-1].HWPL_Value.W).toString() + '%'"></div>
+<div style="margin-botton:8px;margin-top:6px;width:60%;background:#0000AA;height:3px" [style.width]="(diary.Entries[diary.Entries.length-1].HWPL_Value.P).toString() + '%'"></div>
+<div style="margin-botton:8px;margin-top:6px;width:90%;background:#AA0000;height:3px" [style.width]="(diary.Entries[diary.Entries.length-1].HWPL_Value.L).toString() + '%'"></div>
 </div>
-<div style="width:29%;display:inline-block">
-  <img src="../assets/faces/happy.png" style="height:60px">
+<div style="width:15%;display:inline-block">
+  <img src="../assets/faces/happy.png" style="margin-top:-12px;height:55px">
   </div>
   </div>
 <div style="font-size:10pt"> Your are not in a very good mood!</div>
