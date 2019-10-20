@@ -33,12 +33,14 @@ export class MoodwelcomeComponent implements OnInit {
     $("#mood-welcome-component").addClass("hidden")
     $("#dashboard-component").removeClass("hidden")
     this.entry = new Diary_Entry()
+    
+
   }
 
   onChangeValue(event, target: String){
     console.log("Change " + target)
     let x = event.clientX;     // Get the horizontal coordinate
-    var val = (x-137)/203*100;
+    var val = parseInt((x-137)/203*100)
     if(target=="H")
     {
     this.entry.HWPL_Value.H = val;
