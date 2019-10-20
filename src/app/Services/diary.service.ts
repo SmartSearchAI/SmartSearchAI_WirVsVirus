@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Diary, Diary_Entry} from '../Models/Diary_Model';
+import { Diary, Diary_Entry } from '../Models/Diary_Model';
 import { AngularFireDatabase, AngularFireList, listChanges } from 'angularfire2/database';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-
 export class DiaryService {
     Diary: Diary;
     todo$: any[];
