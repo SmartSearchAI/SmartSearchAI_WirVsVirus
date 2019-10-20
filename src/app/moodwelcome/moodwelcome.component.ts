@@ -9,12 +9,12 @@ import { DiaryService } from '../Services/diary.service';
   styleUrls: ['./moodwelcome.component.scss']
 })
 export class MoodwelcomeComponent implements OnInit {
-  @Output() entryOutput = new EventEmitter<Diary_Entry>();
   entry : Diary_Entry;
   init_x:any;
   end_x:any;
 
-  constructor() {
+  constructor(private service: DiaryService) {
+    this.service = service;
     this.entry = new Diary_Entry();
     this.init_x = 137;
     this.end_x = 340;
