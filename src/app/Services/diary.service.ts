@@ -12,7 +12,7 @@ export class DiaryService {
         console.log("sdfnsdlnfosdlnfosdnfosdnfosnfosnfsd")
         this.Diary = new Diary();
         let self = this;
-        db.list('/DiaryEntries')
+        db.list('/FightClub/DiaryEntries')
         .valueChanges()
         .subscribe((list) => {
           this.todo$ = list;
