@@ -1,38 +1,28 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="d-flex flex-column" id="main_frame">
-  <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-      <h4 class="text-white">Collapsed content</h4>
-      <span class="text-muted">Toggleable via the navbar brand.</span><br>
-      <a class="nav-link" [routerLink]="['/Introduction']" [queryParams]="{debug: true}" queryParamsHandling="merge">
-        Onboarding
-      </a>
-      <a class="nav-link" [routerLink]="['/Home']" [queryParams]="{debug: true}" queryParamsHandling="merge">
-        Home
-      </a>
-      <a class="nav-link" [routerLink]="['/Dashboard']" [queryParams]="{debug: true}" queryParamsHandling="merge">
-        Dashboard
-      </a>
-      <a class="nav-link" [routerLink]="['/Profile']" [queryParams]="{debug: true}" queryParamsHandling="merge">
-        Profile
-      </a>
-      <a class="nav-link" [routerLink]="['/Diary']" [queryParams]="{debug: true}" queryParamsHandling="merge">
-        Diary
-      </a>
-      <a class="nav-link" [routerLink]="['/Calender']" [queryParams]="{debug: true}" queryParamsHandling="merge">
-        Calender
-      </a>
-    </div>
-    </div>
-  </div>
-  <nav class="navbar navbar-light bg-light sticky-top">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-       QUALITY OF LIFE
+<div class="navbar navbar-light bg-light sticky-top">
+    QUALITY OF LIFE
+    <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
+    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
     <a class="navbar-brand" href="#">
-      <img src="./assets/cancer_logo.png" height="50" class="d-inline-block align-top" alt="">
+        <img src="./assets/cancer_logo.png" height="50" class="d-inline-block align-top" alt="">
     </a>
+</div>
+<div class="d-flex flex-column" id="main_frame">
+  <nav class="navbar navbar-light bg-light sticky-top">
+       
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 3</a>
+      </li>
+    </ul>
   </nav>
   <div class="d-flex flex-column" id="main_frame">
     <div class="collapse" id="navbarToggleExternalContent">
