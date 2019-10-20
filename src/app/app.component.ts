@@ -20,16 +20,10 @@ export class AppComponent {
     var user_data;
     this.todo$ = [];
 
-    db.list('/DiaryEntries').valueChanges().subscribe( (list) => {
-        this.todo$ = list;
-        console.log('Values Received ' + list.length);
-        console.log(this.todo$);
-      });
-
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
         ).subscribe(() => {
-          $('#navbarToggleExternalContent').collapse("hide");
+          //$('#navbarToggleExternalContent').collapse("hide");
           console.log(window.location.pathname)
         });
 }

@@ -10,13 +10,8 @@ import { DiaryService } from '../Services/diary.service';
 })
 export class MoodwelcomeComponent implements OnInit {
   entry : Diary_Entry;
-<<<<<<< HEAD
-  init_x: any;
-  end_x: any;
-=======
   init_x:any;
   end_x:any;
->>>>>>> aaf8a1b4d27bca77106150068e0976b642a79406
 
   constructor(private service: DiaryService) {
     this.service = service;
@@ -38,12 +33,14 @@ export class MoodwelcomeComponent implements OnInit {
     $("#mood-welcome-component").addClass("hidden")
     $("#dashboard-component").removeClass("hidden")
     this.entry = new Diary_Entry()
+    
+
   }
 
   onChangeValue(event, target: String){
     console.log("Change " + target)
     let x = event.clientX;     // Get the horizontal coordinate
-    var val = (x-137)/203*100;
+    var val = parseInt((x-137)/203*100)
     if(target=="H")
     {
     this.entry.HWPL_Value.H = val;

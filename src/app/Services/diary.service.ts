@@ -9,21 +9,31 @@ export class DiaryService {
     Diary: Diary;
     todos$: any[];
     constructor (private db: AngularFireDatabase){
-        db.list('/diaryentries')
+
+        this.Diary = new Diary();
+        db.list('/DiaryEntries')
         .valueChanges()
         .subscribe((list) => {
-          this.todos$ = list;
-          console.log('Values Received ' + list.length);
-          console.log(this.todos$);
+          this.todo$ = list;
+          console.log(this.todo$)
+          var next_entry;
+          for(var i=0; i<this.todo$.length; i++){
+            console.log(this.todo$[i]);
+            next_entry = new Diary_Entry();
+            next_entry.set_arguments(this.todo$[i].date, this.todo$[i].HWPL_Value_H, this.todo$[i].HWPL_Value_W,
+               this.todo$[i].HWPL_Value_P, this.todo$[i].HWPL_Value_L, this.todo$[i].HWPL_Text, this.todo$[i].Mood);
+            this.Diary.Entries.push(next_entry);
+          }
+
         });
-        this.Diary = new Diary();
     }
+
     addEntry(new_entry: Diary_Entry) {
         this.Diary.Entries.push(new_entry);
         console.log(this.Diary);
     }
+
     getDiary(){
         return this.Diary;
     }
 }
-
