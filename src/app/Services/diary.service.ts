@@ -7,7 +7,7 @@ import { AngularFireDatabase, AngularFireList, listChanges } from 'angularfire2/
 
 export class DiaryService {
     Diary: Diary;
-    todos$: any[];
+    todo$: any[];
     constructor (private db: AngularFireDatabase){
 
         this.Diary = new Diary();

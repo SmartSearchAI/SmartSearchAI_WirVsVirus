@@ -18,7 +18,6 @@ export class AppComponent {
   constructor(private db: AngularFireDatabase, private router: Router) {
     this.diary = new Diary();
     var user_data;
-    this.todo$ = [];
 
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
