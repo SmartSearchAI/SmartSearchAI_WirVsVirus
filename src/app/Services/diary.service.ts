@@ -9,14 +9,16 @@ export class DiaryService {
     Diary: Diary;
     todo$: any[];
     constructor (private db: AngularFireDatabase){
-
+        console.log("sdfnsdlnfosdlnfosdnfosdnfosnfosnfsd")
         this.Diary = new Diary();
         let self = this;
         db.list('/DiaryEntries')
         .valueChanges()
         .subscribe((list) => {
-          self.todo$ = list;
-          console.log(self.todo$)
+          this.todo$ = list;
+          console.log(this.todo$)
+
+
           var next_entry;
           for(var i=0; i<self.todo$.length; i++){
             console.log(self.todo$[i]);
@@ -31,6 +33,7 @@ export class DiaryService {
 
     addEntry(new_entry: Diary_Entry) {
         this.Diary.Entries.push(new_entry);
+        console.log("")
         console.log(this.Diary);
     }
 
