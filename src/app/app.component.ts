@@ -39,7 +39,11 @@ export class AppComponent {
       $("#profile-role").html(cancer + " " + role)
     }
 
-    //$('#navbarToggleExternalContent').collapse('toggle');
+    $('#navbarToggleExternalContent').collapse('toggle');
 
   }
+
+
+
+
 }

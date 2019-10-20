@@ -7,7 +7,6 @@
       <button type="button" id="show-dashboard" class="hidden-button btn btn-secondary" (click)="switch_to('dashboard-component')">Dash-Board</button><br>
       <button type="button" id="show-profile" class="hidden-button btn btn-secondary" (click)="switch_to('profile-component')">My Profile</button><br>
       <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('introduction-component')">Edit Preferences</button><br>
-      <button type="button" id="show-onboard" class="hidden-button btn btn-secondary" (click)="switch_to('HWPL-Dashboard-component')">HWPL-APP</button><br>
     </div>
   </div>
   <nav class="navbar navbar-light bg-light sticky-top">
@@ -23,8 +22,8 @@
     <app-dashboard class="hidden" id="dashboard-component"></app-dashboard>
     <app-introduction-component class="hidden" id="introduction-component"></app-introduction-component>
     <app-user-profile class="hidden" id="profile-component"></app-user-profile>
-    <app-moodwelcome class="hidden" id="mood-welcome-component"></app-moodwelcome>
-    <app-HWPL-App class="" id="hwpl-app-component"></app-HWPL-App>
+    <app-moodwelcome class="" id="mood-welcome-component"></app-moodwelcome>
   </div>
+
 
 <router-outlet></router-outlet>
