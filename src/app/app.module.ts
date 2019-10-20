@@ -17,8 +17,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { QuoteComponent } from './quote/quote.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MoodwelcomeComponent } from './moodwelcome/moodwelcome.component';
+import { HWPLDashboardComponent } from './HWPL/HWPL_Dashboard/HWPL_Dashboard_component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { MoodwelcomeComponent } from './moodwelcome/moodwelcome.component';
     DashboardComponent,
     WelcomeComponent,
     QuoteComponent,
-    MoodwelcomeComponent
+    MoodwelcomeComponent,
+    HWPLDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,6 @@ import { MoodwelcomeComponent } from './moodwelcome/moodwelcome.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MatRadioModule,
     MatSliderModule,
     MatProgressBarModule

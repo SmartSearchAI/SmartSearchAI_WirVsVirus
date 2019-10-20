@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-introduction-component',
@@ -6,13 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.introduction.scss']
 })
 export class IntroductionComponent implements OnInit {
-
+  data = {};
   constructor() {
-
-    this.data = {
-      "role":""
-    }
-
+    this.data = {"role":""}
   }
 
   ngOnInit() {

@@ -7,8 +7,12 @@ import {MatSliderModule} from '@angular/material/slider';
   styleUrls: ['./moodwelcome.component.scss']
 })
 export class MoodwelcomeComponent implements OnInit {
-
-  @ViewChild("liabilities_bar")
+  init_x: number;
+  end_x: number;
+  bar_value_1: number;
+  bar_value_2: number;
+  bar_value_3: number;
+  bar_value_4: number;
 
   constructor() {
     this.init_x = 137;
@@ -22,36 +26,36 @@ export class MoodwelcomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  change_liabilities(){
+  change_liabilities(event){
     console.log("Change Liabilities")
     let x = event.clientX;     // Get the horizontal coordinate
     var val = (x-137)/203*100;
     this.bar_value_1 = val;
-    localStorage.setItem('bar_value_1', val);
+    localStorage.setItem('bar_value_1', String(val));
   }
 
-  change_health(){
+  change_health(event){
     console.log("Change Health")
     let x = event.clientX;     // Get the horizontal coordinate
     var val = (x-137)/203*100;
     this.bar_value_2 = val;
-    localStorage.setItem('bar_value_2', val);
+    localStorage.setItem('bar_value_2', String(val));
   }
 
-  change_fun(){
+  change_fun(event){
     console.log("Change Fun")
     let x = event.clientX;     // Get the horizontal coordinate
     var val = (x-137)/203*100;
     this.bar_value_3 = val;
-    localStorage.setItem('bar_value_2', val);
+    localStorage.setItem('bar_value_2', String(val));
   }
 
-  change_love(){
+  change_love(event){
     console.log("Change Love")
     let x = event.clientX;     // Get the horizontal coordinate
     var val = (x-137)/203*100;
     this.bar_value_4 = val;
-    localStorage.setItem('bar_value_4', val);
+    localStorage.setItem('bar_value_4', String(val));
   }
 
   click_cold(){
