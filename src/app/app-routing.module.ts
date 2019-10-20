@@ -9,13 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MoodwelcomeComponent } from './moodwelcome/moodwelcome.component';
 import { HWPLDashboardComponent } from './HWPL/HWPL_Dashboard/HWPL_Dashboard_component';
 import { DisplayDiaryComponent } from './display-diary/display-diary.component';
+import { CMCalenderComponent } from './cm_calender/cm.calender.component';
 
 const routes: Routes = [
   {path: 'Home', component: MoodwelcomeComponent},
   {path: 'Dashboard', component: DashboardComponent},
   {path: 'Diary', component: DisplayDiaryComponent},
   {path: 'Profile', component: UserProfileComponent},
-  {path: 'Introduction', component: IntroductionComponent}
+  {path: 'Introduction', component: IntroductionComponent},
+  {path: 'Calender', component: CMCalenderComponent}
 ];
 
 @NgModule({
