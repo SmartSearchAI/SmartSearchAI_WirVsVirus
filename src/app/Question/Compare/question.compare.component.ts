@@ -10,8 +10,11 @@ import {Compare} from '../../Models/Questionair_Model';
 export class CompareComponent implements OnInit {
   @Input() Question: Compare;
   ngOnInit() {
-    console.log(`Compare: ${this.Question.Text}`)
   }
+  onValueChanged(){
+    console.log(`Comparision ${this.Question.Left.Name} vs. ${this.Question.Right.Name} updated: ${this.Question.Value}`);
+  }
+
 }
 
 

@@ -53,7 +53,24 @@ export class Question{
     this.Value = -1;
   }
 }
+
+class Compare_Values {
+  Options: Array<{"Value": Number, "Text": String, "Short": String}>;
+  constructor(){
+    this.Options = new Array<{"Value": Number, "Text": String, "Short": String}>();
+    this.Options.push({"Value": 1, "Text": "Left side is more relevant", "Short": "LEFT"});
+    this.Options.push({"Value": 2, "Text": "", "Short": ""});
+    this.Options.push({"Value": 3, "Text": "", "Short": ""});
+    this.Options.push({"Value": 4, "Text": "", "Short": ""});
+    this.Options.push({"Value": 5, "Text": "Both items are equaly relevant", "Short": "SAME"});
+    this.Options.push({"Value": 6, "Text": "", "Short": ""});
+    this.Options.push({"Value": 7, "Text": "", "Short": ""});
+    this.Options.push({"Value": 8, "Text": "", "Short": ""});
+    this.Options.push({"Value": 9, "Text": "Right side is more relevant", "Short": "RIGHT"});
+  }
+}
 export class Compare extends Question {
+  VALUES: Compare_Values;
   Left: Entity;
   Right: Entity;
   Rating: Number;
@@ -65,6 +82,7 @@ export class Compare extends Question {
     }    
     this.Left = Left;
     this.Right = Right;
+    this.VALUES = new Compare_Values();
   }
 }
 
