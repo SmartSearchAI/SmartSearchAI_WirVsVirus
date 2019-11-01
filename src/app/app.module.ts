@@ -8,37 +8,18 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AngularFireModule } from 'angularfire2'
 import { AngularFireDatabaseModule} from 'angularfire2/database'
-import * as $ from 'jquery';
 
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { IntroductionComponent} from './introduction/app.component.introduction';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { InfosliderComponent } from './infoslider/infoslider.component';
-import { QuoteComponent } from './quote/quote.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AppRoutingModule } from './app.routing.module';
+import { AppComponent } from './app.component';;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MoodwelcomeComponent } from './moodwelcome/moodwelcome.component';
 import { HWPLDashboardComponent } from './HWPL/HWPL_Dashboard/HWPL_Dashboard_component';
-import { DisplayDiaryComponent } from './display-diary/display-diary.component';
-import { CMCalenderComponent } from './cm_calender/cm.calender.component';
 import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
     AppComponent,
-    IntroductionComponent,
-    UserProfileComponent,
-    DashboardComponent,
-    WelcomeComponent,
-    QuoteComponent,
-    MoodwelcomeComponent,
-    HWPLDashboardComponent,
-    DisplayDiaryComponent,
-    CMCalenderComponent,
-    InfosliderComponent
+    HWPLDashboardComponent
   ],
   imports: [
     BrowserModule,
