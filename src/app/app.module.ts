@@ -8,18 +8,17 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AngularFireModule } from 'angularfire2'
 import { AngularFireDatabaseModule} from 'angularfire2/database'
-
+import {environment} from "../environments/environment";
 
 import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HWPLDashboardComponent } from './HWPL/HWPL_Dashboard/HWPL_Dashboard_component';
-import {environment} from "../environments/environment";
+import {AgileFluencyQuestionairComponent} from './AgileFluency/Agile_Fluency.Questionair.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HWPLDashboardComponent
+    AgileFluencyQuestionairComponent
   ],
   imports: [
     BrowserModule,

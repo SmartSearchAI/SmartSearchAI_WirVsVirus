@@ -1,0 +1,11 @@
+<div>
+  <h1>Agile Fluency</h1>#
+  <p>How Agile are you?</p>
+  <p>Lets find out the topics which are of interest to you!</p>
+  <div>Count of Questions {{Questions.length}}</div>
+  <ul>
+    <li *ngFor="let item of Questions; let i = index">
+      {{i}} {{item.Text}}
+    </li>
+  </ul>
+</div>
