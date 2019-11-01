@@ -45,8 +45,10 @@ export class Entity {
  */
 export class Question{
   Text: String;
-  constructor(Text: String){
+  Short: String;
+  constructor(Text: String, Short: String = ""){
     this.Text = Text;
+    this.Short = Short;
   }
 }
 export class Compare extends Question {
@@ -55,9 +57,9 @@ export class Compare extends Question {
   Rating: Number;
   constructor(Left: Entity, Right: Entity, Direction: Boolean){
     if(Direction){
-      super(`Where is the performance better for you/your environment? ${Left.Name} or ${Right.Name}`);
+      super(`Where do you perform better?`, `Performance`);
     } else {
-      super(`Where is improvement needed for you/your environment? ${Left.Name} or ${Right.Name}`);
+      super(`Where is improvement needed?`, `Improvement`);
     }    
     this.Left = Left;
     this.Right = Right;
@@ -71,7 +73,7 @@ export class Rank extends Question{
   Min: Number;
   Max: Number;
   constructor(entity: Entity, Rating: Number = 9){
-      super(`How familar are you with ${entity.Name}?`);
+      super(`Are you familiar with ${entity.Name}?`, `Familarity`);
       this.Min = 1;
       this.Max = 9;
   }
