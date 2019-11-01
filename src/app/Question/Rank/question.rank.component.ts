@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import {Rank} from '../../Models/Questionair_Model';
+import {Rank, Ranking} from '../../Models/Questionair_Model';
 
 @Component({
   selector: 'Rank-Component',
@@ -8,9 +8,14 @@ import {Rank} from '../../Models/Questionair_Model';
 })
 
 export class RankComponent implements OnInit {
-  @Input() Question: Rank;
+  @Input() Question: Ranking;
+  Ranks: Rank = new Rank();
   ngOnInit() {
     console.log(`Rank: ${this.Question.Text}`)
+  }
+  
+  onRankChanged(){
+    console.log(`Ranking ${this.Question.Entity.Name} updated: ${this.Question.Value}`);
   }
 }
 

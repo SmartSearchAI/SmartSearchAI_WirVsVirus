@@ -1,1 +1,9 @@
-<div>{{Question.Entity.Name}} {{Question.Text}}</div>
+<div class="input-group">
+    Ranking
+    <label>{{Question.Entity.Name}}</label>
+    <span>{{Question.Text}}</span>
+    <label *ngFor="let rank of Ranks.Rank" class="radio-inline">
+        <input type="radio" name="rank_{{Question.Entity.Name}}" [(ngModel)]="Question.Value" [value]="rank.Value" (change)="onRankChanged()">
+        {{rank.Short}}
+    </label>
+</div>

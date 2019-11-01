@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import {Pairwise_Compare, Entity, Question, Compare, Rank} from '../Models/Questionair_Model';
+import {Pairwise_Compare, Entity, Question, Compare, Ranking} from '../Models/Questionair_Model';
 
 @Component({
   selector: 'Agile_Fluency-Questionair',
@@ -23,7 +23,7 @@ export class AgileFluencyQuestionairComponent implements OnInit {
     let type: string = "undefined";
     if (item instanceof Compare){
       type = "Compare";
-    } else if (item instanceof Rank){
+    } else if (item instanceof Ranking){
       type = "Rank";
     }
     return type;
