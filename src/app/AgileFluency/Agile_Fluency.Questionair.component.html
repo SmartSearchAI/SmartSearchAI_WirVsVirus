@@ -3,13 +3,15 @@
   <p>How Agile are you?</p>
   <p>Lets find out the topics which are of interest to you!</p>
   <div>Count of Questions {{Questions.length}}</div>
-  <ul>
-    <li *ngFor="let item of Questions; let i = index">
-      <div [ngSwitch]="getType(item)"> 
-          <Rank-Component *ngSwitchCase="'Rank'" [Question]="item"></Rank-Component>
-          <Compare-Component *ngSwitchCase="'Compare'" [Question]="item"></Compare-Component>
-          <span *ngSwitchDefault>{{getType(item)}} {{item.Text}}</span>
-      </div>
-    </li>
-  </ul>
+  <form class="row">
+    <ul class="list-group">
+      <li *ngFor="let item of Questions; let i = index" class="list-group-item">
+        <div [ngSwitch]="getType(item)" class="container-fluid"> 
+            <Rank-Component *ngSwitchCase="'Rank'" [Question]="item"></Rank-Component>
+            <Compare-Component *ngSwitchCase="'Compare'" [Question]="item"></Compare-Component>
+            <span *ngSwitchDefault>{{getType(item)}} {{item.Text}}</span>
+        </div>
+      </li>
+    </ul>
+  </form>
 </div>

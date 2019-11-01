@@ -1,9 +1,10 @@
-<div class="input-group">
-    Ranking
-    <label>{{Question.Entity.Name}}</label>
-    <span>{{Question.Text}}</span>
-    <label *ngFor="let rank of Ranks.Rank" class="radio-inline">
-        <input type="radio" name="rank_{{Question.Entity.Name}}" [(ngModel)]="Question.Value" [value]="rank.Value" (change)="onRankChanged()">
-        {{rank.Short}}
-    </label>
+<div class="form-group container-fluid">
+    <label class="col-md-3" for="Ranking_{{Question.Entity.Name}}">{{Question.Entity.Name}}</label>
+    <div id="Ranking_{{Question.Entity.Name}}" class="col-md-9 btn-group" role="group">
+        <label class="btn btn-primary" *ngFor="let rank of Ranks.Rank">
+            <input type="radio" name="{{Question.Entity.Name}}" [(ngModel)]="Question.Value" [value]="rank.Value" (change)="onRankChanged()">
+            {{rank.Short}}
+        </label>
+    </div>
+    <span class="col-md-9 offset-md-3 footnote">{{Question.Text}}</span>
 </div>
