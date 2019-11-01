@@ -5,7 +5,11 @@
   <div>Count of Questions {{Questions.length}}</div>
   <ul>
     <li *ngFor="let item of Questions; let i = index">
-      {{i}} {{item.Text}}
+      <div [ngSwitch]="getType(item)"> 
+          <Rank-Component *ngSwitchCase="'Rank'" [Question]="item"></Rank-Component>
+          <Compare-Component *ngSwitchCase="'Compare'" [Question]="item"></Compare-Component>
+          <span *ngSwitchDefault>{{getType(item)}} {{item.Text}}</span>
+      </div>
     </li>
   </ul>
 </div>

@@ -46,9 +46,11 @@ export class Entity {
 export class Question{
   Text: String;
   Short: String;
+  Value: Number;
   constructor(Text: String, Short: String = ""){
     this.Text = Text;
     this.Short = Short;
+    this.Value = -1;
   }
 }
 export class Compare extends Question {
@@ -63,7 +65,6 @@ export class Compare extends Question {
     }    
     this.Left = Left;
     this.Right = Right;
-    this.Rating = -1;
   }
 }
 
@@ -76,5 +77,6 @@ export class Rank extends Question{
       super(`Are you familiar with ${entity.Name}?`, `Familarity`);
       this.Min = 1;
       this.Max = 9;
+      this.Entity = entity;
   }
 }
