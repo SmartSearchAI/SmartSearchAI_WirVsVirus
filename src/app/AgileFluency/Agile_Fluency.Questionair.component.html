@@ -3,7 +3,7 @@
   <p>How Agile are you?</p>
   <p>Lets find out the topics which are of interest to you!</p>
   <div>Count of Questions {{Questions.length}}</div>
-  <form class="row">
+  <form class="container-fluid">
     <ul class="list-group">
       <li *ngFor="let item of Questions; let i = index" class="list-group-item">
         <div [ngSwitch]="getType(item.Question)" class="container-fluid"> 
@@ -13,7 +13,7 @@
         </div>
       </li>
     </ul>
-    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    <button type="submit" class="btn btn-primary col-md-12" (click)="onSubmit()">Submit</button>
   </form>
 
 </div>

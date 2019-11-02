@@ -3,7 +3,6 @@
         <label class="btn btn-dark">{{Question.Left.Name}}</label>
         <label class="btn btn-primary" *ngFor="let item of Question.VALUES.Options">
             <input type="radio" name="{{Question.Left.Name}}_{{Question.Right.Name}}" [(ngModel)]="Question.Value" [value]="item.Value" (change)="onValueChanged()">
-            {{item.Short}}
         </label>
         <label class="btn btn-dark">{{Question.Right.Name}}</label>
     </div>

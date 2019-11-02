@@ -40,6 +40,7 @@ export class AgileFluencyQuestionairComponent implements OnInit {
       this.Compare.Ratings[i][j] = item.Question.Value;
     });
     console.log(this.Compare.Ratings);
+    console.log(this.Compare.GetScore())
   }
 }
 

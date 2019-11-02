@@ -30,6 +30,37 @@ export class Pairwise_Compare {
 
     return questions;
   }
+
+  GetScore(){
+    let Score = {Improve: [], StatusQuo: [], KnowHow: []};
+    Score.Improve = Array(this.Entities.length).fill(0);
+    Score.StatusQuo = Array(this.Entities.length).fill(0);
+    Score.KnowHow = Array(this.Entities.length).fill(0);
+    this.Ratings.forEach((row: number[], i) => {
+      row.forEach((value: number, j) => {
+        /**Improvement Area - Top Right Matrix */
+        if(i < j) {
+          if(value > 0){
+              Score.Improve[i] += value;
+          } else {
+              Score.Improve[j] += value * -1;
+          }
+        /**StatusQuo Area - Bottom Left Matrix */
+        } else if (i > j) {
+          if(value > 0){
+            Score.StatusQuo[i] += value;
+          } else {
+            Score.StatusQuo[j] += value * -1;
+          }
+        /**KnowHow Area - Diagonal Matrix */
+        }else {
+            Score.KnowHow[i] += value;
+        }
+      });
+    });
+    console.log(Score);
+    return Score;  
+  }
 };
 
 export class Entity {
@@ -56,14 +87,12 @@ class Compare_Values {
   Options: Array<{"Value": Number, "Text": String, "Short": String}>;
   constructor(){
     this.Options = new Array<{"Value": Number, "Text": String, "Short": String}>();
-    this.Options.push({"Value": 1, "Text": "Left side is more relevant", "Short": "LEFT"});
-    this.Options.push({"Value": 2, "Text": "", "Short": ""});
+    this.Options.push({"Value": -9, "Text": "Left side is more relevant", "Short": "LEFT"});
+    this.Options.push({"Value": -3, "Text": "", "Short": ""});
+    this.Options.push({"Value": -1, "Text": "", "Short": ""});
+    this.Options.push({"Value": 0, "Text": "Both items are equaly relevant", "Short": "SAME"});
+    this.Options.push({"Value": 1, "Text": "", "Short": ""});
     this.Options.push({"Value": 3, "Text": "", "Short": ""});
-    this.Options.push({"Value": 4, "Text": "", "Short": ""});
-    this.Options.push({"Value": 5, "Text": "Both items are equaly relevant", "Short": "SAME"});
-    this.Options.push({"Value": 6, "Text": "", "Short": ""});
-    this.Options.push({"Value": 7, "Text": "", "Short": ""});
-    this.Options.push({"Value": 8, "Text": "", "Short": ""});
     this.Options.push({"Value": 9, "Text": "Right side is more relevant", "Short": "RIGHT"});
   }
 }
@@ -71,7 +100,6 @@ export class Compare extends Question {
   VALUES: Compare_Values;
   Left: Entity;
   Right: Entity;
-  Rating: Number;
   constructor(Left: Entity, Right: Entity, Direction: Boolean){
     if(Direction){
       super(`Where do you perform better?`, `Performance`);
@@ -102,7 +130,6 @@ export class Rank {
   }
 }
 export class Ranking extends Question{
-  Rating: Number;
   Entity: Entity;
   constructor(entity: Entity, Rating: Number = 9){
       super(`Are you familiar with ${entity.Name}?`, `Familarity`);
