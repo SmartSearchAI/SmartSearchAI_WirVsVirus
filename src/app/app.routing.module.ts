@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HWPLDashboardComponent } from './HWPL/HWPL_Dashboard/HWPL_Dashboard_component';
+import {AgileFluencyQuestionairComponent} from './AgileFluency/Agile_Fluency.Questionair.component';
 
 const routes: Routes = [
-  {path: 'Home', component: HWPLDashboardComponent}
+  {path: 'AgileFluency', component: AgileFluencyQuestionairComponent }
 ];
 
 @NgModule({

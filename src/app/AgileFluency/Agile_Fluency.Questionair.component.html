@@ -1,0 +1,20 @@
+<div>
+  <h1>Agile Fluency</h1>#
+  <p>How Agile are you?</p>
+  <p>Lets find out the topics which are of interest to you!</p>
+  <div>Count of Questions {{Questions.length}}</div>
+  <form class="container-fluid">
+    <ul class="list-group">
+      <li *ngFor="let item of Questions; let i = index" class="list-group-item">
+        <div [ngSwitch]="getType(item.Question)" class="container-fluid"> 
+            <Rank-Component *ngSwitchCase="'Rank'" [Question]="item.Question"></Rank-Component>
+            <Compare-Component *ngSwitchCase="'Compare'" [Question]="item.Question"></Compare-Component>
+            <span *ngSwitchDefault>{{getType(item)}} {{item.Text}}</span>
+        </div>
+      </li>
+    </ul>
+    <button type="submit" class="btn btn-primary col-md-12" (click)="onSubmit()">Submit</button>
+  </form>
+  <Ranking-Table-Component [Entities]="Entities" [Scores]="Scores"></Ranking-Table-Component>
+
+</div>
