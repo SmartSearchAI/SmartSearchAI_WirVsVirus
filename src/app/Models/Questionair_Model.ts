@@ -38,15 +38,15 @@ export class Pairwise_Compare {
     Score.KnowHow = Array(this.Entities.length).fill(0);
     this.Ratings.forEach((row: number[], i) => {
       row.forEach((value: number, j) => {
-        /**Improvement Area - Top Right Matrix */
-        if(i < j) {
+        /**Improve Area - Top Right Matrix */
+        if(i > j) {
           if(value > 0){
               Score.Improve[i] += value;
           } else {
               Score.Improve[j] += value * -1;
           }
         /**StatusQuo Area - Bottom Left Matrix */
-        } else if (i > j) {
+        } else if (i < j) {
           if(value > 0){
             Score.StatusQuo[i] += value;
           } else {
@@ -59,6 +59,7 @@ export class Pairwise_Compare {
       });
     });
     console.log(Score);
+    console.log(this.Entities);
     return Score;  
   }
 };
