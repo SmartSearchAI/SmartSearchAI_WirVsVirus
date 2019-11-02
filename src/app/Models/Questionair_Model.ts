@@ -32,35 +32,39 @@ export class Pairwise_Compare {
   }
 
   GetScore(){
-    let Score = {Improve: [], StatusQuo: [], KnowHow: []};
-    Score.Improve = Array(this.Entities.length).fill(0);
-    Score.StatusQuo = Array(this.Entities.length).fill(0);
-    Score.KnowHow = Array(this.Entities.length).fill(0);
+
+    let Improve: Score = new Score("Improve", this.Entities.length);
+    let StatusQuo: Score = new Score("StatusQuo", this.Entities.length);
+    let KnowHow: Score = new Score("KnowHow", this.Entities.length);
+
     this.Ratings.forEach((row: number[], i) => {
       row.forEach((value: number, j) => {
         /**Improve Area - Top Right Matrix */
         if(i > j) {
           if(value > 0){
-              Score.Improve[i] += value;
+              Improve.Values[i] += value;
           } else {
-              Score.Improve[j] += value * -1;
+              Improve.Values[j] += value * -1;
           }
         /**StatusQuo Area - Bottom Left Matrix */
         } else if (i < j) {
           if(value > 0){
-            Score.StatusQuo[i] += value;
+            StatusQuo.Values[i] += value;
           } else {
-            Score.StatusQuo[j] += value * -1;
+            StatusQuo.Values[j] += value * -1;
           }
         /**KnowHow Area - Diagonal Matrix */
         }else {
-            Score.KnowHow[i] += value;
+            KnowHow.Values[i] += value;
         }
       });
     });
-    console.log(Score);
-    console.log(this.Entities);
-    return Score;  
+
+    let result: Array<Score> = new Array<Score>();
+    result.push(Improve);
+    result.push(StatusQuo);
+    result.push(KnowHow);
+    return result;  
   }
 };
 
@@ -68,6 +72,15 @@ export class Entity {
   Name: String;
   constructor(Name: String){
     this.Name = Name;
+  }
+}
+
+export class Score {
+  Title: String;
+  Values: Array<number>;
+  constructor(Title: String, n: number, val_default: number = 0){
+    this.Title = Title;
+    this.Values =  new Array(n).fill(val_default);
   }
 }
 /**

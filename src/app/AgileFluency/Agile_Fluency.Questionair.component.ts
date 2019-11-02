@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import {Pairwise_Compare, Entity, Question, Compare, Ranking} from '../Models/Questionair_Model';
+import {Pairwise_Compare, Entity, Question, Compare, Ranking, Score} from '../Models/Questionair_Model';
 
 @Component({
   selector: 'Agile_Fluency-Questionair',
@@ -11,6 +11,7 @@ export class AgileFluencyQuestionairComponent implements OnInit {
   Questions: Array<{"Index": Array<number>, "Question": Question}>;
   Compare: Pairwise_Compare
   Entities: Array<Entity>;
+  Scores: Array<Score>;
   constructor() {
     this.Entities = new Array<Entity>();
     this.Entities.push(new Entity("A"));
@@ -18,6 +19,7 @@ export class AgileFluencyQuestionairComponent implements OnInit {
     this.Entities.push(new Entity("C"));
     this.Compare = new Pairwise_Compare(this.Entities);
     this.Questions = this.Compare.GetQuestions(false);
+    this.Scores = new Array<Score>();
   }
   getType(item: Question){
     let type: string = "undefined";
@@ -39,8 +41,7 @@ export class AgileFluencyQuestionairComponent implements OnInit {
       let j: number = item.Index[1];
       this.Compare.Ratings[i][j] = item.Question.Value;
     });
-    console.log(this.Compare.Ratings);
-    console.log(this.Compare.GetScore())
+    this.Scores = this.Compare.GetScore()
   }
 }
 

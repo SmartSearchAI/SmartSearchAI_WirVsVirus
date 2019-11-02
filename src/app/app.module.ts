@@ -15,12 +15,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AgileFluencyQuestionairComponent} from './AgileFluency/Agile_Fluency.Questionair.component';
 import {RankComponent} from './Question/Rank/question.rank.component';
 import {CompareComponent} from './Question/Compare/question.compare.component'
+import {RankingTableComponent} from './Question/RankingTable/ranking.table.component'
 @NgModule({
   declarations: [
     AppComponent,
     AgileFluencyQuestionairComponent,
     RankComponent,
-    CompareComponent
+    CompareComponent,
+    RankingTableComponent
   ],
   imports: [
     BrowserModule,
