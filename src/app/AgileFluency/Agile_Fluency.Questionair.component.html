@@ -6,12 +6,14 @@
   <form class="row">
     <ul class="list-group">
       <li *ngFor="let item of Questions; let i = index" class="list-group-item">
-        <div [ngSwitch]="getType(item)" class="container-fluid"> 
-            <Rank-Component *ngSwitchCase="'Rank'" [Question]="item"></Rank-Component>
-            <Compare-Component *ngSwitchCase="'Compare'" [Question]="item"></Compare-Component>
+        <div [ngSwitch]="getType(item.Question)" class="container-fluid"> 
+            <Rank-Component *ngSwitchCase="'Rank'" [Question]="item.Question"></Rank-Component>
+            <Compare-Component *ngSwitchCase="'Compare'" [Question]="item.Question"></Compare-Component>
             <span *ngSwitchDefault>{{getType(item)}} {{item.Text}}</span>
         </div>
       </li>
     </ul>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
   </form>
+
 </div>

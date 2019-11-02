@@ -8,7 +8,7 @@ import {Pairwise_Compare, Entity, Question, Compare, Ranking} from '../Models/Qu
 })
 
 export class AgileFluencyQuestionairComponent implements OnInit {
-  Questions: Array<Question>;
+  Questions: Array<{"Index": Array<number>, "Question": Question}>;
   Compare: Pairwise_Compare
   Entities: Array<Entity>;
   constructor() {
@@ -29,6 +29,17 @@ export class AgileFluencyQuestionairComponent implements OnInit {
     return type;
   }
   ngOnInit() {
+  }
+  onSubmit(){
+    console.log("submit");
+    let n: Number = this.Entities.length;
+    
+    this.Questions.forEach(item => {
+      let i: number = item.Index[0];
+      let j: number = item.Index[1];
+      this.Compare.Ratings[i][j] = item.Question.Value;
+    });
+    console.log(this.Compare.Ratings);
   }
 }
 

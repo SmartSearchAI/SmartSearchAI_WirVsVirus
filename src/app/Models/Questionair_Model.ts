@@ -5,14 +5,12 @@ export class Pairwise_Compare {
 
   constructor(Entities: Array<Entity>){
     this.Entities = Entities;
-    this.Ratings = new Array(Entities.length);
-    this.Ratings.forEach(element => {
-      this.Ratings.push(new Array(Entities.length));
-    });
+    let n: Number = Entities.length;
+    this.Ratings = new Array(Entities.length).fill(-1).map(() => new Array(n).fill(-1));
   }
 
   GetQuestions(Random: Boolean = true){
-    let quesitons: Array<Question> = new Array<Question>();
+    let questions: Array<{"Index": Array<number>, "Question": Question}> = new Array<{"Index": Array<number>, "Question": Question}>();
     this.Entities.forEach((entity, i) => {
       this.Entities.forEach((col,j) => {
         let component: Question;
@@ -21,16 +19,16 @@ export class Pairwise_Compare {
           } else {
             component = new Compare(this.Entities[i], this.Entities[j], i < j);
           }
-          quesitons.push(component);
+          questions.push({"Index": [i, j], "Question": component});
       })
     });
     if(Random){
-      quesitons.sort(function() {
+      questions.sort(function() {
         return .5 - Math.random();
       });
     }
 
-    return quesitons;
+    return questions;
   }
 };
 
