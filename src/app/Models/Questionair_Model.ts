@@ -76,6 +76,8 @@ export class Question{
   Text: String;
   Short: String;
   Value: Number;
+  Icon: String = "";
+  Status: String = "";
   constructor(Text: String, Short: String = ""){
     this.Text = Text;
     this.Short = Short;
@@ -103,8 +105,12 @@ export class Compare extends Question {
   constructor(Left: Entity, Right: Entity, Direction: Boolean){
     if(Direction){
       super(`Where do you perform better?`, `Performance`);
+      this.Status = "success";
+      this.Icon = "smile"
     } else {
       super(`Where is improvement needed?`, `Improvement`);
+      this.Status = "warning";
+      this.Icon = "chart-line"
     }    
     this.Left = Left;
     this.Right = Right;
@@ -134,5 +140,6 @@ export class Ranking extends Question{
   constructor(entity: Entity, Rating: Number = 9){
       super(`Are you familiar with ${entity.Name}?`, `Familarity`);
       this.Entity = entity;
+      this.Icon = "award";
   }
 }
