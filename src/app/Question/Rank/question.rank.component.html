@@ -1,5 +1,7 @@
 <div class="form-group container-fluid">
+    
     <div id="Ranking_{{Question.Entity.Name}}" class="col-md-12 btn-group" role="group">
+        <label class="btn btn-dark"><i class="fa fa-star" title="Home"></i></label>
         <label class="btn btn-dark">{{Question.Entity.Name}}</label>
         <label class="btn btn-light" *ngFor="let rank of Ranks.Rank">
             <input type="radio" name="{{Question.Entity.Name}}" [(ngModel)]="Question.Value" [value]="rank.Value" (change)="onRankChanged()">

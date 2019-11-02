@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
-import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -25,7 +24,6 @@ import {CompareComponent} from './Question/Compare/question.compare.component'
   ],
   imports: [
     BrowserModule,
-    FontAwesomeModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
