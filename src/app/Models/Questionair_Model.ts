@@ -42,16 +42,16 @@ export class Pairwise_Compare {
         /**Improve Area - Top Right Matrix */
         if(i > j) {
           if(value > 0){
-              Improve.Values[i] += value;
+              Improve.Values[j] += value;
           } else {
-              Improve.Values[j] += value * -1;
+              Improve.Values[i] += value * -1;
           }
         /**StatusQuo Area - Bottom Left Matrix */
         } else if (i < j) {
           if(value > 0){
-            StatusQuo.Values[i] += value;
+            StatusQuo.Values[j] += value;
           } else {
-            StatusQuo.Values[j] += value * -1;
+            StatusQuo.Values[i] += value * -1;
           }
         /**KnowHow Area - Diagonal Matrix */
         }else {
