@@ -14,15 +14,17 @@ import { AppComponent } from './app.component';;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AgileFluencyQuestionairComponent} from './AgileFluency/Agile_Fluency.Questionair.component';
 import {RankComponent} from './Question/Rank/question.rank.component';
-import {CompareComponent} from './Question/Compare/question.compare.component'
-import {RankingTableComponent} from './Question/RankingTable/ranking.table.component'
+import {CompareComponent} from './Question/Compare/question.compare.component';
+import {RankingTableComponent} from './Question/RankingTable/ranking.table.component';
+import {ScorePieChartComponent} from './Question/RankingCharts/RankingPie/score.piechart.component'
 @NgModule({
   declarations: [
     AppComponent,
     AgileFluencyQuestionairComponent,
     RankComponent,
     CompareComponent,
-    RankingTableComponent
+    RankingTableComponent,
+    ScorePieChartComponent
   ],
   imports: [
     BrowserModule,
