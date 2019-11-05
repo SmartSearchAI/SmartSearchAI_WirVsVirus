@@ -17,6 +17,7 @@ import {RankComponent} from './Question/Rank/question.rank.component';
 import {CompareComponent} from './Question/Compare/question.compare.component';
 import {RankingTableComponent} from './Question/RankingTable/ranking.table.component';
 import {ScorePieChartComponent} from './Question/RankingCharts/RankingPie/score.piechart.component'
+import {ScoreSpidergraphComponent} from './Question/RankingCharts/RankingSpider/score.spidergraph.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import {ScorePieChartComponent} from './Question/RankingCharts/RankingPie/score.
     RankComponent,
     CompareComponent,
     RankingTableComponent,
-    ScorePieChartComponent
+    ScorePieChartComponent,
+    ScoreSpidergraphComponent
   ],
   imports: [
     BrowserModule,
