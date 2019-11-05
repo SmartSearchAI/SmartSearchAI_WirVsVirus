@@ -1,6 +1,7 @@
-<div class="row">
+<div class="container-fluid">
     <div class="col-md-12 btn-group" role="group">
         <label *ngFor="let score of Scores" class="btn btn-primary" (click)="onShowScore(score)">{{score.Title}}</label>
     </div>
+    <label>PiChart Component</label>
     <div id="my_dataviz" class="col-md-12"></div>
 </div>

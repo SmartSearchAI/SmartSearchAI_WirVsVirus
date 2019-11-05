@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, OnChanges} from '@angular/core';
 import {Entity, Score} from '../../../Models/Questionair_Model';
 import * as d3 from "d3";
 import { stringify } from '@angular/compiler/src/util';
@@ -29,7 +29,14 @@ export class ScorePieChartComponent implements OnInit {
         .attr("height", height)
       .append("g")
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-        
+  }
+
+  ngOnChanges(changes){
+    if(this.Scores.length){
+      this.updateChart(this.Scores[0]);
+    }
+    console.log(changes);
+
   }
 
   onShowScore(score: Score){
