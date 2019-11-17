@@ -12,25 +12,15 @@ import { stringify } from '@angular/compiler/src/util';
 export class ScoreSpidergraphComponent implements OnInit {
   @Input() Entities: Array<Entity>;
   @Input() Scores: Array<Score>;
-  svg: any;
   ChartOptions: any;
-  element: any;
   id: string;
   ngOnInit() {
 	this.id = "my_dataviz_spider";
-    this.element = document.getElementById(this.id);
-    let width = this.element.offsetWidth;
+    let width = document.getElementById(this.id).offsetWidth;
     let height = 600;
-
-	this.svg = d3.select("#" + this.id)
-		.append("svg")
-	  		.attr("width", width)
-	  		.attr("height", height)
-		.append("g")
-			  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 	
 	//Possible options for the RadarChart function
-	var margin: {top: 20, right: 20, bottom: 20, left: 20};
+	var margin: {top: 40, right: 40, bottom: 40, left: 40};
 	let color = d3.scaleOrdinal(d3.schemeCategory10); //Color function		  
     this.ChartOptions = {
       	w: width,
@@ -38,7 +28,7 @@ export class ScoreSpidergraphComponent implements OnInit {
 	  	margin: margin, //The margins of the SVG
       	maxValue: 0.5, //What is the value that the biggest circle will represent
 	  	levels: 3, //How many levels or inner circles should be drawn
-	  	labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed
+	  	labelFactor: 1.1, //How much farther than the radius of the outer circle should the labels be placed
 	  	wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
     	opacityArea: 0.35, //The opacity of the area of the blob
     	dotRadius: 4, //The size of the colored circles of each blog
@@ -57,13 +47,13 @@ export class ScoreSpidergraphComponent implements OnInit {
 
   updateChart(scores: Array<Score>){
     var data = [];
-    var test: string = "Test";
     scores.forEach((score, index) =>{
-      var data_section = [];
-      this.Entities.forEach((entity, index)=>{
-		data_section.push({axis: entity.Name, value: score.Values[index]});
-      });
-      data.push(data_section);
+		var data_section = [];
+		var values = score.GetNormalValue();
+      	this.Entities.forEach((entity, index)=>{
+			data_section.push({axis: entity.Name, value: values[index]});
+      	});
+      	data.push(data_section);
     });
 
     
@@ -124,13 +114,15 @@ export class ScoreSpidergraphComponent implements OnInit {
 	/////////////////////////////////////////////////////////
 
 	//Remove whatever chart with the same id/class was present before
-	d3.select("#" + id).select("svg").remove();
+	var element = d3.select("#" + id);
+		element.select("svg").remove();
 	
 	//Initiate the radar chart SVG
-	var svg = d3.select("#" + id).append("svg")
+	var svg = element.append("svg")
 			.attr("width",  cfg.w + cfg.margin.left + cfg.margin.right)
 			.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
 			.attr("class", "radar"+id);
+
 	//Append a g element		
 	var g = svg.append("g")
 			.attr("transform", "translate(" + (cfg.w/2 + cfg.margin.left) + "," + (cfg.h/2 + cfg.margin.top) + ")");

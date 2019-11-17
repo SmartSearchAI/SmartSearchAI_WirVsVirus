@@ -16,6 +16,8 @@ export class AgileFluencyQuestionairComponent implements OnInit {
     this.Entities = new Array<Entity>();
     this.Entities.push(new Entity("A"));
     this.Entities.push(new Entity("B"));
+    this.Entities.push(new Entity("C"));
+    this.Entities.push(new Entity("D"));
     this.Compare = new Pairwise_Compare(this.Entities);
     this.Questions = this.Compare.GetQuestions(false);
     this.Scores = new Array<Score>();

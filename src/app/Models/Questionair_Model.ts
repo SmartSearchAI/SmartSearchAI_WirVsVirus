@@ -33,9 +33,9 @@ export class Pairwise_Compare {
 
   GetScore(){
 
-    let Improve: Score = new Score("Improve", this.Entities.length);
-    let StatusQuo: Score = new Score("StatusQuo", this.Entities.length);
-    let KnowHow: Score = new Score("KnowHow", this.Entities.length);
+    let Improve: Score = new Score("Improve", this.Entities.length, 0, "unit");
+    let StatusQuo: Score = new Score("StatusQuo", this.Entities.length,0, "unit");
+    let KnowHow: Score = new Score("KnowHow", this.Entities.length, 0,  "percent");
 
     this.Ratings.forEach((row: number[], i) => {
       row.forEach((value: number, j) => {
@@ -61,9 +61,9 @@ export class Pairwise_Compare {
     });
 
     let result: Array<Score> = new Array<Score>();
+    result.push(KnowHow);
     result.push(Improve);
     result.push(StatusQuo);
-    result.push(KnowHow);
     return result;  
   }
 };
@@ -78,11 +78,40 @@ export class Entity {
 export class Score {
   Title: String;
   Values: Array<number>;
-  constructor(Title: String, n: number, val_default: number = 0){
+  Normalize: String;
+  constructor(Title: String, n: number, val_default: number = 0, Normalize: String = "none"){
     this.Title = Title;
     this.Values =  new Array(n).fill(val_default);
+    this.Normalize = Normalize;
+  }
+  GetNormalValue(){
+    switch (this.Normalize){
+      case "percent": {
+        return this.Values_Percent();
+      }
+      case "unit": {
+        return this.Values_Unit();
+      }
+      default: {
+        return this.Values;
+      }
+    }
+  }
+
+  Values_Unit(){
+    var sum = this.Values.reduce((sum,c) => sum +c, 0);
+		return this.Values.map((value) => {
+      return value/sum;
+    });
+  }
+  Values_Percent(){
+    var max = this.Values.reduce((max,c) => Math.max(max,c), 0);
+    return this.Values.map((value) => {
+      return value/max;
+    });
   }
 }
+
 /**
  * Questions to be representet by the input elements
  */
