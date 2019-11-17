@@ -38,31 +38,27 @@ export class Pairwise_Compare {
     let KnowHow: Score = new Score("KnowHow", this.Entities.length);
 
     this.Ratings.forEach((row: number[], i) => {
-      var sum = row.reduce((sum, c) => sum + c, 0);
-      var max = row.reduce((max, c) => Math.max(max, c), 0);
-      row.forEach((value: number, j) => { 
+      row.forEach((value: number, j) => {
         /**Improve Area - Top Right Matrix */
         if(i > j) {
           if(value > 0){
-              Improve.Values[j] += value / sum;
+              Improve.Values[j] += value;
           } else {
-              Improve.Values[i] += value * -1 / sum;
+              Improve.Values[i] += value * -1;
           }
         /**StatusQuo Area - Bottom Left Matrix */
         } else if (i < j) {
           if(value > 0){
-            StatusQuo.Values[j] += value / sum;
+            StatusQuo.Values[j] += value;
           } else {
-            StatusQuo.Values[i] += value * -1 / sum;
+            StatusQuo.Values[i] += value * -1;
           }
-          StatusQuo.Values[i] /= sum;
         /**KnowHow Area - Diagonal Matrix */
         }else {
-            KnowHow.Values[i] += value / max;
+            KnowHow.Values[i] += value;
         }
       });
     });
-
 
     let result: Array<Score> = new Array<Score>();
     result.push(Improve);
