@@ -15,6 +15,9 @@
     </ul>
     <button type="submit" class="btn btn-primary col-md-12" (click)="onSubmit()">Submit</button>
   </form>
-  <Ranking-Table-Component [Entities]="Entities" [Scores]="Scores"></Ranking-Table-Component>
-
+  <div class="container-fluid">
+      <Ranking-Table-Component class="col-md-6" [Entities]="Entities" [Scores]="Scores"></Ranking-Table-Component>
+      <Score-Piechart-Component class="col-md-6" [Entities]="Entities" [Scores]="Scores"></Score-Piechart-Component>
+      <Score-Spider-Component class="col-md-6" [Entities]="Entities" [Scores]="Scores"></Score-Spider-Component>
+  </div>
 </div>
