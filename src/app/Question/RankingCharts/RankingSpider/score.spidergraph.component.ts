@@ -13,44 +13,40 @@ export class ScoreSpidergraphComponent implements OnInit {
   @Input() Entities: Array<Entity>;
   @Input() Scores: Array<Score>;
   svg: any;
-  radius: Number;
   ChartOptions: any;
+  element: any;
   id: string;
   ngOnInit() {
-    this.id = "my_dataviz_spider";
-    let element = document.getElementById(this.id);
-    let width = element.offsetWidth;
+	this.id = "my_dataviz_spider";
+    this.element = document.getElementById(this.id);
+    let width = this.element.offsetWidth;
     let height = 600;
-    //Possible options for the RadarChart function
-    var margin: {top: 20, right: 20, bottom: 20, left: 20}, //The margins of the SVG
-    levels: 3, //How many levels or inner circles should be drawn
-    maxValue: 0, //What is the value that the biggest circle will represent
-    labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed
-    wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
-    opacityArea: 0.35, //The opacity of the area of the blob
-    dotRadius: 4, //The size of the colored circles of each blog
-    opacityCircles: 0.1, //The opacity of the circles of each blob
-    strokeWidth: 2, //The width of the stroke around each blob
-    roundStrokes: false; //If true the area and stroke will follow a round path (cardinal-closed)
-    let color = d3.scaleOrdinal(d3.schemeCategory10); //Color function
 
-    this.ChartOptions = {
-      w: width,
-      h: height,
-      margin: margin,
-      maxValue: 0.5,
-      levels: 5,
-      roundStrokes: true,
-      color: color
-	};
-	
 	this.svg = d3.select("#" + this.id)
-	.append("svg")
-	  .attr("width", width)
-	  .attr("height", height)
-	.append("g")
-	  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+		.append("svg")
+	  		.attr("width", width)
+	  		.attr("height", height)
+		.append("g")
+			  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 	
+	//Possible options for the RadarChart function
+	var margin: {top: 20, right: 20, bottom: 20, left: 20};
+	let color = d3.scaleOrdinal(d3.schemeCategory10); //Color function		  
+    this.ChartOptions = {
+      	w: width,
+      	h: height,
+	  	margin: margin, //The margins of the SVG
+      	maxValue: 0.5, //What is the value that the biggest circle will represent
+	  	levels: 3, //How many levels or inner circles should be drawn
+	  	labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed
+	  	wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
+    	opacityArea: 0.35, //The opacity of the area of the blob
+    	dotRadius: 4, //The size of the colored circles of each blog
+    	opacityCircles: 0.1, //The opacity of the circles of each blob
+		strokeWidth: 2, //The width of the stroke around each blob
+		roundStrokes: false, //If true the area and stroke will follow a round path (cardinal-closed)
+	  	color: color	  
+	};	
   }
 
   ngOnChanges(Changes){
@@ -131,12 +127,12 @@ export class ScoreSpidergraphComponent implements OnInit {
 	d3.select("#" + id).select("svg").remove();
 	
 	//Initiate the radar chart SVG
-	var svg = d3.select(id).append("svg")
+	var svg = d3.select("#" + id).append("svg")
 			.attr("width",  cfg.w + cfg.margin.left + cfg.margin.right)
 			.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
 			.attr("class", "radar"+id);
 	//Append a g element		
-	var g = svg.nappend("g")
+	var g = svg.append("g")
 			.attr("transform", "translate(" + (cfg.w/2 + cfg.margin.left) + "," + (cfg.h/2 + cfg.margin.top) + ")");
 	
 	/////////////////////////////////////////////////////////
