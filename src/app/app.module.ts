@@ -2,26 +2,49 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
+import { AngularFireModule } from 'angularfire2'
+import { AngularFireDatabaseModule} from 'angularfire2/database'
+import {environment} from "../environments/environment";
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TrialComponent } from './trials/app.component.trials';
-import { AWSComponent } from './aws/app.component.aws';
+import {ModuleOne} from './modules/module.one';
+import {ModuleTwo} from './modules/module.two';
+import {ModuleD3} from './modules/d3/module.d3';
+import {EntityComponent} from './components/entity.component';
 
+
+const routes: Routes = [
+  {path: 'Module1', component: ModuleOne },
+  {path: 'Module2', component: ModuleTwo },
+  {path: 'ModuleD3', component: ModuleD3}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrialComponent,
-    AWSComponent
+    EntityComponent,
+    ModuleOne,
+    ModuleTwo,
+    ModuleD3
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, "cama"),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+}

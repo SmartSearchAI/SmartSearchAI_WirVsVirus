@@ -1,0 +1,78 @@
+{
+  "folders": [
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "npm.enableScriptExplorer": true,
+    "npm.scriptExplorerAction": "run",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Visual Studio Light",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "editor.formatOnSave": true,
+    "editor.autoIndent": true,
+    "editor.formatOnPaste": true,
+    "editor.fontFamily": "Dank Mono, Hasklig, 'Fira Code', FiraFlott, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.postCommitCommand": "sync",
+    "html.format.endWithNewline": true,
+    "html.format.wrapAttributes": "force-aligned",
+    "html.format.wrapLineLength": 120,
+    "[html]": {
+      "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.referencesCodeLens.enabled": true,
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 120,
+    "prettier.arrowParens": "always",
+    "prettier.disableLanguages": ["html"],
+    "todo-tree.excludeGlobs": [
+      "**/dist",
+      "**/assets"
+    ],
+    "cSpell.words": [
+      "Zuora"
+    ],
+    "todo-tree.filtering.excludeGlobs": [
+      "**/dist",
+      "**/assets"
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "Angular.ng-template",
+      "AngularDoc.angulardoc-vscode",
+      "christian-kohler.path-intellisense",
+      "CoenraadS.bracket-pair-colorizer",
+      "cyrilletuzi.angular-schematics",
+      "eamodio.gitlens",
+      "eg2.vscode-npm-script",
+      "Equinusocio.vsc-material-theme",
+      "esbenp.prettier-vscode",
+      "formulahendry.auto-close-tag",
+      "formulahendry.auto-rename-tag",
+      "gencer.html-slim-scss-css-class-completion",
+      "Gruntfuggly.todo-tree",
+      "herrmannplatz.npm-dependency-links",
+      "kevinkyang.auto-comment-blocks",
+      "MariusAlchimavicius.json-to-ts",
+      "Mikael.Angular-BeastCode",
+      "mrmlnc.vscode-scss",
+      "ms-vscode.vscode-typescript-tslint-plugin",
+      "msjsdiag.debugger-for-chrome",
+      "natewallace.angular2-inline",
+      "pflannery.vscode-versionlens",
+      "PKief.material-icon-theme",
+      "pranaygp.vscode-css-peek",
+      "ryanluker.vscode-coverage-gutters",
+      "streetsidesoftware.code-spell-checker",
+      "stringham.move-ts"
+    ]
+  }
+}

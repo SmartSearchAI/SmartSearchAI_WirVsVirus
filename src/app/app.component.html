@@ -1,21 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="navbar navbar-light bg-light sticky-top">
+    <a class="navbar-brand" [routerLink]="['/']">
+        <img src="https://image.flaticon.com/icons/png/512/855/855904.png" height="50" class="d-inline-block align-top" alt="">
+    </a>
+    <h1>{{title}}</h1>
+    <a class="nav-link" [routerLink]="['/Module1']" href="" ><i class="fa fa-fw fa-lg fa-wrench" title="Simple Example"></i></a>
+    <a class="nav-link" [routerLink]="['/Module2']" href="" ><i class="fa fa-fw fa-lg fa-tools" title="List Example"></i></a>
+    <a class="nav-link" [routerLink]="['/ModuleD3']" href="" ><i class="fa fa-fw fa-lg fa-chart-pie" title="D3 Example"></i></a>
 </div>
-<h2>Here are some links to help you start: </h2>
-<div class="row">
-  <div class="col-md-6">
-    <div class="Container-fluid">
-      <app-trial-component></app-trial-component>
-    </div>
-  </div>
-  <div class="col-md-6">
-      <div class="container-fluid">
-          <app-aws-component></app-aws-component>
-      </div>
-  </div>
+<div class="bg-app h-100 flex-grow" id="main-frame">
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
