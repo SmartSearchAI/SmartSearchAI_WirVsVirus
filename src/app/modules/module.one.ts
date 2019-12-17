@@ -9,7 +9,7 @@ import {Entity} from '../models/entity';
 
 export class ModuleOne implements OnInit {
   list: Array<Entity> = new Array<Entity>();
-  name: String = "Module One"
+  name: String = "Module One - List Example"
   constructor() {
     this.list = new Array<Entity>();
   }

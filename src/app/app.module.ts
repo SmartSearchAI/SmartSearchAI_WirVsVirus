@@ -9,12 +9,15 @@ import {environment} from "../environments/environment";
 
 import { AppComponent } from './app.component';
 import {ModuleOne} from './modules/module.one';
-import {ModuleTwo} from './Modules/module.two';
+import {ModuleTwo} from './modules/module.two';
+import {ModuleD3} from './modules/d3/module.d3';
 import {EntityComponent} from './components/entity.component';
+
 
 const routes: Routes = [
   {path: 'Module1', component: ModuleOne },
-  {path: 'Module2', component: ModuleTwo }
+  {path: 'Module2', component: ModuleTwo },
+  {path: 'ModuleD3', component: ModuleD3}
 ];
 
 @NgModule({
@@ -29,7 +32,7 @@ export class AppRoutingModule { }
     EntityComponent,
     ModuleOne,
     ModuleTwo,
-
+    ModuleD3
   ],
   imports: [
     BrowserModule,

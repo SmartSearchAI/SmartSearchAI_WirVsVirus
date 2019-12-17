@@ -9,7 +9,7 @@ import {Entity} from '../models/entity';
 
 export class ModuleTwo implements OnInit {
   entity$: Entity;
-  name: String = "Module Two"
+  name: String = "Module Two - Single Entity Example"
   constructor() {
     this.entity$ = new Entity("I am a <Entity> of module two");
   }
