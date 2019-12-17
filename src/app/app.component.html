@@ -1,21 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="navbar navbar-light bg-light sticky-top">
+    <a class="navbar-brand" [routerLink]="['/Profile']">
+        <!--<img src="./assets/cancer_logo.png" height="50" class="d-inline-block align-top" alt="">-->
+    </a>
+    <!--<a class="nav-link" [routerLink]="['/Introduction']" href=""><i class="fa fa-lg fa-fw fa-star" title="Profile"></i></a>-->
+    <a class="nav-link" [routerLink]="['/Home']" href="" ><i class="fa fa-fw fa-lg fa-home" title="Home"></i></a>
+    <!-- <a class="nav-link" [routerLink]="['/Dashboard']" href="" ><i class="fa fa-lg fa-fw fa-tachometer" title="Dashboard"></i></a>-->
+    <!-- <a class="nav-link" [routerLink]="['/Diary']" href="" ><i class="fa fa-lg fa-fw fa-book" title="Diary"></i></a>-->
+
 </div>
-<h2>Here are some links to help you start: </h2>
-<div class="row">
-  <div class="col-md-6">
-    <div class="Container-fluid">
-      <app-trial-component></app-trial-component>
-    </div>
-  </div>
-  <div class="col-md-6">
-      <div class="container-fluid">
-          <app-aws-component></app-aws-component>
-      </div>
-  </div>
+<div class="bg-app h-100 flex-grow" id="main-frame">
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>

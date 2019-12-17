@@ -1,0 +1,11 @@
+<div class="form-group">
+    <div id="Compare_{{Question.Left.Name}}_{{Question.Right.Name}}" class="col-md-12 btn-group" role="group">
+        <label class="btn btn-{{Question.Status}}"><i class="fa fa-{{Question.Icon}}" title="Improve"></i></label>
+        <label class="btn btn-dark">{{Question.Left.Name}}</label>
+        <label class="btn btn-{{Question.Status}}" *ngFor="let item of Question.VALUES.Options">
+            <input type="radio" name="{{Question.Left.Name}}_{{Question.Right.Name}}" [(ngModel)]="Question.Value" [value]="item.Value" (change)="onValueChanged()">
+        </label>
+        <label class="btn btn-dark">{{Question.Right.Name}}</label>
+    </div>
+    <span class="col-md-12 footnote">{{Question.Text}}</span>
+</div>
