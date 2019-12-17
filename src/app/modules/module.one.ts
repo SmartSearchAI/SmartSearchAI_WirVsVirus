@@ -14,6 +14,9 @@ export class ModuleOne implements OnInit {
     this.list = new Array<Entity>();
   }
   ngOnInit() {
+    this.list.push(new Entity("One"));
+    this.list.push(new Entity("Two"));
+    this.list.push(new Entity("Three"));
   }
 }
 

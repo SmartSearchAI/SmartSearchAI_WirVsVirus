@@ -8,12 +8,13 @@ import {Entity} from '../models/entity';
 })
 
 export class ModuleTwo implements OnInit {
-  entity: Entity;
+  entity$: Entity;
   name: String = "Module Two"
   constructor() {
-    this.entity = new Entity("I am a Entity");
+    this.entity$ = new Entity("I am a <Entity> of module two");
   }
   ngOnInit() {
+    this.entity$ = new Entity("I am a <Entity> of module two");
   }
 }
 

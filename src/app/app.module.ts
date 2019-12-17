@@ -26,9 +26,10 @@ export class AppRoutingModule { }
 @NgModule({
   declarations: [
     AppComponent,
+    EntityComponent,
     ModuleOne,
     ModuleTwo,
-    EntityComponent
+
   ],
   imports: [
     BrowserModule,

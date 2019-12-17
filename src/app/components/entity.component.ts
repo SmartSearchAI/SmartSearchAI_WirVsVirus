@@ -1,14 +1,14 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import {Entity} from '../models/entity';
 
 @Component({
-  selector: 'entity',
+  selector: 'Entity',
   templateUrl: './entity.component.html',
   styleUrls: ['./entity.component.scss']
 })
 
 export class EntityComponent implements OnInit {
-  entity: Entity;
+  @Input() entity: Entity;
   ngOnInit() {
   }
 }

@@ -1,6 +1,6 @@
 export class Entity {
-    Name: String;
+    name: String;
     constructor(Name: String){
-        this.Name = Name;
+        this.name = Name;
     }
 }
