@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title = 'Agile Toolbox';
-
-
+  title = 'Angular 7 Boilerplate';
   ngOnInit(){
   }
 }

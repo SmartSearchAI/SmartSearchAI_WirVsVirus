@@ -1,13 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="navbar navbar-light bg-light sticky-top">
-    <a class="navbar-brand" [routerLink]="['/Profile']">
-        <!--<img src="./assets/cancer_logo.png" height="50" class="d-inline-block align-top" alt="">-->
+    <a class="navbar-brand" [routerLink]="['/']">
+        <img src="https://image.flaticon.com/icons/png/512/855/855904.png" height="50" class="d-inline-block align-top" alt="">
     </a>
-    <!--<a class="nav-link" [routerLink]="['/Introduction']" href=""><i class="fa fa-lg fa-fw fa-star" title="Profile"></i></a>-->
-    <a class="nav-link" [routerLink]="['/Home']" href="" ><i class="fa fa-fw fa-lg fa-home" title="Home"></i></a>
-    <!-- <a class="nav-link" [routerLink]="['/Dashboard']" href="" ><i class="fa fa-lg fa-fw fa-tachometer" title="Dashboard"></i></a>-->
-    <!-- <a class="nav-link" [routerLink]="['/Diary']" href="" ><i class="fa fa-lg fa-fw fa-book" title="Diary"></i></a>-->
-
+    <h1>{{title}}</h1>
+    <a class="nav-link" [routerLink]="['/Module1']" href="" ><i class="fa fa-fw fa-lg fa-wrench" title="Simple Example"></i></a>
+    <a class="nav-link" [routerLink]="['/Module2']" href="" ><i class="fa fa-fw fa-lg fa-tools" title="List Example"></i></a>
+    <a class="nav-link" [routerLink]="['/ModuleD3']" href="" ><i class="fa fa-fw fa-lg fa-chart-pie" title="D3 Example"></i></a>
 </div>
 <div class="bg-app h-100 flex-grow" id="main-frame">
   <router-outlet></router-outlet>

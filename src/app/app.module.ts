@@ -2,42 +2,44 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { Routes, RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2'
 import { AngularFireDatabaseModule} from 'angularfire2/database'
 import {environment} from "../environments/environment";
 
-import { AppRoutingModule } from './app.routing.module';
-import { AppComponent } from './app.component';;
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AgileFluencyQuestionairComponent} from './AgileFluency/Agile_Fluency.Questionair.component';
-import {RankComponent} from './Question/Rank/question.rank.component';
-import {CompareComponent} from './Question/Compare/question.compare.component';
-import {RankingTableComponent} from './Question/RankingTable/ranking.table.component';
-import {ScorePieChartComponent} from './Question/RankingCharts/RankingPie/score.piechart.component'
-import {ScoreSpidergraphComponent} from './Question/RankingCharts/RankingSpider/score.spidergraph.component'
+import { AppComponent } from './app.component';
+import {ModuleOne} from './modules/module.one';
+import {ModuleTwo} from './modules/module.two';
+import {ModuleD3} from './modules/d3/module.d3';
+import {EntityComponent} from './components/entity.component';
+
+
+const routes: Routes = [
+  {path: 'Module1', component: ModuleOne },
+  {path: 'Module2', component: ModuleTwo },
+  {path: 'ModuleD3', component: ModuleD3}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
 @NgModule({
   declarations: [
     AppComponent,
-    AgileFluencyQuestionairComponent,
-    RankComponent,
-    CompareComponent,
-    RankingTableComponent,
-    ScorePieChartComponent,
-    ScoreSpidergraphComponent
+    EntityComponent,
+    ModuleOne,
+    ModuleTwo,
+    ModuleD3
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    MatRadioModule,
-    MatSliderModule,
-    MatProgressBarModule,
-    AngularFireModule.initializeApp(environment.firebase, "fightclub-20"),
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, "cama"),
     AngularFireDatabaseModule
   ],
   providers: [],

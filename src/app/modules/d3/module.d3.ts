@@ -1,17 +1,15 @@
 import { Component, OnInit, Input, OnChanges} from '@angular/core';
-import {Entity, Score} from '../../../Models/Questionair_Model';
 import * as d3 from "d3";
-import { stringify } from '@angular/compiler/src/util';
 
 @Component({
-  selector: 'Score-Piechart-Component',
-  templateUrl: './score.piechart.component.html',
-  styleUrls: ['./score.piechart.component.scss']
+  selector: 'ModuleD3',
+  templateUrl: './module.d3.html',
+  styleUrls: ['./module.d3.scss']
 })
 
-export class ScorePieChartComponent implements OnInit {
-  @Input() Entities: Array<Entity>;
-  @Input() Scores: Array<Score>;
+export class ModuleD3 implements OnInit {
+  data1 = {a: 9, b: 20, c:30, d:8, e:12}
+  data2 = {a: 6, b: 16, c:20, d:14, e:19, f:12}
   svg: any;
   radius: Number;
   ngOnInit() {
@@ -29,31 +27,21 @@ export class ScorePieChartComponent implements OnInit {
         .attr("height", height)
       .append("g")
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+      this.updateChart(this.data1);
+  }
+  onShowData1(){
+    console.log("Show Dataset 1");
+    this.updateChart(this.data1);
+  }
+  onShowData2(){
+    console.log("Show Dataset 2");
+    this.updateChart(this.data2);
   }
 
-  ngOnChanges(changes){
-    if(this.Scores.length){
-      this.updateChart(this.Scores[0]);
-    }
-    console.log(changes);
-
-  }
-
-  onShowScore(score: Score){
-    this.updateChart(score);
-  }
-
-  updateChart(score: Score){
-    var data = {};
-    var domain = [];
-    var test: string = "Test";
-    this.Entities.forEach((entity, index)=>{
-        domain.push(entity.Name);
-        data[stringify(entity.Name)] = score.Values[index];
-    });
+  updateChart(data){
     // set the color scale
     var color = d3.scaleOrdinal()
-      .domain(domain)
+      .domain(["a", "b", "c", "d", "e", "f"])
       .range(d3.schemeDark2);
     
     // Compute the position of each group on the pie:
@@ -85,5 +73,3 @@ export class ScorePieChartComponent implements OnInit {
     u.exit().remove()
   }
 }
-
-
