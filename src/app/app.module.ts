@@ -5,7 +5,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2'
 import { AngularFireDatabaseModule} from 'angularfire2/database'
-import {environment} from "../environments/environment";
+//import {environment} from "../environments/environment";
 
 import { AppComponent } from './app.component';
 import {ModuleOne} from './modules/module.one';
@@ -39,7 +39,7 @@ export class AppRoutingModule { }
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase, "cama"),
+    //AngularFireModule.initializeApp(environment.firebase, "cama"),
     AngularFireDatabaseModule
   ],
   providers: [],
