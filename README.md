@@ -1,6 +1,6 @@
 
 # Clinical Trials Application
-<sup>A CAMA Module Example</sup>
+<small>**_A CAMA Module Example_**</small>
 
 This project is an example of a module for the CAMA project framework
 
@@ -10,18 +10,22 @@ Live can still be good - even if you are facing severe conditions.
 How good can live actually be, fighting for a good time because if you go your memories remain.
  
 The biggest fight and time lost is in the field of paperwork and bureaucracy. People become experts and drawn into an full time job managing the whole things.
-If you stop - you are facing deep shit ...
+> _If you stop - you are facing deep shit!_
  
 There already exist application for different challenges to help, but questions arise. 
-Where goes my data? 
-How do I keep track on where I shared my personal data? 
-How do I keep focus?
+- Where goes my data? 
+- How do I keep track on where I shared my personal data? 
+- How do I keep focus?
  
 A single solution in one application helping to manage severe conditions like cancer and enhance life quality of patients. Building an ecosystem that provide easy and intuitive access to a modular framework of application can help to make management of cancer easier, to focus on the important things in life. 
  
-- Fighting for a good time because if you go your memories remain - 
+> _Fighting for a good time because if you go your memories remain!_ 
 
 ## Architecture
+@TODO
+
+## Structure
+@TODO
 
 # AngularBoilerplate
 
