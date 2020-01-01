@@ -1,5 +1,5 @@
 {
-  "name": "AngularBoilerplate",
+  "name": "CAMA-Module-Example-ClinicalTrials",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -56,12 +56,12 @@
   "main": "karma.conf.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GundlackFelixDEV/CM_APP.git"
+    "url": "https://github.com/GundlackFelixDEV/CAMA-Module-Example-ClinicalTrials.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/GundlackFelixDEV/CM_APP/issues"
+    "url": "https://github.com/GundlackFelixDEV/CAMA-Module-Example-ClinicalTrials/issues"
   },
-  "homepage": "https://github.com/GundlackFelixDEV/CM_APP#readme"
+  "homepage": "https://github.com/GundlackFelixDEV/CAMA-Module-Example-ClinicalTrials#readme"
 }
