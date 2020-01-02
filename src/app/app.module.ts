@@ -20,7 +20,9 @@ const routes: Routes = [
   {path: 'Module1', component: ModuleOne },
   {path: 'Module2', component: ModuleTwo },
   {path: 'ModuleD3', component: ModuleD3},
-  {path: 'StudySearch', component: StudySearchResultView}
+  {path: 'StudySearch', component: StudySearchResultView},
+  {path: '', redirectTo: 'StudySearch', pathMatch: 'full'},
+  //{path: '**', PageNotFoundComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
