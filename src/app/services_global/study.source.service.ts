@@ -5,6 +5,16 @@ import {StudyFieldsResponse } from '../models/StudyFieldsResponse.model';
 import {ClinicalTrialsResponse} from '../models/StudyFieldsResponse.model';
 import {ApiService} from './api.service';
 
+String.prototype.format = function() {
+  let s = this;
+  let i = arguments.length;
+
+  while (i--) {
+      s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+  }
+  return s;
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +33,7 @@ export class StudySourceService {
   getClinicalTrials(call: API_T, parameter: object) {
     let url = this.$service.URL;
     let fields: string = this.$service.Fields.join(',');
-    let query: string = this.$service.API[call].format(parameter['expr'], fields);
+    let query: string = String(this.$service.API[call]).format(parameter['expr'], fields);
     query = `${url}${query}`;
 
     this.api.get<StudyFieldsResponse>(query).subscribe(response => {
