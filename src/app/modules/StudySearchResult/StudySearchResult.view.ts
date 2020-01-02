@@ -1,4 +1,5 @@
 import { NgModule, Component, OnInit} from '@angular/core';
+import {StudySourceService} from '../../services_global/study.source.service';
 import {StudyFieldsResponse} from '../../models/StudyFieldsResponse.model';
 
 @Component({
@@ -9,9 +10,19 @@ import {StudyFieldsResponse} from '../../models/StudyFieldsResponse.model';
 
 export class StudySearchResultView implements OnInit {
   $StudyResponse: StudyFieldsResponse;
-  constructor() {
+  constructor(private studyService: StudySourceService) {
+    studyService.Query('heart+attack').then(data => {
+      this.$StudyResponse = studyService.$StudyFieldsResponse;
+      this.printResult();
+    });
   }
   ngOnInit() {
+    this.$StudyResponse = this.studyService.$StudyFieldsResponse;
+    this.printResult();
+  }
+  printResult(){
+    console.log(this.studyService.$Response);
+    console.log(this.studyService.$StudyFieldsResponse);
   }
 }
 

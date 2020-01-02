@@ -4,6 +4,8 @@ import {StudySourceFactory, StudySource_T} from '../models/StudySourceFactory.mo
 import {StudyFieldsResponse } from '../models/StudyFieldsResponse.model';
 import {ClinicalTrialsResponse} from '../models/StudyFieldsResponse.model';
 import {ApiService} from './api.service';
+import { Observable } from 'rxjs';
+import { Study } from '../models/Study.model';
 
 String.prototype.format = function() {
   let s = this;
@@ -24,24 +26,25 @@ export class StudySourceService {
   $Response: any = {};
   constructor(private api: ApiService) {
     this.$service = StudySourceFactory.GetSource(StudySource_T.CLINICALTRIALS);
-    this.Query('heart+attack');
   }
-  Query(expr) {
-    this.getClinicalTrials(API_T.QUERY, {expr});
+  Query(expr): Promise<any>  {
+    return this.getStudies(API_T.QUERY, {expr});
   }
 
-  getClinicalTrials(call: API_T, parameter: object) {
+  getStudies(call: API_T, parameter: object): Promise<any> {
     let url = this.$service.URL;
     let fields: string = this.$service.Fields.join(',');
     let query: string = String(this.$service.API[call]).format(parameter['expr'], fields);
     query = `${url}${query}`;
 
-    this.api.get<StudyFieldsResponse>(query).subscribe(response => {
-      let data =ClinicalTrialsResponse.fromObject(response.body['StudyFieldsResponse']);
+    const promise = this.api.get<StudyFieldsResponse>(query).toPromise();
+    promise.then((response) => {
+      const data = ClinicalTrialsResponse.fromObject(response.body['StudyFieldsResponse']);
       this.$StudyFieldsResponse = data;
       this.$Response = response;
-      console.log(response);
-      console.log(data);
+      //console.log(response);
+      //console.log(data);
     });
+    return promise;
   }
 }

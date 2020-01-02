@@ -1,4 +1,14 @@
 <div>
-  <h1>{{name}}</h1>
+  <h1>Study Search Results</h1>
+  <div *ngIf='!$StudyResponse.$NStudies'>
+    <span class="label"><i class="fa fa-fw fa-sm fa-spinner" title="Simple Example"></i>Loading Studies ...</span>
+  </div>
+  <div *ngIf='$StudyResponse.$NStudies'>
+    <p><span class="label">Found: <span class="badge badge-dark">{{$StudyResponse.$NStudies.Found}}</span></span></p>
+    <p><span class="label">Returned: <span class="badge badge-dark">{{$StudyResponse.$NStudies.Returned}}</span></span></p>
+    <p><span class="label">Available: <span class="badge badge-dark">{{$StudyResponse.$NStudies.Avail}}</span></span></p>
+  </div>
+
   <sfr-list></sfr-list>
+
 </div>
