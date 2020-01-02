@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {TrialSourceService} from './services_global/trialsource.service';
+import {StudySourceService} from './services_global/study.source.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +8,8 @@ import {TrialSourceService} from './services_global/trialsource.service';
 })
 export class AppComponent {
   $Title = 'CAMA-MODULE-EXAMPLE-ClinicalTrials';
-  $Service: TrialSourceService;
-  constructor(private myService: TrialSourceService ) {
+  $Service: StudySourceService;
+  constructor(private myService: StudySourceService ) {
 
   }
   ngOnInit() {
