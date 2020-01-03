@@ -4,18 +4,7 @@ import {StudySourceFactory, StudySource_T} from '../models/StudySourceFactory.mo
 import {StudyFieldsResponse } from '../models/StudyFieldsResponse.model';
 import {ClinicalTrialsResponse} from '../models/StudyFieldsResponse.model';
 import {ApiService} from './api.service';
-import { Observable } from 'rxjs';
-import { Study } from '../models/Study.model';
-
-String.prototype.format = function() {
-  let s = this;
-  let i = arguments.length;
-
-  while (i--) {
-      s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
-  }
-  return s;
-};
+import '../types';
 
 @Injectable({
   providedIn: 'root'
@@ -42,8 +31,6 @@ export class StudySourceService {
       const data = ClinicalTrialsResponse.fromObject(response.body['StudyFieldsResponse']);
       this.$StudyFieldsResponse = data;
       this.$Response = response;
-      //console.log(response);
-      //console.log(data);
     });
     return promise;
   }
