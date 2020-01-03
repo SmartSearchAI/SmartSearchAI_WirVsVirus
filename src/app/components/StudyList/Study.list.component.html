@@ -1,6 +1,13 @@
+
 <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active">
-        Results: <span class="label label-default pull-right"><span class="badge badge-dark" info="Number of studies returned from Server">{{$NStudies.Returned}}</span>|<span class="badge badge-dark" title="Total number of studies found">{{$NStudies.Found}}</span></span>
+    <a href="#" class="list-group-item list-group-item-action align-items-start active">
+        <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1">Query Results</h3>
+            <small><span class="badge badge-pill badge-light" title="Query results">{{$NStudies.Returned}}/{{$NStudies.Found}}</span></small>
+        </div>
+        <p class="mb-1"><label>Fields:</label> {{$Fields.join(", ")}}</p>
+        <p class="mb-1"><label>Expression:</label> {{$Expression}}</p>
+        <small class="float-right">Total Studies Available: {{$NStudies.Avail}}</small>
     </a>
     <study-listitem   *ngFor="let item of $Studies, let i = index" id="{{item.$Id}}" [$Item]="item"></study-listitem >
 </div>

@@ -4,18 +4,8 @@
     <span class="label label-info"><i class="fa fa-fw fa-sm fa-spinner" title="Simple Example"></i>Loading Studies ...</span>
   </div>
   <div *ngIf='$StudyResponse.$NStudies' class="row">
-    <div class="col-md-5">
-      <study-list [$Studies]="$StudyResponse.$Studies" [$NStudies]="$StudyResponse.$NStudies"></study-list>
-    </div>
-    <div class="col-md-3 float-right" id="StudyResponseMetricsDOM">
-      <p><span class="label label-default">Found: <span class="badge badge-dark">{{$StudyResponse.$NStudies.Found}}</span></span></p>
-      <p><span class="label label-default">Returned: <span class="badge badge-dark">{{$StudyResponse.$NStudies.Returned}}</span></span></p>
-      <p><span class="label label-default">Available: <span class="badge badge-dark">{{$StudyResponse.$NStudies.Avail}}</span></span></p>
-      <div>
-        <p>Search Parameter</p>
-        <p><span class="label label-default">Expression: <span class="badge badge-dark">{{$StudyResponse.$Expression}}</span></span></p>
-        <p><span class="label label-default">Fields: <span *ngFor="let field of $StudyResponse.$Fields" class="badge badge-dark" >{{field}}</span></span></p>
-      </div>
+    <div class="col-xs-12 col-md-6">
+      <study-list [$Studies]="$StudyResponse.$Studies" [$NStudies]="$StudyResponse.$NStudies" [$Fields]="$StudyResponse.$Fields" [$Expression]="$StudyResponse.$Expression"></study-list>
     </div>
   </div>
 </div>

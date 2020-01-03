@@ -9,9 +9,10 @@ import {Study} from '../../models/Study.model';
 export class StudyListComponent implements OnInit {
   @Input() $Studies: Study[];
   @Input() $NStudies: {Avail: number; Found: number; Returned: number};
+  @Input() $Expression: string;
+  @Input() $Fields: string;
   constructor() { }
 
   ngOnInit() {
   }
-
 }
