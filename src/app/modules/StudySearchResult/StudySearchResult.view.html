@@ -4,8 +4,12 @@
     <span class="label label-info"><i class="fa fa-fw fa-sm fa-spinner" title="Simple Example"></i>Loading Studies ...</span>
   </div>
   <div *ngIf='$StudyResponse.$NStudies' class="row">
-    <div class="col-md-12 col-lg-6">
+    <div class="col-md-10 col-lg-6">
       <study-list [$Studies]="$StudyResponse.$Studies" [$NStudies]="$StudyResponse.$NStudies" [$Fields]="$StudyResponse.$Fields" [$Expression]="$StudyResponse.$Expression"></study-list>
     </div>
+    <div class="col-md-2 col-lg-6" id="study_ids_DOM">
+      <a href="#{{id}}" *ngFor="let id of $StudyResponse.$Ids"><span class="badge badge-primary">{{id}}</span></a>
+    </div>
   </div>
+
 </div>

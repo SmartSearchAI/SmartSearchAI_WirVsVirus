@@ -8,6 +8,7 @@ export class StudyFieldsResponse {
     $Rank: {min: number; max: number};
     $NStudies: {Avail: number; Found: number; Returned: number};
     $Studies: Array<Study>;
+    $Ids: Array<string>;
     constructor(Expression: string, Fields: Array<string>, Studies: Array<Study>,
                 Rank: {min: number; max: number},
                 NStudies: {Avail: number; Found: number; Returned: number},
@@ -17,6 +18,7 @@ export class StudyFieldsResponse {
         this.$Studies = Studies;
         this.$Rank = Rank;
         this.$NStudies = NStudies;
+        this.$Ids = [];
     }
 }
 

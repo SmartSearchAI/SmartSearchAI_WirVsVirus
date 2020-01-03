@@ -11,7 +11,7 @@ import {StudyFieldsResponse} from '../../models/StudyFieldsResponse.model';
 export class StudySearchResultView implements OnInit {
   $StudyResponse: StudyFieldsResponse;
   constructor(private studyService: StudySourceService) {
-    studyService.Query('heart+attack').then(data => {
+    studyService.Query('heart attack').then(data => {
       this.$StudyResponse = studyService.$StudyFieldsResponse;
       this.printResult();
     });
@@ -21,7 +21,6 @@ export class StudySearchResultView implements OnInit {
     this.printResult();
   }
   printResult(){
-    console.log(this.studyService.$Response);
     console.log(this.studyService.$StudyFieldsResponse);
   }
 }
