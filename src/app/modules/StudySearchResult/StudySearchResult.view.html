@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <h1>Study Search Results</h1>
+  <div *ngIf='!$StudyResponse.$NStudies'>
+    <span class="label label-info"><i class="fa fa-fw fa-sm fa-spinner" title="Simple Example"></i>Loading Studies ...</span>
+  </div>
+  <div *ngIf='$StudyResponse.$NStudies' class="row">
+    <div class="col-xs-12 col-md-6">
+      <study-list [$Studies]="$StudyResponse.$Studies" [$NStudies]="$StudyResponse.$NStudies" [$Fields]="$StudyResponse.$Fields" [$Expression]="$StudyResponse.$Expression"></study-list>
+    </div>
+  </div>
+</div>

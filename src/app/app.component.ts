@@ -8,9 +8,7 @@ import {StudySourceService} from './services_global/study.source.service';
 })
 export class AppComponent {
   $Title = 'CAMA-MODULE-EXAMPLE-ClinicalTrials';
-  $Service: StudySourceService;
-  constructor(private myService: StudySourceService ) {
-
+  constructor(private studyService: StudySourceService ) {
   }
   ngOnInit() {
   }
