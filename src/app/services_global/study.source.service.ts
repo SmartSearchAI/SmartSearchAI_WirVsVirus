@@ -24,9 +24,8 @@ export class StudySourceService {
     let url = this.$service.URL;
     let fields: string = this.$service.Fields.join(',');
     let query: string = String(this.$service.API[call]).format(parameter['expr'], fields);
-    query = `${url}${query}`;
 
-    const promise = this.api.get<StudyFieldsResponse>(query).toPromise();
+    const promise = this.api.get<StudyFieldsResponse>(url + query).toPromise();
     promise.then((response) => {
       const data = ClinicalTrialsResponse.fromObject(response.body['StudyFieldsResponse']);
       this.$StudyFieldsResponse = data;

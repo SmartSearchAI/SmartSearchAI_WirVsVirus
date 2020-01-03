@@ -1,0 +1,6 @@
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active">
+        Results: <span class="label label-default pull-right"><span class="badge badge-dark" info="Number of studies returned from Server">{{$NStudies.Returned}}</span>|<span class="badge badge-dark" title="Total number of studies found">{{$NStudies.Found}}</span></span>
+    </a>
+    <study-listitem   *ngFor="let item of $Studies, let i = index" id="{{item.$Id}}" [$Item]="item"></study-listitem >
+</div>
