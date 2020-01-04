@@ -13,7 +13,6 @@ interface Dictionary<T> {
 export class StudySource {
     Name: string;
     URL: string;
-    Fields: Array<string> = new Array<string>();
     API: Dictionary<string> = {};
     constructor(Name: string, URL: string) {
         this.Name = Name;
