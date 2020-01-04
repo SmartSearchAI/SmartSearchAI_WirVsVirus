@@ -15,7 +15,7 @@ import {EntityComponent} from './components/entity.component';
 import {StudySearchResultView} from './modules/StudySearchResult/StudySearchResult.view';
 import {StudyListComponent} from './components/StudyList/Study.list.component';
 import {StudyListItemComponent} from './components/StudyList/StudyListItem/Study.listitem.component';
-
+import {StudyD3ScatterComponent} from './components/StudyScatter/Study.D3.scatter.component';
 const routes: Routes = [
   {path: 'Module1', component: ModuleOne },
   {path: 'Module2', component: ModuleTwo },
@@ -40,7 +40,8 @@ export class AppRoutingModule { }
     ModuleD3,
     StudySearchResultView,
     StudyListComponent,
-    StudyListItemComponent
+    StudyListItemComponent,
+    StudyD3ScatterComponent
   ],
   imports: [
     BrowserModule,
