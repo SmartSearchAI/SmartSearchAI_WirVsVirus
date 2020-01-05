@@ -1,6 +1,23 @@
 import { Component, OnInit, OnChanges, Input, SimpleChanges} from '@angular/core';
 import * as d3 from 'd3';
 
+function randn_bm() {
+  let u = 0;
+  let v = 0;
+  while (u === 0) {
+    u = Math.random(); // Converting [0,1) to (0,1)
+  }
+  while (v === 0) {
+    v = Math.random();
+  }
+  let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+  num = num / 10.0 + 0.5; // Translate to 0 -> 1
+  if (num > 1 || num < 0) {
+    return randn_bm(); // resample between 0 and 1
+  }
+  return num;
+}
+
 @Component({
   selector: 'study-D3-scatter',
   templateUrl: './Study.D3.scatter.component.html',
@@ -44,8 +61,10 @@ export class StudyD3ScatterComponent implements OnInit, OnChanges {
 
     const data = this.$Ids.map((Id) => {
       return {
-        X: Math.random().toFixed(3),
-        Y: Math.random().toFixed(3),
+        // X: Math.floor(Math.random() * Math.floor(1000)), // RAndom Numbers from 0 to 1000
+        // Y: Math.floor(Math.random() * Math.floor(1000)), // Random Numbers from 0 to 1000
+        X: Math.floor(randn_bm() * 1000), // RAndom Numbers from 0 to 1000
+        Y: Math.floor(randn_bm() * 1000), // Random Numbers from 0 to 1000
         C: Math.random().toFixed(3),
         Label: Id
       };
@@ -62,7 +81,7 @@ export class StudyD3ScatterComponent implements OnInit, OnChanges {
 
     // Add X axis
     const x = d3.scaleLinear()
-      .domain([0, 1])
+      .domain([0, 1000])
       .range([ 0, width ]);
     svg.append('g')
       .attr('transform', 'translate(0,' + height + ')')
@@ -70,7 +89,7 @@ export class StudyD3ScatterComponent implements OnInit, OnChanges {
 
     // Add Y axis
     const y = d3.scaleLinear()
-      .domain([0, 1])
+      .domain([0, 1000])
       .range([ height, 0]);
     svg.append('g')
         .call(d3.axisLeft(y));
