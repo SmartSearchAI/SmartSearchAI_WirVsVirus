@@ -52,20 +52,32 @@ export class StudySourceService {
     const fields = 'NCTId';
     const url = this.$service.URL;
     const expression = response.$Expression;
+    /*
     const promises = range.map(rnk => {
         const query: string = String(this.$service.API[API_T.QUERY]).format(expression, fields, String(rnk.min), String(rnk.max));
         return this.api.get<StudyFieldsResponse>(url + query).toPromise().then((response) => {
           const data = ClinicalTrialsResponse.fromObject(response.body['StudyFieldsResponse']);
           return data.$Studies.map(x => x.$Id);
         });
+    });*/
+
+    const data = new Array<string>();
+    for (let i = 0; i < NStudies.Found; ++i) {
+      data.push(`Lorem Ipsum ${i}`);
+    }
+    const mock = new Promise((resolve, reject) => {
+      setTimeout( () => {
+        resolve();
+       }, 1000 );
     });
 
+    const promises = [mock];
     return new Promise((resolve, reject) => {
         Promise.all(promises).then((responses) => {
-          let data: Array<string> = [];
+          /*let data: Array<string> = [];
           responses.forEach(entry => {
             data = data.concat(entry);
-          });
+          });*/
           resolve(data);
         }, reason => {
           reject(reason);

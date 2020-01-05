@@ -13,8 +13,7 @@ export class StudyD3ScatterComponent implements OnInit, OnChanges {
   private D3DOM: {
     id: string,
     width: number,
-    height: number,
-    margin: {top: number, right: number, bottom: number, left: number};
+    height: number
   };
   constructor() {
     this.D3DOM = {
