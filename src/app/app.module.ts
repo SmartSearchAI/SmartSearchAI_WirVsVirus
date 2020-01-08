@@ -15,6 +15,8 @@ import {EntityComponent} from './components/entity.component';
 import {StudySearchResultView} from './modules/StudySearchResult/StudySearchResult.view';
 import {StudyListComponent} from './components/StudyList/Study.list.component';
 import {StudyListItemComponent} from './components/StudyList/StudyListItem/Study.listitem.component';
+import {StudyScatterComponent} from './components/StudyScatter/Study.scatter.component';
+import { EChartsModule } from '@amcdnl/ngx-echarts';
 
 const routes: Routes = [
   {path: 'Module1', component: ModuleOne },
@@ -40,13 +42,15 @@ export class AppRoutingModule { }
     ModuleD3,
     StudySearchResultView,
     StudyListComponent,
-    StudyListItemComponent
+    StudyListItemComponent,
+    StudyScatterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    EChartsModule,
     // AngularFireModule.initializeApp(environment.firebase, "cama"),
     AngularFireDatabaseModule
   ],
