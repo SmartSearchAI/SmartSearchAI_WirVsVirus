@@ -1,4 +1,4 @@
-import { Component, OnChanges, AfterViewInit, SimpleChanges, Input, ViewChild} from '@angular/core';
+import { Component, OnChanges, AfterViewInit, SimpleChanges, Input, ViewChild, HostListener} from '@angular/core';
 import { EChartsComponent } from '@amcdnl/ngx-echarts';
 
 function randn_bm() {
@@ -21,16 +21,14 @@ function randn_bm() {
 @Component({
   selector: 'study-scatter',
   templateUrl: './Study.scatter.component.html',
-  styleUrls: ['./Study.scatter.component.scss'],
-  host: {
-    '(window:resize)': 'onResize($event)'
-  }
+  styleUrls: ['./Study.scatter.component.scss']
 })
 
 export class StudyScatterComponent implements OnChanges, AfterViewInit {
   @Input() $Ids: Array<string>;
   @Input() $Data: Array<{x: number, y: number, value: number}>;
   @ViewChild(EChartsComponent, {static: false}) $chart:EChartsComponent;
+ 
   $xAxis = {
     scale: true
   };
@@ -40,23 +38,26 @@ export class StudyScatterComponent implements OnChanges, AfterViewInit {
   $series_option = {
     data: [],
     type: 'scatter',
-    symbolSize: 10
+    symbolSize: 5
   };
   $series = [];
 
   ngAfterViewInit() {
       this.resize();
   }
-  onResize(event){
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
     this.resize();
   }
+
   resize() {
     console.log(this.$chart);
     this.$chart.resize();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    var id_data = this.$Ids.map((id) => {
+    const id_data = this.$Ids.map((id) => {
       return [randn_bm(), randn_bm()];
     });
     // Update Chart
