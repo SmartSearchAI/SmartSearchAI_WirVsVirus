@@ -1,0 +1,69 @@
+import { Component, OnChanges, AfterViewInit, SimpleChanges, Input, ViewChild} from '@angular/core';
+import { EChartsComponent } from '@amcdnl/ngx-echarts';
+
+function randn_bm() {
+  let u = 0;
+  let v = 0;
+  while (u === 0) {
+    u = Math.random(); // Converting [0,1) to (0,1)
+  }
+  while (v === 0) {
+    v = Math.random();
+  }
+  let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+  num = num / 10.0 + 0.5; // Translate to 0 -> 1
+  if (num > 1 || num < 0) {
+    return randn_bm(); // resample between 0 and 1
+  }
+  return num;
+}
+
+@Component({
+  selector: 'study-scatter',
+  templateUrl: './Study.scatter.component.html',
+  styleUrls: ['./Study.scatter.component.scss'],
+  host: {
+    '(window:resize)': 'onResize($event)'
+  }
+})
+
+export class StudyScatterComponent implements OnChanges, AfterViewInit {
+  @Input() $Ids: Array<string>;
+  @Input() $Data: Array<{x: number, y: number, value: number}>;
+  @ViewChild(EChartsComponent, {static: false}) $chart:EChartsComponent;
+  $xAxis = {
+    scale: true
+  };
+  $yAxis = {
+    scale: true
+  };
+  $series_option = {
+    data: [],
+    type: 'scatter',
+    symbolSize: 10
+  };
+  $series = [];
+
+  ngAfterViewInit() {
+      this.resize();
+  }
+  onResize(event){
+    this.resize();
+  }
+  resize() {
+    console.log(this.$chart);
+    this.$chart.resize();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    var id_data = this.$Ids.map((id) => {
+      return [randn_bm(), randn_bm()];
+    });
+    // Update Chart
+    this.$series = [{
+      data: id_data,
+      type: 'scatter',
+      symbolSize: 10
+    }];
+  }
+}

@@ -15,7 +15,9 @@ import {EntityComponent} from './components/entity.component';
 import {StudySearchResultView} from './modules/StudySearchResult/StudySearchResult.view';
 import {StudyListComponent} from './components/StudyList/Study.list.component';
 import {StudyListItemComponent} from './components/StudyList/StudyListItem/Study.listitem.component';
-import {StudyD3ScatterComponent} from './components/StudyScatter/Study.D3.scatter.component';
+import {StudyScatterComponent} from './components/StudyScatter/Study.scatter.component';
+import { EChartsModule } from '@amcdnl/ngx-echarts';
+
 const routes: Routes = [
   {path: 'Module1', component: ModuleOne },
   {path: 'Module2', component: ModuleTwo },
@@ -41,13 +43,14 @@ export class AppRoutingModule { }
     StudySearchResultView,
     StudyListComponent,
     StudyListItemComponent,
-    StudyD3ScatterComponent
+    StudyScatterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    EChartsModule,
     // AngularFireModule.initializeApp(environment.firebase, "cama"),
     AngularFireDatabaseModule
   ],

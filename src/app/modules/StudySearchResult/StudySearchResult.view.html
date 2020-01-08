@@ -8,7 +8,7 @@
       <study-list [$Studies]="$StudyResponse.$Studies" [$NStudies]="$StudyResponse.$NStudies" [$Fields]="$StudyResponse.$Fields" [$Expression]="$StudyResponse.$Expression"></study-list>
     </div>
     <div class="col-md-2 col-lg-6" id="study_ids_DOM">
-      <study-D3-scatter *ngIf="$StudyResponse.$Ids.length" [$Ids]="$StudyResponse.$Ids"></study-D3-scatter>
+      <study-scatter *ngIf="$StudyResponse.$Ids.length" [$Ids]="$StudyResponse.$Ids"></study-scatter>
       <span *ngIf="$StudyResponse.$NStudies.Found - $StudyResponse.$Ids.length" class="label label-info"><i class="fa fa-fw fa-sm fa-spinner" title="Simple Example"></i>Loading Studies ...</span>
       <!--<a href="#{{id}}" *ngFor="let id of $StudyResponse.$Ids"><span class="badge badge-primary">{{id}}</span></a>-->
     </div>
