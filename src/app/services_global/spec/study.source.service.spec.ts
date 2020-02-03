@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { StudySourceService } from './study.source.service';
+import { StudySourceService } from '../study.source.service';
 import { HttpClient } from '@angular/common/http';
 
 describe('TrialSourceService', () => {
