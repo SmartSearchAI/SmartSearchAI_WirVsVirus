@@ -5,7 +5,7 @@ import {HTTPService} from './http.service';
 import {StudyAIService} from './study.ai.service';
 import '../types';
 import { Study } from '../models/Study.model';
-import  *  as  mock_id_data  from  './id.results.json';
+import * as mock_id_data from './id.results.json';
 
 @Injectable({
   providedIn: 'root'
@@ -80,7 +80,7 @@ export class StudySourceService {
 
   getStudyIdsMOCK(response: ClinicalTrialsResponse): Promise<any> {
     /** Return Mocked Data - Saved from last Query containing 7k+ IDs */
-    const id_data = mock_id_data.default.data;
+    const id_data = mock_id_data.data;
     const mock = new Promise((resolve, reject) => {
       setTimeout( () => {
         resolve();
