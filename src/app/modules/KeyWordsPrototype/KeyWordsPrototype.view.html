@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <h1>KeyWord Prototype</h1>
+  <div class="flex-grow">
+    <div class="form-group">
+      <textarea class="form-control" rows="4" placeholder="Type or copy your text for keyword analysis here ..." [(ngModel)]="$Text"></textarea>
+      <button class="btn btn-primary form-control" type="submit" (click)="onSubmitTextClick()">Submit</button>
+    </div>
+    <div class="form-group">
+      <h1>KeyWords</h1>
+      <div><small>{{$Text}}</small></div>
+    </div>
+  </div>
+</div>
