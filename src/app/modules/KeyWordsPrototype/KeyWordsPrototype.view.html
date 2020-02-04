@@ -3,11 +3,13 @@
   <div class="flex-grow">
     <div class="form-group">
       <textarea class="form-control" rows="4" placeholder="Type or copy your text for keyword analysis here ..." [(ngModel)]="$Text"></textarea>
-      <button class="btn btn-primary form-control" type="submit" (click)="onSubmitTextClick()">Submit</button>
+      <button class="btn btn-primary form-control" type="submit" (click)="onSubmitTextClick()">Get KeyWords 
+        <span *ngIf="$KeyWords" class="badge badge-pill badge-light float-left">{{getKeyCount()}}</span>
+      </button>
     </div>
     <div class="form-group">
       <h1>KeyWords</h1>
-      <div><small>{{$Text}}</small></div>
+      <KeyWords-Component [$KeyWords]="$KeyWords"></KeyWords-Component>
     </div>
   </div>
 </div>

@@ -13,6 +13,7 @@ import {ModuleD3} from './modules/d3/module.d3';
 import {EntityComponent} from './components/entity.component';
 import {StudySearchResultView} from './modules/StudySearchResult/StudySearchResult.view';
 import {KeyWordsPrototypeView} from './modules/KeyWordsPrototype/KeyWordsPrototype.view';
+import {KeyWordsComponent} from './components/KeyWordsComponent/KeyWords.component';
 import {StudyListComponent} from './components/StudyList/Study.list.component';
 import {StudyListItemComponent} from './components/StudyList/StudyListItem/Study.listitem.component';
 import {StudyScatterComponent} from './components/StudyScatter/Study.scatter.component';
@@ -42,6 +43,7 @@ export class AppRoutingModule { }
     ModuleD3,
     StudySearchResultView,
     KeyWordsPrototypeView,
+    KeyWordsComponent,
     StudyListComponent,
     StudyListItemComponent,
     StudyScatterComponent
