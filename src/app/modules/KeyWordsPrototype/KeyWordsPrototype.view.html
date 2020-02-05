@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <h1 class="d-none d-lg-block">KeyWord Prototype</h1>
+        <div class="form-group">
+          <textarea class="form-control" rows="12" placeholder="Type or copy your text for keyword analysis here ..." [(ngModel)]="$Text"></textarea>
+        </div>
+        <button class="btn btn-primary form-control" type="submit" (click)="onSubmitTextClick()">Get KeyWords 
+          <span *ngIf="$KeyWords" class="badge badge-pill badge-light float-left">{{getKeyCount()}}</span>
+        </button>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <h1 class="d-none d-lg-block">KeyWords</h1>
+        <div class="row">
+          <KeyWords-Component [$KeyWords]="$KeyWords"></KeyWords-Component>
+        </div>
+      </div>
+    </div>
+</div>
