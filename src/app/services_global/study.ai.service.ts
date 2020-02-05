@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import '../types';
-import { Study } from '../models/Study.model';
+import { Study, Dictionary} from '../models/Study.model';
 import {HTTPService} from './http.service';
 
 @Injectable({

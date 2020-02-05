@@ -1,6 +1,6 @@
 import { NgModule, Component, OnInit} from '@angular/core';
 import {StudySourceService} from '../../services_global/study.source.service';
-import {StudyAIService} from '../../services_global/study.ai.service'
+import {StudyAIService} from '../../services_global/study.ai.service';
 import {StudyFieldsResponse} from '../../models/StudyFieldsResponse.model';
 
 @Component({
