@@ -10,7 +10,7 @@ export class StudyAIService {
   $Server: string;
   $URL: object;
   constructor(private http: HTTPService) {
-      this.$Server = 'http://127.0.0.1:5000/';
+      this.$Server = 'http://13.93.43.192:5000/';
   }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<Array<string>>}) {
