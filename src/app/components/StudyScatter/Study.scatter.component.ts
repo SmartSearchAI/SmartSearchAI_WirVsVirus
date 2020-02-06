@@ -28,22 +28,22 @@ export class StudyScatterComponent implements OnChanges, AfterViewInit {
   @Input() $Ids: Array<string>;
   @Input() $Data: Array<{x: number, y: number, value: number}>;
   @ViewChild(EChartsComponent, {static: false}) $chart:EChartsComponent;
- 
   $xAxis = {
     scale: true
   };
   $yAxis = {
     scale: true
   };
-  $series_option = {
-    data: [],
-    type: 'scatter',
-    symbolSize: 5
+  $tooltip = {
+    trigger: 'item',
+    formatter: function (param) {
+        return param.data[2];
+    }
   };
   $series = [];
 
   ngAfterViewInit() {
-      this.resize();
+    this.resize();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -51,6 +51,9 @@ export class StudyScatterComponent implements OnChanges, AfterViewInit {
     this.resize();
   }
 
+  onChartClick(event) {
+    console.log(event.data);
+  }
   resize() {
     console.log(this.$chart);
     this.$chart.resize();
@@ -58,7 +61,7 @@ export class StudyScatterComponent implements OnChanges, AfterViewInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     const id_data = this.$Ids.map((id) => {
-      return [randn_bm(), randn_bm()];
+      return [randn_bm(), randn_bm(), id];
     });
     // Update Chart
     this.$series = [{

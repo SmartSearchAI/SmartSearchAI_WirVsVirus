@@ -4,6 +4,7 @@
     <ngx-echarts class="row" style="width: 100%; height: 400px;"
         [xAxis]="$xAxis"
         [yAxis]="$xAxis"
-        [series]="$series">
+        [tooltip] = "$tooltip"
+        [series]="$series" (chartClick)="onChartClick($event)">
     </ngx-echarts>
 </div>
