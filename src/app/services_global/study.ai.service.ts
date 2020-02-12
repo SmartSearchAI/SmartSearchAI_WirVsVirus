@@ -11,7 +11,7 @@ export class StudyAIService {
   $URL: object;
 
   constructor(private http: HTTPService) {
-      this.$Server = 'https://13.93.43.192:80/';
+      this.$Server = 'http://13.93.43.192:80/';
   }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<Array<string>>}) {
