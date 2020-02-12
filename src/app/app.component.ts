@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {StudySourceService} from './services_global/study.source.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +6,8 @@ import {StudySourceService} from './services_global/study.source.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  $Title = 'CAMA-MODULE-EXAMPLE-ClinicalTrials';
-  constructor(private studyService: StudySourceService ) {
+  $Title = 'SmartSearch.ai';
+  constructor() {
   }
   ngOnInit() {
   }

@@ -3,10 +3,11 @@
       <div class="col-md-12 col-lg-8">
         <h1 class="d-none d-lg-block">KeyWord Prototype</h1>
         <div class="form-group">
-          <textarea class="form-control" rows="12" placeholder="Type or copy your text for keyword analysis here ..." [(ngModel)]="$Text"></textarea>
+          <textarea class="form-control" rows="5" placeholder="Type or copy your text for keyword analysis here ..." [(ngModel)]="$Text"></textarea>
         </div>
-        <button class="btn btn-primary form-control" type="submit" (click)="onSubmitTextClick()">Get KeyWords 
-          <span *ngIf="$KeyWords" class="badge badge-pill badge-light float-left">{{getKeyCount()}}</span>
+        <button class="btn btn-primary form-control" type="submit" (click)="onSubmitTextClick()">Get KeyWords   
+          <span *ngIf="!$SERVICE_STATUS.LOADING && $KeyWords" class="badge badge-pill badge-light float-left">{{getKeyCount()}}</span>
+          <span *ngIf="$SERVICE_STATUS.LOADING" class="badge badge-pill badge-light float-left"><i class="fa fa-spinner" title="...loading"></i> Loading</span>
         </button>
       </div>
       <div class="col-md-12 col-lg-4">
