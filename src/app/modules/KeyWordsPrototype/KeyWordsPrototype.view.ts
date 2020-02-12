@@ -12,19 +12,29 @@ export class KeyWordsPrototypeView {
   $KeyWords: Dictionary<number>;
   $Text: string;
   $Service: StudyAIService;
+  $SERVICE_STATUS = {
+    LOADING: false,
+    STATUS: null
+  };
   constructor(studyAIService: StudyAIService) {
     this.$Service = studyAIService;
     this.$Text = '';
     this.$KeyWords = null;
   }
-  getKeyCount(){
+  getKeyCount() {
     return this.$KeyWords ? Object.keys(this.$KeyWords).length : 0;
   }
   onSubmitTextClick() {
     console.log(this.$Text);
-    this.$Service.GetKeyWordsFromText({text: this.$Text, count: 32}).then((keyWords: Dictionary<number>) => {
+    this.$SERVICE_STATUS.LOADING = true;
+    this.$Service.GetKeyWordsFromText({text: this.$Text, count: 20}).then((keyWords: Dictionary<number>) => {
       console.log(JSON.stringify(keyWords));
       this.$KeyWords = keyWords;
+      this.$SERVICE_STATUS.LOADING = false;
+    }).catch((reason: any) => {
+      console.error(JSON.stringify(reason));
+      this.$SERVICE_STATUS.LOADING = false;
+      this.$SERVICE_STATUS.STATUS = reason;
     });
   }
 }
