@@ -7,9 +7,19 @@
         </div>
         <button class="btn btn-primary form-control" type="submit" (click)="onSubmitTextClick()">Get KeyWords   
           <span *ngIf="!$SERVICE_STATUS.LOADING && $KeyWords" class="badge badge-pill badge-light float-left">{{getKeyCount()}}</span>
-          <span *ngIf="$SERVICE_STATUS.LOADING" class="badge badge-pill badge-light float-left"><i class="fa fa-spinner" title="...loading"></i> Loading</span>
+          <span *ngIf="$SERVICE_STATUS.LOADING" class="float-left"><i class="fa fa-spinner" title="...loading"></i> Loading</span>
+          <span *ngIf="$SERVICE_STATUS.ERROR" class="danger float-left"><i class="fa fa-bug" ></i> Error</span>
         </button>
+        <div *ngIf="$SERVICE_STATUS.ERROR" class="alert alert-danger" role="alert" title="{{$SERVICE_STATUS.STATUS.message}}">
+          <strong> Oh snap!</strong> 
+          <span class="badge badge-pill badge-dark float-right">{{$SERVICE_STATUS.STATUS.status}}</span>
+          <small>
+            <div><label class="label label-danger">Name:</label> {{$SERVICE_STATUS.STATUS.name}}</div>
+            <div><label class="label label-danger">Status:</label> {{$SERVICE_STATUS.STATUS.statusText}}</div>
+          </small>
+        </div>
       </div>
+
       <div class="col-md-12 col-lg-4">
         <h1 class="d-none d-lg-block">KeyWords</h1>
         <div class="row">
