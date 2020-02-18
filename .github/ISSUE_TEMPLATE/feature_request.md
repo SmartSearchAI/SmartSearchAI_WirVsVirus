@@ -1,20 +1,25 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: ''
-labels: ''
+title: "[AREA] [Component] - [SHORT DESCRIPTION]"
+labels: NEW
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+# Problem
+_As a ``<role>`` I can ``<capability>``, so that ``<receive benefit>``_
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+# Soltion
+Describe what you want to do
+- [ ] <TODO>
+   - [ ]  <SUB TODO>
+(_Optional_) ``reproducable Example``
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+# Goal
+- [ ] <Accaptance Criteria>
+   - [ ] SUB Accaptance Criteria>
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+# Additional Hints
+(_Optional_)
+Links to librarys examples or other useful content or add your image
