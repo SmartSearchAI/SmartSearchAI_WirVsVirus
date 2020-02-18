@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <div *ngIf="!$KeyWords">
+    No Key Words Available
+  </div>
+  <div class="KeyWordBadgeContainer" *ngIf="$KeyWords">
+    <span *ngFor="let item of $KeyWords | keyvalue" title="{{item.value}}" class="badge badge-lg badge-primary">{{item.key}}</span>
+  </div>
+</div>

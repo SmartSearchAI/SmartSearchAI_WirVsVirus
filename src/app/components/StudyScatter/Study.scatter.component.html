@@ -1,0 +1,9 @@
+<div class="container-fluid">
+    <h3>Study D3 Scatter Plot</h3>
+    <small>Available Results from the Query: <span class="badge badge-dark badge-pill">{{$Ids.length}}</span></small>
+    <ngx-echarts class="row" style="width: 100%; height: 400px;"
+        [xAxis]="$xAxis"
+        [yAxis]="$xAxis"
+        [series]="$series">
+    </ngx-echarts>
+</div>

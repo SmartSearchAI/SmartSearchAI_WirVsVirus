@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'CAMA-MODULE-EXAMPLE-ClinicalTrials';
-  ngOnInit(){
+  $Title = 'SmartSearch.ai';
+  constructor() {
   }
+  ngOnInit() {
+  }
+
 }

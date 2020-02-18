@@ -22,6 +22,7 @@ speed-measure-plugin.json
 *.launch
 .settings/
 *.sublime-workspace
+*.package.json.lock
 
 # IDE - VSCode
 .vscode/*
@@ -45,3 +46,4 @@ testem.log
 .DS_Store
 Thumbs.db
 .vscode/
+.angulardoc.json
