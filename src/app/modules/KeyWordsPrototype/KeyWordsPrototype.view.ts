@@ -14,6 +14,7 @@ export class KeyWordsPrototypeView {
   $Service: StudyAIService;
   $SERVICE_STATUS = {
     LOADING: false,
+    ERROR: false,
     STATUS: null
   };
   constructor(studyAIService: StudyAIService) {
@@ -27,6 +28,8 @@ export class KeyWordsPrototypeView {
   onSubmitTextClick() {
     console.log(this.$Text);
     this.$SERVICE_STATUS.LOADING = true;
+    this.$SERVICE_STATUS.ERROR = false;
+    this.$SERVICE_STATUS.STATUS = null;
     this.$Service.GetKeyWordsFromText({text: this.$Text, count: 20}).then((keyWords: Dictionary<number>) => {
       console.log(JSON.stringify(keyWords));
       this.$KeyWords = keyWords;
@@ -34,6 +37,7 @@ export class KeyWordsPrototypeView {
     }).catch((reason: any) => {
       console.error(JSON.stringify(reason));
       this.$SERVICE_STATUS.LOADING = false;
+      this.$SERVICE_STATUS.ERROR = true;
       this.$SERVICE_STATUS.STATUS = reason;
     });
   }
