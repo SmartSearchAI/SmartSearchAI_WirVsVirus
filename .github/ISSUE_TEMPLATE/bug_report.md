@@ -1,12 +1,13 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
-labels: ''
+title: "[APP] Bug - [Component] - [Short Description]"
+labels: bug, [NEW]
 assignees: ''
 
 ---
 
+# Problem
 **Describe the bug**
 A clear and concise description of what the bug is.
 
@@ -17,9 +18,14 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
+# Solution
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
+## Accaptance Criteria
+- [ ] Execute ``Expected behavior ``
+
+## Additional Information
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
