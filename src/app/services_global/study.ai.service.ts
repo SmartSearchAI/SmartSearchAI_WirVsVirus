@@ -3,6 +3,7 @@ import '../types';
 import { Study, Dictionary} from '../models/Study.model';
 import {HTTPService} from './http.service';
 
+let DEBUG = true;
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class StudyAIService {
   $URL: object;
 
   constructor(private http: HTTPService) {
-      this.$Server = 'http://13.93.43.192:80/';
+      this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
   }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<Array<string>>}) {
@@ -19,21 +20,33 @@ export class StudyAIService {
     const id = ['NCT00000102', 'NCT00000111'];
     const fields = [['brief_summary', 'brief_title', 'detailed_description', 'brief_description'], [ 'criteria']];
 
-    const id_str = id.join(',');
-    const fields_str = fields[0].join(',');
-    const url = `${this.$Server}Study?id=${id_str}&fields=${fields}`;
+    const url = `${this.$Server}Study?id=${id.join(',')}&fields=${ fields[0].join(',')}`;
     return this.http.get<any>(String(url)).toPromise().then((response) => {
         console.log('StudyAIService.GetStudy:SUCCESS');
     });
   }
 
-  GetKeyWordsFromText(parameter: {text: string, count: number}){
+  GetKeyWordsFromText(parameter: {text: string, count: number}) {
     const text = parameter.text;
     const count = parameter.count.toString();
     const url = `${this.$Server}KeyWordsFromText?text=${text}&count=${count}`;
     return this.http.get<any>(String(url)).toPromise().then((response) => {
       console.log('StudyAIService.GetKeyWordsFromText:SUCCESS');
       return response.body.data;
+    });
+  }
+
+  GetProjections(parameter: {id: Array<string>}) {
+    let url = `${this.$Server}ProjectData`;
+    if (parameter.id.length > 0) {
+      url = `${url}?id=${parameter.id.join(',')}`;
+    }
+    return this.http.get<any>(String(url)).toPromise().then((response) => {
+      console.log('StudyAIService.ProjectData:SUCCESS');
+      const result: { data: Array< Array<number> >, IDs: Array<string> } = {data: [], IDs: []};
+      result.data = response.body.data;
+      result.IDs = response.body.IDs;
+      return result;
     });
   }
 }
