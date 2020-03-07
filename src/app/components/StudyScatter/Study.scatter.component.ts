@@ -26,7 +26,7 @@ function randn_bm() {
 
 export class StudyScatterComponent implements OnChanges, AfterViewInit {
   @Input() $Ids: Array<string>;
-  @Input() $Data: Array<{x: number, y: number, value: number}>;
+  @Input() $Data: Array<Array<number>>;
   @ViewChild(EChartsComponent, {static: false}) $chart:EChartsComponent;
   $xAxis = {
     scale: true
@@ -60,12 +60,13 @@ export class StudyScatterComponent implements OnChanges, AfterViewInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const id_data = this.$Ids.map((id) => {
-      return [randn_bm(), randn_bm(), id];
+    const data = this.$Ids.map((id, i) => {
+      const xy = this.$Data[i];
+      return [xy[0], xy[1], id];
     });
     // Update Chart
     this.$series = [{
-      data: id_data,
+      data,
       type: 'scatter',
       symbolSize: 10
     }];
