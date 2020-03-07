@@ -10,7 +10,7 @@ import {KeyWordsPrototypeView} from './modules/KeyWordsPrototype/KeyWordsPrototy
 import {KeyWordsComponent} from './components/KeyWordsComponent/KeyWords.component';
 
 import {ScatterPlotPrototypeView} from './modules/ScatterPlotPrototype/ScatterPlotPrototype.view';
-import {StudyScatterComponent} from './components/StudyScatter/Study.scatter.component';
+import {PlotScatterComponent} from './components/PlotComponents/plot.scatter.component';
 
 const routes: Routes = [
   {path: 'KeyWords', component: KeyWordsPrototypeView},
@@ -30,7 +30,7 @@ export class AppRoutingModule { }
     KeyWordsPrototypeView,
     KeyWordsComponent,
     ScatterPlotPrototypeView,
-    StudyScatterComponent
+    PlotScatterComponent
   ],
   imports: [
     BrowserModule,

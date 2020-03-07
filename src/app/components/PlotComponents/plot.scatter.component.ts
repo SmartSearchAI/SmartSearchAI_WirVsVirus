@@ -1,30 +1,13 @@
 import { Component, OnChanges, AfterViewInit, SimpleChanges, Input, ViewChild, HostListener} from '@angular/core';
 import { EChartsComponent } from '@amcdnl/ngx-echarts';
 
-function randn_bm() {
-  let u = 0;
-  let v = 0;
-  while (u === 0) {
-    u = Math.random(); // Converting [0,1) to (0,1)
-  }
-  while (v === 0) {
-    v = Math.random();
-  }
-  let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
-  num = num / 10.0 + 0.5; // Translate to 0 -> 1
-  if (num > 1 || num < 0) {
-    return randn_bm(); // resample between 0 and 1
-  }
-  return num;
-}
-
 @Component({
-  selector: 'study-scatter',
-  templateUrl: './Study.scatter.component.html',
-  styleUrls: ['./Study.scatter.component.scss']
+  selector: 'plot-scatter',
+  templateUrl: './plot.scatter.component.html',
+  styleUrls: ['./plot.scatter.component.scss']
 })
 
-export class StudyScatterComponent implements OnChanges, AfterViewInit {
+export class PlotScatterComponent implements OnChanges, AfterViewInit {
   @Input() $Ids: Array<string>;
   @Input() $Data: Array<Array<number>>;
   @ViewChild(EChartsComponent, {static: false}) $chart:EChartsComponent;
