@@ -9,13 +9,23 @@ let DEBUG = true;
 })
 
 export class StudyAIService {
-  $Server: string;
-  $Fields: Array<string>; 
-  $URL: object;
+  $Server: string = 'undefined';
+  $Fields: Array<string> = [];
+  $Selected: Array<string> = [];
 
   constructor(private http: HTTPService) {
       this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
-      this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description']
+      this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
+  }
+
+  SelectStudy(id: string): Array<string> {
+    this.$Selected.push(id);
+    this.$Selected = [...new Set(this.$Selected)];
+    return this.$Selected;
+  }
+
+  RemoveStudy(id: string) {
+    this.$Selected = this.$Selected.filter(obj => obj !== id);
   }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {
@@ -26,7 +36,8 @@ export class StudyAIService {
     return this.http.get<any>(String(url)).toPromise().then((response) => {
       console.log('StudyAIService.GetStudy:SUCCESS');
       return response.body.data.map((item, idx) => {
-        return new Study(idx, id[idx], item['brief_title'], item);
+        const selected = this.$Selected.indexOf(id[idx]) >= 0 ? true : false;
+        return new Study(idx, id[idx], item['brief_title'], item, selected);
       });
     });
   }
