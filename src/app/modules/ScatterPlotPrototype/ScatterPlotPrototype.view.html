@@ -1,9 +1,10 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12 col-lg-8">
-        <h1 class="d-none d-lg-block">KeyWord Prototype</h1>
-        <div *ngIf="$DATA" class="col-md-2 col-lg-6" id="study_ids_DOM">
-          <study-scatter [$Ids]="$DATA.IDs"></study-scatter>
+      <div class="col-md-12 offset-lg-2 col-lg-8">
+        <h1 class="text-center">StudyPlot</h1>
+        <p class="text-center">Prototype</p>
+        <div *ngIf="$DATA" id="study_ids_DOM">
+          <study-scatter [$Ids]="$DATA.IDs" [$Data]="$DATA.data"></study-scatter>
         </div>
         <button class="btn btn-primary form-control" type="submit" (click)="updateData()">Get Projections
           <span *ngIf="$SERVICE_STATUS.LOADING" class="float-left"><i class="fa fa-spinner" title="...loading"></i> Loading</span>
