@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <h1 class="d-none d-lg-block">KeyWord Prototype</h1>
+        <div *ngIf="$DATA" class="col-md-2 col-lg-6" id="study_ids_DOM">
+          <study-scatter [$Ids]="$DATA.IDs"></study-scatter>
+        </div>
+        <button class="btn btn-primary form-control" type="submit" (click)="updateData()">Get Projections
+          <span *ngIf="$SERVICE_STATUS.LOADING" class="float-left"><i class="fa fa-spinner" title="...loading"></i> Loading</span>
+          <span *ngIf="$SERVICE_STATUS.ERROR" class="danger float-left"><i class="fa fa-bug" ></i> Error</span>
+        </button>
+        <div *ngIf="$SERVICE_STATUS.ERROR" class="alert alert-danger" role="alert" title="{{$SERVICE_STATUS.STATUS.message}}">
+          <strong> Oh snap!</strong> 
+          <span class="badge badge-pill badge-dark float-right">{{$SERVICE_STATUS.STATUS.status}}</span>
+          <small>
+            <div><label class="label label-danger">Name:</label> {{$SERVICE_STATUS.STATUS.name}}</div>
+            <div><label class="label label-danger">Status:</label> {{$SERVICE_STATUS.STATUS.statusText}}</div>
+          </small>
+        </div>
+      </div>
+    </div>
+</div>
