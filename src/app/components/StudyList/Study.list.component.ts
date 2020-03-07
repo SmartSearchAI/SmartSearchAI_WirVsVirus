@@ -1,4 +1,4 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges} from '@angular/core';
 import {Study} from '../../models/Study.model';
 import {StudyAIService} from '../../services_global/study.ai.service';
 
@@ -7,14 +7,18 @@ import {StudyAIService} from '../../services_global/study.ai.service';
   templateUrl: './Study.list.component.html',
   styleUrls: ['./Study.list.component.scss']
 })
-export class StudyListComponent implements OnInit {
-  @Input() $IDs: Array<string>;
-  @Input() $Title: string;
-  $Data: Study[];
+export class StudyListComponent implements OnChanges {
+  @Input() $IDs: Array<string> = [] ;
+  @Input() $Title: string = '';
+  $Data: Study[] = [];
   constructor(private service: StudyAIService) { }
 
-  ngOnInit() {
-    this.requestData();
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.$IDs.length > 0 ) {
+      this.requestData();
+    } else {
+      this.$Data = [];
+    }
   }
 
   requestData() {

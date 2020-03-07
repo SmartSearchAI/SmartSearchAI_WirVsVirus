@@ -11,12 +11,12 @@ import { ActivatedRoute } from '@angular/router';
 export class MatchMakerView implements OnInit, OnDestroy {
   ids: string;
   private sub: any;
-  $IDs: Array<string>;
+  $IDs: Array<string> = [];
+  $IDs_Select: Array<string> = [];
   $DATA: {
     data: Array<Array<number>>,
     IDs: Array<string>
   };
-  $IDs_Select: Array<string>;
 
   $Service: StudyAIService;
   $SERVICE_STATUS = {
@@ -37,9 +37,7 @@ export class MatchMakerView implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-  onInputChanged() {
 
-  }
   requestAvailableData() {
     this.$SERVICE_STATUS.LOADING = true;
     this.$SERVICE_STATUS.ERROR = false;
