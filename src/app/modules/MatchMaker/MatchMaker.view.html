@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div>
+      <h1 class="text-center">Study Match Maker</h1>
+      <p class="text-center">Prototype</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="text-center col-lg-6">
+            <h3>Your Selection</h3>
+          </div>
+          <div class="text-center col-lg-6">
+            <h3>The Rest</h3>
+          </div>
+          <div class="col-lg-12">
+            <button class="btn btn-primary form-control" type="submit" (click)="updateData()">Get Matches
+              <span *ngIf="$SERVICE_STATUS.LOADING" class="float-left"><i class="fa fa-spinner" title="...loading"></i> Loading</span>
+              <span *ngIf="$SERVICE_STATUS.ERROR" class="danger float-left"><i class="fa fa-bug" ></i> Error</span>
+            </button>
+            <div *ngIf="$SERVICE_STATUS.ERROR" class="alert alert-danger" role="alert" title="{{$SERVICE_STATUS.STATUS.message}}">
+              <strong> Oh snap!</strong> 
+              <span class="badge badge-pill badge-dark float-right">{{$SERVICE_STATUS.STATUS.status}}</span>
+              <small>
+                <div><label class="label label-danger">Name:</label> {{$SERVICE_STATUS.STATUS.name}}</div>
+                <div><label class="label label-danger">Status:</label> {{$SERVICE_STATUS.STATUS.statusText}}</div>
+              </small>
+            </div>
+        </div>
+      </div>
+      </div>
+      <div class="col-lg-6">
+        <div *ngIf="$DATA" id="study_ids_DOM">
+          <plot-scatter [$Ids]="$DATA.IDs" [$Data]="$DATA.data"></plot-scatter>
+        </div>
+      </div>
+    </div>
+</div>
