@@ -13,7 +13,6 @@ export class MatchMakerView implements OnInit, OnDestroy {
   ids: string;
   private sub: any = {};
   $IDs: Array<string> = [];
-  $IDs_Select: Array<string> = [];
   $DATA: {
     data: Array<Array<number>>,
     IDs: Array<string>
@@ -52,7 +51,7 @@ export class MatchMakerView implements OnInit, OnDestroy {
   }
 
   selectItem(id: string) {
-    this.$IDs_Select = this.$Service.SelectStudy(id);
+    this.$Service.ToggleSelection(id);
   }
 
   requestAvailableData() {

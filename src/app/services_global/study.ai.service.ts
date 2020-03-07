@@ -18,14 +18,15 @@ export class StudyAIService {
       this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
   }
 
-  SelectStudy(id: string): Array<string> {
-    this.$Selected.push(id);
-    this.$Selected = [...new Set(this.$Selected)];
+  ToggleSelection(id: string): Array<string> {
+    const idx = this.$Selected.indexOf(id);
+    if (idx >= 0) {
+      this.$Selected = this.$Selected.filter(obj => obj !== id);
+    } else {
+      this.$Selected.push(id);
+      this.$Selected = this.$Selected.map(obj => {return obj;});
+    }
     return this.$Selected;
-  }
-
-  RemoveStudy(id: string) {
-    this.$Selected = this.$Selected.filter(obj => obj !== id);
   }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {

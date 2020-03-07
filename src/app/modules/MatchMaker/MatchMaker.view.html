@@ -10,7 +10,7 @@
             <study-list [$IDs]="$IDs" [$Title]="'Studies'"></study-list>
           </div>
           <div class="col-lg-6">
-            <study-list [$IDs]="$IDs_Select" [$Title]="'Selection'"></study-list>
+            <study-list [$IDs]="$Service.$Selected" [$Title]="'Selection'"></study-list>
           </div>
           <div class="col-lg-12">
             <button class="btn btn-primary form-control" type="submit" (click)="updateData()">Get Matches
