@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import {StudyAIService} from '../../services_global/study.ai.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationStart} from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'MatchMaker-View',
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class MatchMakerView implements OnInit, OnDestroy {
   ids: string;
-  private sub: any;
+  private sub: any = {};
   $IDs: Array<string> = [];
   $IDs_Select: Array<string> = [];
   $DATA: {
@@ -24,18 +25,35 @@ export class MatchMakerView implements OnInit, OnDestroy {
     ERROR: false,
     STATUS: null
   };
-  constructor(studyAIService: StudyAIService, private route: ActivatedRoute) {
+  constructor(studyAIService: StudyAIService, private route: ActivatedRoute, private router: Router) {
     this.$Service = studyAIService;
     this.$DATA = null;
   }
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.sub.params = this.route.params.subscribe(params => {
       this.ids = params['ids'] ? JSON.parse(params['ids']) : [];
       this.requestAvailableData();
-   });
+    });
+
+    this.router.events.pipe(filter(event => event instanceof NavigationStart))
+      .subscribe(this.OnRouterEvent.bind(this));
   }
+
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.sub.params.unsubscribe();
+  }
+
+  OnRouterEvent(e) {
+      const url = e.url.split('/');
+      if (url.includes('select')) {
+        this.selectItem(url[url.length - 1]);
+      }
+      console.log(e);
+  }
+
+  selectItem(id: string) {
+    this.$IDs_Select.push(id);
+    this.$IDs_Select = [...new Set(this.$IDs_Select)];
   }
 
   requestAvailableData() {
