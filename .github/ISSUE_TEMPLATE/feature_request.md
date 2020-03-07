@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for this project
 title: "[APP] [Component] - [SHORT DESCRIPTION]"
-labels: "[NEW], ???"
+labels: "???, [NEW]"
 assignees: ''
 
 ---
