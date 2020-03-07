@@ -2,7 +2,7 @@
 name: Release Request
 about: Describe this issue template's purpose here.
 title: "[SERVER] Release - Prototype - <VERSION> - <TITLE>"
-labels: NEW, DevOps
+labels: DevOps, NEW
 assignees: ''
 
 ---
