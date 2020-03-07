@@ -24,7 +24,7 @@ export class StudyAIService {
       this.$Selected = this.$Selected.filter(obj => obj !== id);
     } else {
       this.$Selected.push(id);
-      this.$Selected = this.$Selected.map(obj => {return obj;});
+      this.$Selected = this.$Selected.map(obj => obj);
     }
     return this.$Selected;
   }

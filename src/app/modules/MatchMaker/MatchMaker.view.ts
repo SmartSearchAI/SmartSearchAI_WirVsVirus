@@ -52,6 +52,7 @@ export class MatchMakerView implements OnInit, OnDestroy {
 
   selectItem(id: string) {
     this.$Service.ToggleSelection(id);
+    this.$IDs = this.$IDs.map(obj => obj);
   }
 
   requestAvailableData() {
