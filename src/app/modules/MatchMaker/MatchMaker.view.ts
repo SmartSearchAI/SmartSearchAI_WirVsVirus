@@ -16,7 +16,7 @@ export class MatchMakerView implements OnInit, OnDestroy {
     data: Array<Array<number>>,
     IDs: Array<string>
   };
-  $ID_Selection: Array<string>;
+  $IDs_Select: Array<string>;
 
   $Service: StudyAIService;
   $SERVICE_STATUS = {

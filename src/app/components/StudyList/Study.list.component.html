@@ -1,26 +1,16 @@
 
 <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action align-items-start active">
+    <a class="list-group-item list-group-item-action align-items-start active">
         <div class="d-flex w-100 justify-content-between">
-            <h3 class="mb-1">Results (Top {{$NStudies.Returned}})</h3>
-            <small><span class="badge badge-pill badge-light" title="Query results">{{$NStudies.Returned}}/{{$NStudies.Found}}</span></small>
+            <h3 class="mb-1">{{$Title}}</h3>
         </div>
-        <p class="mb-1"><label>Fields:</label> {{$Fields.join(", ")}}</p>
-        <p class="mb-1"><label>Expression:</label> {{$Expression}}</p>
-        <small class="float-right">Total Studies Available: {{$NStudies.Avail}}</small>
+        <small class="float-right">Total: {{$IDs ? $IDs.length : 0}}</small>
     </a>
-    <study-listitem   *ngFor="let item of $Studies, let i = index" id="{{item.$Id}}" [$Item]="item"></study-listitem >
-    <a href="" class="list-group-item list-group-item-dark list-group-item-action align-items-start disabled">
-        <a class="carousel-control-prev disabled" href="" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <div class="d-flex w-100 justify-content-center">
-            <h3>Next Results</h3>
-        </div>
-        <a class="carousel-control-next disabled" href="" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    <a *ngIf="!$IDs || $IDs.length == 0" class="list-group-item list-group-item-light">
+        Empty - Please Select
     </a>
+    <a *ngIf="!$Data && $IDs.length" class="list-group-item list-group-item-light">
+        Loading ...
+    </a>
+    <study-listitem *ngFor="let item of $Data, let i = index" id="{{item.$Id}}" [$Item]="item"></study-listitem >
 </div>
