@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import '../types';
-import { Study, Dictionary} from '../models/Study.model';
 import {HTTPService} from './http.service';
 
 let DEBUG = true;
@@ -24,6 +23,14 @@ export class StudyAIService {
     return this.http.get<any>(String(url)).toPromise().then((response) => {
         console.log('StudyAIService.GetStudy:SUCCESS');
     });
+  }
+
+  GetAvailableData() {
+    const url = `${this.$Server}ProjectData/Info`;
+    return this.http.get<any>(String(url)).toPromise().then((response) => {
+      console.log('StudyAIService.GetAvailableData:SUCCESS');
+      return response.body.IDs;
+  });
   }
 
   GetKeyWordsFromText(parameter: {text: string, count: number}) {
