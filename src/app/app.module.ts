@@ -3,14 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import {EChartsModule} from '@amcdnl/ngx-echarts';
 
 import { AppComponent } from './app.component';
 import {KeyWordsPrototypeView} from './modules/KeyWordsPrototype/KeyWordsPrototype.view';
 import {KeyWordsComponent} from './components/KeyWordsComponent/KeyWords.component';
 
+import {ScatterPlotPrototypeView} from './modules/ScatterPlotPrototype/ScatterPlotPrototype.view';
+import {StudyScatterComponent} from './components/StudyScatter/Study.scatter.component';
+
 const routes: Routes = [
   {path: 'KeyWords', component: KeyWordsPrototypeView},
-  {path: '', redirectTo: 'KeyWords', pathMatch: 'full'}
+  {path: 'ScatterPlot', component: ScatterPlotPrototypeView},
+  {path: '', redirectTo: 'ScatterPlot', pathMatch: 'full'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
@@ -23,13 +28,16 @@ export class AppRoutingModule { }
   declarations: [
     AppComponent,
     KeyWordsPrototypeView,
-    KeyWordsComponent
+    KeyWordsComponent,
+    ScatterPlotPrototypeView,
+    StudyScatterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    EChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
