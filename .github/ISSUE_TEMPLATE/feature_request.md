@@ -1,8 +1,8 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: "[AREA] [Component] - [SHORT DESCRIPTION]"
-labels: ''
+title: "[APP] [Component] - [SHORT DESCRIPTION]"
+labels: "[NEW], ???"
 assignees: ''
 
 ---
