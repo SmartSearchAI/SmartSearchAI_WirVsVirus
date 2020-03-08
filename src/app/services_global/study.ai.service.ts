@@ -11,8 +11,9 @@ let DEBUG = true;
 export class StudyAIService {
   $Server: string = 'undefined';
   $Fields: Array<string> = [];
+  $Available: Array<string> = [];
+  $Unselected: Array<string> = [];
   $Selected: Array<string> = [];
-
   constructor(private http: HTTPService) {
       this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
       this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
@@ -26,7 +27,13 @@ export class StudyAIService {
       this.$Selected.push(id);
       this.$Selected = this.$Selected.map(obj => obj);
     }
+    this.UpdateSelection();
     return this.$Selected;
+  }
+
+  UpdateSelection() {
+    this.$Selected =  this.$Selected.filter(obj => this.$Available.indexOf(obj) >= 0);
+    this.$Unselected = this.$Available.filter(obj => this.$Selected.indexOf(obj) < 0);
   }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {
@@ -47,6 +54,8 @@ export class StudyAIService {
     const url = `${this.$Server}ProjectData/Info`;
     return this.http.get<any>(String(url)).toPromise().then((response) => {
       console.log('StudyAIService.GetAvailableData:SUCCESS');
+      this.$Available = response.body.IDs;
+      this.UpdateSelection();
       return response.body.IDs;
   });
   }
