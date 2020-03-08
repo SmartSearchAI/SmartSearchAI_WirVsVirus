@@ -12,10 +12,18 @@ import {KeyWordsComponent} from './components/KeyWordsComponent/KeyWords.compone
 import {ScatterPlotPrototypeView} from './modules/ScatterPlotPrototype/ScatterPlotPrototype.view';
 import {PlotScatterComponent} from './components/PlotComponents/plot.scatter.component';
 
+import {MatchMakerView} from './modules/MatchMaker/MatchMaker.view';
+
+import {StudyListComponent} from './components/StudyList/Study.list.component';
+import {StudyListItemComponent} from './components/StudyList/StudyListItem/Study.listitem.component';
+
 const routes: Routes = [
   {path: 'KeyWords', component: KeyWordsPrototypeView},
   {path: 'ScatterPlot', component: ScatterPlotPrototypeView},
-  {path: '', redirectTo: 'ScatterPlot', pathMatch: 'full'}
+  {path: 'MatchMaker/:ids', component: MatchMakerView},
+  {path: 'MatchMaker', component: MatchMakerView},
+  {path: 'MatchMakerTest',  redirectTo: 'MatchMaker/[Lorem, Ipsum]'},
+  {path: '', redirectTo: 'MatchMaker', pathMatch: 'full'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
@@ -30,7 +38,10 @@ export class AppRoutingModule { }
     KeyWordsPrototypeView,
     KeyWordsComponent,
     ScatterPlotPrototypeView,
-    PlotScatterComponent
+    PlotScatterComponent,
+    MatchMakerView,
+    StudyListComponent,
+    StudyListItemComponent
   ],
   imports: [
     BrowserModule,

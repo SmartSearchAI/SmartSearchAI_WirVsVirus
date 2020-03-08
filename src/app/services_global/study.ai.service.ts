@@ -1,29 +1,42 @@
 import { Injectable } from '@angular/core';
 import '../types';
-import { Study, Dictionary} from '../models/Study.model';
 import {HTTPService} from './http.service';
+import { Study } from '../models/Study.model';
 
 let DEBUG = true;
 @Injectable({
   providedIn: 'root'
 })
+
 export class StudyAIService {
   $Server: string;
+  $Fields: Array<string>; 
   $URL: object;
 
   constructor(private http: HTTPService) {
       this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
+      this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description']
   }
 
-  GetStudy(parameter: {id: Array<string>; fields: Array<Array<string>>}) {
-    const query = '{0}Study?id={1}&fields={2}';
-    const id = ['NCT00000102', 'NCT00000111'];
-    const fields = [['brief_summary', 'brief_title', 'detailed_description', 'brief_description'], [ 'criteria']];
-
-    const url = `${this.$Server}Study?id=${id.join(',')}&fields=${ fields[0].join(',')}`;
+  GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {
+    let fields = this.$Fields;
+    fields = parameter.fields && parameter.fields.length ? parameter.fields : fields;
+    const id = parameter.id;
+    const url = `${this.$Server}Study?id=${id.join(',')}&fields=${ fields.join(',')}`;
     return this.http.get<any>(String(url)).toPromise().then((response) => {
-        console.log('StudyAIService.GetStudy:SUCCESS');
+      console.log('StudyAIService.GetStudy:SUCCESS');
+      return response.body.data.map((item, idx) => {
+        return new Study(idx, id[idx], item['brief_title'], item);
+      });
     });
+  }
+
+  GetAvailableData() {
+    const url = `${this.$Server}ProjectData/Info`;
+    return this.http.get<any>(String(url)).toPromise().then((response) => {
+      console.log('StudyAIService.GetAvailableData:SUCCESS');
+      return response.body.IDs;
+  });
   }
 
   GetKeyWordsFromText(parameter: {text: string, count: number}) {
