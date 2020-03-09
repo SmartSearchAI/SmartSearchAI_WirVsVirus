@@ -1,28 +1,52 @@
 import { Injectable } from '@angular/core';
 import '../types';
 import {HTTPService} from './http.service';
-import { ArgumentOutOfRangeError } from 'rxjs';
+import { Study } from '../models/Study.model';
 
 let DEBUG = true;
 @Injectable({
   providedIn: 'root'
 })
-export class StudyAIService {
-  $Server: string;
-  $URL: object;
 
+export class StudyAIService {
+  $Server: string = 'undefined';
+  $Fields: Array<string> = [];
+  $Available: Array<string> = [];
+  $Unselected: Array<string> = [];
+  $Selected: Array<string> = [];
   constructor(private http: HTTPService) {
       this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
+      this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
   }
 
-  GetStudy(parameter: {id: Array<string>; fields: Array<Array<string>>}) {
-    const query = '{0}Study?id={1}&fields={2}';
-    const id = ['NCT00000102', 'NCT00000111'];
-    const fields = [['brief_summary', 'brief_title', 'detailed_description', 'brief_description'], [ 'criteria']];
+  ToggleSelection(id: string): Array<string> {
+    const idx = this.$Selected.indexOf(id);
+    if (idx >= 0) {
+      this.$Selected = this.$Selected.filter(obj => obj !== id);
+    } else {
+      this.$Selected.push(id);
+      this.$Selected = this.$Selected.map(obj => obj);
+    }
+    this.UpdateSelection();
+    return this.$Selected;
+  }
 
-    const url = `${this.$Server}Study?id=${id.join(',')}&fields=${ fields[0].join(',')}`;
+  UpdateSelection() {
+    this.$Selected =  this.$Selected.filter(obj => this.$Available.indexOf(obj) >= 0);
+    this.$Unselected = this.$Available.filter(obj => this.$Selected.indexOf(obj) < 0);
+  }
+
+  GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {
+    let fields = this.$Fields;
+    fields = parameter.fields && parameter.fields.length ? parameter.fields : fields;
+    const id = parameter.id;
+    const url = `${this.$Server}Study?id=${id.join(',')}&fields=${ fields.join(',')}`;
     return this.http.get<any>(String(url)).toPromise().then((response) => {
-        console.log('StudyAIService.GetStudy:SUCCESS');
+      console.log('StudyAIService.GetStudy:SUCCESS');
+      return response.body.data.map((item, idx) => {
+        const selected = this.$Selected.indexOf(id[idx]) >= 0 ? true : false;
+        return new Study(idx, id[idx], item['brief_title'], item, selected);
+      });
     });
   }
 
@@ -30,6 +54,8 @@ export class StudyAIService {
     const url = `${this.$Server}ProjectData/Info`;
     return this.http.get<any>(String(url)).toPromise().then((response) => {
       console.log('StudyAIService.GetAvailableData:SUCCESS');
+      this.$Available = response.body.IDs;
+      this.UpdateSelection();
       return response.body.IDs;
   });
   }

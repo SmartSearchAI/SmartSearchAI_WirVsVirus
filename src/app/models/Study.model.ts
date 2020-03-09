@@ -6,11 +6,14 @@ export class Study {
     $Id: string;
     $BriefTitle: string;
     $Fields: Dictionary<string>;
-    constructor(Rank: number, Id: string, BriefTitle: string, Fields: Dictionary<string>) {
+    $Selected: boolean;
+
+    constructor(Rank: number, Id: string, BriefTitle: string, Fields: Dictionary<string>, Selected: boolean) {
         this.$Rank = Rank;
         this.$Id = Id;
         this.$BriefTitle = BriefTitle;
         this.$Fields = Fields;
+        this.$Selected = Selected;
     }
 }
 
