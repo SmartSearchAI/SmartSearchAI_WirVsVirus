@@ -14,6 +14,7 @@ export class StudyAIService {
   $Available: Array<string> = [];
   $Unselected: Array<string> = [];
   $Selected: Array<string> = [];
+  $Score: Object = {};
   constructor(private http: HTTPService) {
       this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
       this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
@@ -34,6 +35,9 @@ export class StudyAIService {
   UpdateSelection() {
     this.$Selected =  this.$Selected.filter(obj => this.$Available.indexOf(obj) >= 0);
     this.$Unselected = this.$Available.filter(obj => this.$Selected.indexOf(obj) < 0);
+    this.GetMatches(this.$Selected).then(result => {
+      this.$Score = result;
+    });
   }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {
@@ -84,24 +88,21 @@ export class StudyAIService {
     });
   }
 
-  GetMatches(parameter: {id: Array<string>, id_matches: Array<string>}) {
+  GetMatches(id: Array<string>, id_matches: Array<string> = []) {
     let url = `${this.$Server}GetMatches`;
-    if (parameter.id && parameter.id.length > 0) {
-      url = `${url}?id=${parameter.id.join(',')}`;
+    if (id && id.length > 0) {
+      url = `${url}?id=${id.join(',')}`;
     } else {
      console.error('No id specified. Unable to find matching components');
     }
 
-    if (parameter.id_matches && parameter.id_matches.length > 0) {
-      url = `${url}&id_matches=${parameter.id_matches.join(',')}`;
+    if (id_matches && id_matches.length > 0) {
+      url = `${url}&id_matches=${id_matches.join(',')}`;
     }
 
     return this.http.get<any>(String(url)).toPromise().then((response) => {
-      console.log('StudyAIService.ProjectData:SUCCESS');
-      const result: { data: Array< Array<number> >, IDs: Array<string> } = {data: [], IDs: []};
-      result.data = response.body.data;
-      result.IDs = response.body.IDs;
-      return result;
+      console.log('StudyAIService.GetMatches:SUCCESS');
+      return response.body.data;
     });
   }
 }
