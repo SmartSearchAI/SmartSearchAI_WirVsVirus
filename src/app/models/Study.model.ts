@@ -2,32 +2,34 @@ export interface Dictionary<T> {
     [Key: string]: T;
 }
 export class Study {
-    $Rank: number;
     $Id: string;
     $BriefTitle: string;
     $Fields: Dictionary<string>;
     $Selected: boolean;
+    $Rank: number;
+    $Q: Array<number>;
 
-    constructor(Rank: number, Id: string, BriefTitle: string, Fields: Dictionary<string>, Selected: boolean) {
-        this.$Rank = Rank;
+    constructor(Rank, Id: string, BriefTitle: string, Fields: Dictionary<string>, Selected = false,  Q = []) {
         this.$Id = Id;
         this.$BriefTitle = BriefTitle;
         this.$Fields = Fields;
         this.$Selected = Selected;
+        this.$Rank = Rank;
+        this.$Q = [];
     }
 }
 
 export class ClinicalTrialStudy extends Study {
     constructor(item: object) {
-        let fields: Dictionary<string> = {};
+        const fields: Dictionary<string> = {};
         let Id: string;
-        let Rank: number;
+        let Rank = 1;
         let BriefTitle: string;
         let props: Array<string>;
         props = Object.getOwnPropertyNames(item);
         props.forEach(prop => {
             const value = item[prop];
-            switch (prop){
+            switch (prop) {
                 case 'NCTId': {
                     Id = value[0]; break;
                 }

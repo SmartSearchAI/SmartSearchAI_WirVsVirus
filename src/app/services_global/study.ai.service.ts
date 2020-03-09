@@ -4,16 +4,49 @@ import {HTTPService} from './http.service';
 import { Study } from '../models/Study.model';
 
 let DEBUG = true;
+
+// sort array ascending
+const asc = arr => arr.sort((a, b) => a - b);
+
+const sum = arr => arr.reduce((a, b) => a + b, 0);
+
+const mean = arr => sum(arr) / arr.length;
+
+// sample standard deviation
+const std = (arr) => {
+    const mu = mean(arr);
+    const diffArr = arr.map(a => (a - mu) ** 2);
+    return Math.sqrt(sum(diffArr) / (arr.length - 1));
+};
+
+const quantile = (arr, q) => {
+    const sorted = asc(arr);
+    const pos = (sorted.length - 1) * q;
+    const base = Math.floor(pos);
+    const rest = pos - base;
+    if (sorted[base + 1] !== undefined) {
+        return sorted[base] + rest * (sorted[base + 1] - sorted[base]);
+    } else {
+        return sorted[base];
+    }
+};
+
+
+const DictValues = obj => Object.getOwnPropertyNames(obj).map(key => obj[key]);
+const DictKeys = obj => Object.getOwnPropertyNames(obj);
+
 @Injectable({
   providedIn: 'root'
 })
-
 export class StudyAIService {
-  $Server: string = 'undefined';
+  $Server = 'undefined';
   $Fields: Array<string> = [];
   $Available: Array<string> = [];
   $Unselected: Array<string> = [];
   $Selected: Array<string> = [];
+  $Scores = null;
+  $Q: Array<Array<number>>;
+
   constructor(private http: HTTPService) {
       this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
       this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
@@ -34,6 +67,11 @@ export class StudyAIService {
   UpdateSelection() {
     this.$Selected =  this.$Selected.filter(obj => this.$Available.indexOf(obj) >= 0);
     this.$Unselected = this.$Available.filter(obj => this.$Selected.indexOf(obj) < 0);
+    this.GetMatches(this.$Selected).then(result => {
+      this.$Scores = result;
+      const values = DictValues(result);
+      this.$Q = [0.9, 0.75, 0.5, 0.25, 0.1].map(x => [x, quantile(values, x)]);
+    });
   }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {
@@ -45,7 +83,8 @@ export class StudyAIService {
       console.log('StudyAIService.GetStudy:SUCCESS');
       return response.body.data.map((item, idx) => {
         const selected = this.$Selected.indexOf(id[idx]) >= 0 ? true : false;
-        return new Study(idx, id[idx], item['brief_title'], item, selected);
+        const rank = this.$Scores ? this.$Scores[id[idx]] : idx;
+        return new Study(rank, id[idx], item['brief_title'], item, selected, this.$Q);
       });
     });
   }
@@ -81,6 +120,24 @@ export class StudyAIService {
       result.data = response.body.data;
       result.IDs = response.body.IDs;
       return result;
+    });
+  }
+
+  GetMatches(id: Array<string>, id_matches: Array<string> = []) {
+    let url = `${this.$Server}GetMatches`;
+    if (id && id.length > 0) {
+      url = `${url}?id=${id.join(',')}`;
+    } else {
+     console.error('No id specified. Unable to find matching components');
+    }
+
+    if (id_matches && id_matches.length > 0) {
+      url = `${url}&id_matches=${id_matches.join(',')}`;
+    }
+
+    return this.http.get<any>(String(url)).toPromise().then((response) => {
+      console.log('StudyAIService.GetMatches:SUCCESS');
+      return response.body.data;
     });
   }
 }

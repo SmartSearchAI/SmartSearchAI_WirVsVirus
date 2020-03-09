@@ -8,7 +8,5 @@ import {Study} from '../../../models/Study.model';
 })
 export class StudyListItemComponent {
   @Input() $Item: Study;
-
   constructor() { }
-
 }
