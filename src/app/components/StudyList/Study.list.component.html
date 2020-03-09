@@ -12,5 +12,5 @@
     <a *ngIf="$IDs.length > 0  && $Data.length == 0" class="list-group-item list-group-item-light">
         Loading ...
     </a>
-    <study-listitem *ngFor="let item of $Data, let i = index" id="{{item.$Id}}" [$Item]="item"></study-listitem >
+    <study-listitem *ngFor="let item of $Data | orderBy:'-$Rank'" id="{{item.$Id}}" [$Item]="item"></study-listitem >
 </div>

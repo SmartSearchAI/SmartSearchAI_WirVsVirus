@@ -14,8 +14,9 @@ import {PlotScatterComponent} from './components/PlotComponents/plot.scatter.com
 
 import {MatchMakerView} from './modules/MatchMaker/MatchMaker.view';
 
-import {StudyListComponent} from './components/StudyList/Study.list.component';
+import {StudyListComponent, StudyRankPipe} from './components/StudyList/Study.list.component';
 import {StudyListItemComponent} from './components/StudyList/StudyListItem/Study.listitem.component';
+
 
 const routes: Routes = [
   {path: 'KeyWords', component: KeyWordsPrototypeView},
@@ -41,6 +42,7 @@ export class AppRoutingModule { }
     PlotScatterComponent,
     MatchMakerView,
     StudyListComponent,
+    StudyRankPipe,
     StudyListItemComponent
   ],
   imports: [
@@ -56,3 +58,4 @@ export class AppRoutingModule { }
 
 export class AppModule {
 }
+
