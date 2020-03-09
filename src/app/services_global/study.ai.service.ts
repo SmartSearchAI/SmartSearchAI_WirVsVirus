@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import '../types';
 import {HTTPService} from './http.service';
+import { ArgumentOutOfRangeError } from 'rxjs';
 
 let DEBUG = true;
 @Injectable({
@@ -48,6 +49,27 @@ export class StudyAIService {
     if (parameter.id.length > 0) {
       url = `${url}?id=${parameter.id.join(',')}`;
     }
+    return this.http.get<any>(String(url)).toPromise().then((response) => {
+      console.log('StudyAIService.ProjectData:SUCCESS');
+      const result: { data: Array< Array<number> >, IDs: Array<string> } = {data: [], IDs: []};
+      result.data = response.body.data;
+      result.IDs = response.body.IDs;
+      return result;
+    });
+  }
+
+  GetMatches(parameter: {id: Array<string>, id_matches: Array<string>}) {
+    let url = `${this.$Server}GetMatches`;
+    if (parameter.id && parameter.id.length > 0) {
+      url = `${url}?id=${parameter.id.join(',')}`;
+    } else {
+     console.error('No id specified. Unable to find matching components');
+    }
+
+    if (parameter.id_matches && parameter.id_matches.length > 0) {
+      url = `${url}&id_matches=${parameter.id_matches.join(',')}`;
+    }
+
     return this.http.get<any>(String(url)).toPromise().then((response) => {
       console.log('StudyAIService.ProjectData:SUCCESS');
       const result: { data: Array< Array<number> >, IDs: Array<string> } = {data: [], IDs: []};
