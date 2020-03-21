@@ -52,7 +52,7 @@ export class StudyAIService {
   constructor(private http: HTTPService) {
       this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
       this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
-      if(DEBUG) {
+      if (DEBUG) {
         this.ServiceMock = new StudyAIServiceMock(http);
       }
   }
@@ -84,11 +84,7 @@ export class StudyAIService {
     fields = parameter.fields && parameter.fields.length ? parameter.fields : fields;
     const id = parameter.id;
     const url = `${this.$Server}Study?id=${id.join(',')}&fields=${ fields.join(',')}`;
-    let promise = this.http.get<any>(String(url)).toPromise();
-
-    if (DEBUG) {
-      promise = this.ServiceMock.GetStudy(parameter);
-    }
+    const promise = DEBUG ? this.ServiceMock.GetStudy(parameter) : this.http.get<any>(String(url)).toPromise();
 
     return promise.then((response) => {
       console.log('StudyAIService.GetStudy:SUCCESS');
@@ -102,11 +98,8 @@ export class StudyAIService {
 
   GetAvailableData() {
     const url = `${this.$Server}ProjectData/Info`;
-    let promise = this.http.get<any>(String(url)).toPromise()
 
-    if (DEBUG) {
-      promise = this.ServiceMock.GetAvailableData();
-    }
+    const promise = DEBUG ? this.ServiceMock.GetAvailableData() : this.http.get<any>(String(url)).toPromise();
 
     return promise.then((response) => {
       console.log('StudyAIService.GetAvailableData:SUCCESS');
@@ -131,11 +124,8 @@ export class StudyAIService {
     if (parameter.id.length > 0) {
       url = `${url}?id=${parameter.id.join(',')}`;
     }
-    let promise = this.http.get<any>(String(url)).toPromise();
 
-    if (DEBUG) {
-      promise =  this.ServiceMock.GetProjections(parameter);
-    }
+    const promise = DEBUG ? this.ServiceMock.GetProjections(parameter) : this.http.get<any>(String(url)).toPromise();
 
     return promise.then((response) => {
       console.log('StudyAIService.ProjectData:SUCCESS');
@@ -157,10 +147,8 @@ export class StudyAIService {
     if (id_matches && id_matches.length > 0) {
       url = `${url}&id_matches=${id_matches.join(',')}`;
     }
-    let promise = this.http.get<any>(String(url)).toPromise();
-    if (DEBUG) {
-      promise = this.ServiceMock.GetMatches(id, id_matches);
-    }
+    const promise = DEBUG ? this.ServiceMock.GetMatches(id, id_matches) : this.http.get<any>(String(url)).toPromise();
+
     return promise.then((response) => {
       console.log('StudyAIService.GetMatches:SUCCESS');
       return response.body.data;
