@@ -84,7 +84,13 @@ export class StudyAIService {
     fields = parameter.fields && parameter.fields.length ? parameter.fields : fields;
     const id = parameter.id;
     const url = `${this.$Server}Study?id=${id.join(',')}&fields=${ fields.join(',')}`;
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    let promise = this.http.get<any>(String(url)).toPromise();
+
+    if (DEBUG) {
+      promise = this.ServiceMock.GetStudy(parameter);
+    }
+
+    return promise.then((response) => {
       console.log('StudyAIService.GetStudy:SUCCESS');
       return response.body.data.map((item, idx) => {
         const selected = this.$Selected.indexOf(id[idx]) >= 0 ? true : false;
@@ -95,17 +101,19 @@ export class StudyAIService {
   }
 
   GetAvailableData() {
-    if(DEBUG) {
-      return this.ServiceMock.GetAvailableData();
+    const url = `${this.$Server}ProjectData/Info`;
+    let promise = this.http.get<any>(String(url)).toPromise()
+
+    if (DEBUG) {
+      promise = this.ServiceMock.GetAvailableData();
     }
 
-    const url = `${this.$Server}ProjectData/Info`;
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    return promise.then((response) => {
       console.log('StudyAIService.GetAvailableData:SUCCESS');
       this.$Available = response.body.IDs;
       this.UpdateSelection();
       return response.body.IDs;
-  });
+    });
   }
 
   GetKeyWordsFromText(parameter: {text: string, count: number}) {
@@ -119,15 +127,17 @@ export class StudyAIService {
   }
 
   GetProjections(parameter: {id: Array<string>}) {
-    if(DEBUG) {
-      return this.ServiceMock.GetProjections(parameter);
-    }
-
     let url = `${this.$Server}ProjectData`;
     if (parameter.id.length > 0) {
       url = `${url}?id=${parameter.id.join(',')}`;
     }
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    let promise = this.http.get<any>(String(url)).toPromise();
+
+    if (DEBUG) {
+      promise =  this.ServiceMock.GetProjections(parameter);
+    }
+
+    return promise.then((response) => {
       console.log('StudyAIService.ProjectData:SUCCESS');
       const result: { data: Array< Array<number> >, IDs: Array<string> } = {data: [], IDs: []};
       result.data = response.body.data;
@@ -141,14 +151,17 @@ export class StudyAIService {
     if (id && id.length > 0) {
       url = `${url}?id=${id.join(',')}`;
     } else {
-     console.error('No id specified. Unable to find matching components');
+      console.error('No id specified. Unable to find matching components');
     }
 
     if (id_matches && id_matches.length > 0) {
       url = `${url}&id_matches=${id_matches.join(',')}`;
     }
-
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    let promise = this.http.get<any>(String(url)).toPromise();
+    if (DEBUG) {
+      promise = this.ServiceMock.GetMatches(id, id_matches);
+    }
+    return promise.then((response) => {
       console.log('StudyAIService.GetMatches:SUCCESS');
       return response.body.data;
     });
