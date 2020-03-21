@@ -147,21 +147,21 @@ export class StudyAIService {
   }
 
   GetMatches(id: Array<string>, id_matches: Array<string> = []) {
-    if (DEBUG) {
-      //return this.ServiceMock.GetMatches(id, id_matches);
-    }
     let url = `${this.$Server}GetMatches`;
     if (id && id.length > 0) {
       url = `${url}?id=${id.join(',')}`;
     } else {
-     console.error('No id specified. Unable to find matching components');
+      console.error('No id specified. Unable to find matching components');
     }
 
     if (id_matches && id_matches.length > 0) {
       url = `${url}&id_matches=${id_matches.join(',')}`;
     }
-
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    let promise = this.http.get<any>(String(url)).toPromise();
+    if (DEBUG) {
+      promise = this.ServiceMock.GetMatches(id, id_matches);
+    }
+    return promise.then((response) => {
       console.log('StudyAIService.GetMatches:SUCCESS');
       return response.body.data;
     });
