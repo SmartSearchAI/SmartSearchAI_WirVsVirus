@@ -60,7 +60,11 @@ export class StudyAIServiceMock {
 
   GetMatches(id: Array<string>, id_matches: Array<string> = []) {
     // @TODO Mock Request
-    const test_data = mock_matchesdata.response;
+    const test_data = { ...mock_matchesdata.response, body: {...mock_matchesdata.response.body}};
+    test_data.body.data = {...mock_matchesdata.response.body.data};
+    for (let prop in test_data.body.data) {
+      test_data.body.data[prop] = id.indexOf(prop) >= 0 ? 1: Math.random();
+    }
     return this.http.get_mock<any>(test_data);
   }
 }
