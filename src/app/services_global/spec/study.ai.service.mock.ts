@@ -23,7 +23,6 @@ export class StudyAIServiceMock {
   }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {
-    // @TODO Mock Request
     const test_data = { ...mock_studydata.response, body: {...mock_studydata.response.body}};
     test_data.body.data = {...mock_studydata.response.body.data};
     const idx = this.GetIDIndex(parameter.id);
@@ -36,7 +35,6 @@ export class StudyAIServiceMock {
   }
 
   GetAvailableData() {
-    // @TODO Mock Request
     const test_data = mock_projectdata_info.response;
     return this.http.get_mock<any>(test_data);
   }
@@ -53,13 +51,11 @@ export class StudyAIServiceMock {
 
 
   GetProjections(parameter: {id: Array<string>}) {
-    // @TODO Mock Request
     const test_data = mock_projectdata.response;
     return this.http.get_mock<any>(test_data);
   }
 
   GetMatches(id: Array<string>, id_matches: Array<string> = []) {
-    // @TODO Mock Request
     const test_data = { ...mock_matchesdata.response, body: {...mock_matchesdata.response.body}};
     test_data.body.data = {...mock_matchesdata.response.body.data};
     for (let prop in test_data.body.data) {
