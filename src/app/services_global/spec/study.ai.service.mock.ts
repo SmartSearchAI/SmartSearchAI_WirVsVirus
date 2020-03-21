@@ -4,6 +4,7 @@ import { Study } from '../../models/Study.model';
 import * as mock_id_data from './data/id.results.json';
 import * as mock_projectdata_info from './data/ProjectData.info.response.json';
 import * as mock_projectdata from './data/ProjectData.response.json';
+import * as mock_studydata from './data/GetStudy.response.json'
 import { promise } from 'protractor';
 
 let DEBUG = true;
@@ -42,66 +43,20 @@ const DictKeys = obj => Object.getOwnPropertyNames(obj);
   providedIn: 'root'
 })
 export class StudyAIServiceMock {
-  $Server = 'undefined';
-  $Fields: Array<string> = [];
-  $Available: Array<string> = [];
-  $Unselected: Array<string> = [];
-  $Selected: Array<string> = [];
-  $Scores = null;
-  $Q: Array<Array<number>>;
-
   constructor(private http: HTTPService) {
-      this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
-  }
-
-  ToggleSelection(id: string): Array<string> {
-    const idx = this.$Selected.indexOf(id);
-    if (idx >= 0) {
-      this.$Selected = this.$Selected.filter(obj => obj !== id);
-    } else {
-      this.$Selected.push(id);
-      this.$Selected = this.$Selected.map(obj => obj);
-    }
-    this.UpdateSelection();
-    return this.$Selected;
-  }
-
-  UpdateSelection() {
-    this.$Selected =  this.$Selected.filter(obj => this.$Available.indexOf(obj) >= 0);
-    this.$Unselected = this.$Available.filter(obj => this.$Selected.indexOf(obj) < 0);
-    this.GetMatches(this.$Selected).then(result => {
-      this.$Scores = result;
-      const values = DictValues(result);
-      this.$Q = [0.9, 0.75, 0.5, 0.25, 0.1].map(x => [x, quantile(values, x)]);
-    });
   }
 
 
   GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {
-    let fields = this.$Fields;
-    fields = parameter.fields && parameter.fields.length ? parameter.fields : fields;
-    const id = parameter.id;
     // @TODO Mock Request
-    const test_data = {};
-    return this.http.get_mock<any>(test_data).then((response) => {
-      console.log('StudyAIService.GetStudy:SUCCESS');
-      return response.body.data.map((item, idx) => {
-        const selected = this.$Selected.indexOf(id[idx]) >= 0 ? true : false;
-        const rank = this.$Scores ? this.$Scores[id[idx]] : idx;
-        return new Study(rank, id[idx], item['brief_title'], item, selected, this.$Q);
-      });
-    });
+    const test_data = mock_studydata.response;
+    return this.http.get_mock<any>(test_data);
   }
 
   GetAvailableData() {
     // @TODO Mock Request
     const test_data = mock_projectdata_info.response;
-    return this.http.get_mock<any>(test_data).then((response) => {
-      console.log('StudyAIService.GetAvailableData:SUCCESS');
-      this.$Available = response.body.IDs;
-      this.UpdateSelection();
-      return response.body.IDs;
-    });
+    return this.http.get_mock<any>(test_data);
   }
 
 
@@ -111,31 +66,19 @@ export class StudyAIServiceMock {
 
     // @TODO Mock Request
     const test_data = {};
-    return this.http.get_mock<any>(test_data).then((response) => {
-      console.log('StudyAIService.GetKeyWordsFromText:SUCCESS');
-      return response.body.data;
-    });
+    return this.http.get_mock<any>(test_data);
   }
 
 
   GetProjections(parameter: {id: Array<string>}) {
     // @TODO Mock Request
     const test_data = mock_projectdata.response;
-    return this.http.get_mock<any>(test_data).then((response) => {
-      console.log('StudyAIService.ProjectData:SUCCESS');
-      const result: { data: Array< Array<number> >, IDs: Array<string> } = {data: [], IDs: []};
-      result.data = response.body.data;
-      result.IDs = response.body.IDs;
-      return result;
-    });
+    return this.http.get_mock<any>(test_data);
   }
 
   GetMatches(id: Array<string>, id_matches: Array<string> = []) {
     // @TODO Mock Request
     const test_data = {};
-    return this.http.get_mock<any>(test_data).then((response) => {
-      console.log('StudyAIService.GetMatches:SUCCESS');
-      return response.body.data;
-    });
+    return this.http.get_mock<any>(test_data);
   }
 }
