@@ -12,10 +12,26 @@ export class StudyAIServiceMock {
   constructor(private http: HTTPService) {
   }
 
+  GetIDIndex(ids: Array<string>) {
+    const IDs = mock_projectdata_info.response.body.IDs;
+    const result: Array<number> = [];
+    ids.forEach((id)  => {
+      const idx = mock_projectdata_info.response.body.IDs.indexOf(id);
+      result.push(idx);
+    });
+    return result;
+  }
 
   GetStudy(parameter: {id: Array<string>; fields: Array<string>}) {
     // @TODO Mock Request
-    const test_data = mock_studydata.response;
+    const test_data = { ...mock_studydata.response, body: {...mock_studydata.response.body}};
+    test_data.body.data = {...mock_studydata.response.body.data};
+    const idx = this.GetIDIndex(parameter.id);
+    const data = [];
+    idx.forEach((i) => {
+      data.push(test_data.body.data[i]);
+    });
+    test_data.body.data = Array.from(data);
     return this.http.get_mock<any>(test_data);
   }
 
