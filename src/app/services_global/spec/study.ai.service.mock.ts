@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import '../types';
-import {HTTPService} from './http.service';
-import { Study } from '../models/Study.model';
+import {HTTPService} from '../http.service';
+import { Study } from '../../models/Study.model';
+import * as mock_id_data from './data/id.results.json';
+import * as mock_projectdata_info from './data/ProjectData.info.response.json';
+import * as mock_projectdata from './data/ProjectData.response.json';
+import { promise } from 'protractor';
 
 let DEBUG = true;
 
@@ -38,7 +41,7 @@ const DictKeys = obj => Object.getOwnPropertyNames(obj);
 @Injectable({
   providedIn: 'root'
 })
-export class StudyAIService {
+export class StudyAIServiceMock {
   $Server = 'undefined';
   $Fields: Array<string> = [];
   $Available: Array<string> = [];
@@ -48,7 +51,6 @@ export class StudyAIService {
   $Q: Array<Array<number>>;
 
   constructor(private http: HTTPService) {
-      this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
       this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
   }
 
@@ -79,9 +81,9 @@ export class StudyAIService {
     let fields = this.$Fields;
     fields = parameter.fields && parameter.fields.length ? parameter.fields : fields;
     const id = parameter.id;
-    const url = `${this.$Server}Study?id=${id.join(',')}&fields=${ fields.join(',')}`;
     // @TODO Mock Request
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    const test_data = {};
+    return this.http.get_mock<any>(test_data).then((response) => {
       console.log('StudyAIService.GetStudy:SUCCESS');
       return response.body.data.map((item, idx) => {
         const selected = this.$Selected.indexOf(id[idx]) >= 0 ? true : false;
@@ -92,24 +94,24 @@ export class StudyAIService {
   }
 
   GetAvailableData() {
-    const url = `${this.$Server}ProjectData/Info`;
     // @TODO Mock Request
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    const test_data = mock_projectdata_info.response;
+    return this.http.get_mock<any>(test_data).then((response) => {
       console.log('StudyAIService.GetAvailableData:SUCCESS');
       this.$Available = response.body.IDs;
       this.UpdateSelection();
       return response.body.IDs;
-  });
+    });
   }
 
 
   GetKeyWordsFromText(parameter: {text: string, count: number}) {
     const text = parameter.text;
     const count = parameter.count.toString();
-    const url = `${this.$Server}KeyWordsFromText?text=${text}&count=${count}`;
 
     // @TODO Mock Request
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    const test_data = {};
+    return this.http.get_mock<any>(test_data).then((response) => {
       console.log('StudyAIService.GetKeyWordsFromText:SUCCESS');
       return response.body.data;
     });
@@ -117,13 +119,9 @@ export class StudyAIService {
 
 
   GetProjections(parameter: {id: Array<string>}) {
-    let url = `${this.$Server}ProjectData`;
-    if (parameter.id.length > 0) {
-      url = `${url}?id=${parameter.id.join(',')}`;
-    }
-
     // @TODO Mock Request
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    const test_data = mock_projectdata.response;
+    return this.http.get_mock<any>(test_data).then((response) => {
       console.log('StudyAIService.ProjectData:SUCCESS');
       const result: { data: Array< Array<number> >, IDs: Array<string> } = {data: [], IDs: []};
       result.data = response.body.data;
@@ -133,18 +131,9 @@ export class StudyAIService {
   }
 
   GetMatches(id: Array<string>, id_matches: Array<string> = []) {
-    let url = `${this.$Server}GetMatches`;
-    if (id && id.length > 0) {
-      url = `${url}?id=${id.join(',')}`;
-    } else {
-     console.error('No id specified. Unable to find matching components');
-    }
-
-    if (id_matches && id_matches.length > 0) {
-      url = `${url}&id_matches=${id_matches.join(',')}`;
-    }
     // @TODO Mock Request
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+    const test_data = {};
+    return this.http.get_mock<any>(test_data).then((response) => {
       console.log('StudyAIService.GetMatches:SUCCESS');
       return response.body.data;
     });
