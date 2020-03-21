@@ -1,6 +1,9 @@
 import { Component, OnChanges, AfterViewInit, SimpleChanges, Input, ViewChild, HostListener} from '@angular/core';
 import { EChartsComponent } from '@amcdnl/ngx-echarts';
 
+const xAxisData = [];
+const yAxisData = [];
+
 @Component({
   selector: 'plot-scatter',
   templateUrl: './plot.scatter.component.html',
@@ -12,10 +15,12 @@ export class PlotScatterComponent implements OnChanges, AfterViewInit {
   @Input() $Data: Array<Array<number>>;
   @ViewChild(EChartsComponent, {static: false}) $chart:EChartsComponent;
   $xAxis = {
-    scale: true
+    scale: true,
+    data: xAxisData
   };
   $yAxis = {
-    scale: true
+    scale: true,
+    data: yAxisData
   };
   $tooltip = {
     trigger: 'item',
