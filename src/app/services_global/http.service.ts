@@ -15,7 +15,7 @@ export class HTTPService {
     const mock = new Promise((resolve, reject) => {
       setTimeout( () => {
         resolve();
-       }, 1000 );
+       }, 200 );
     });
     const promises = [mock];
     return new Promise((resolve, reject) => {
