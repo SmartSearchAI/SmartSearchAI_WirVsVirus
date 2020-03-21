@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'MatchMaker/:ids', component: MatchMakerView},
   {path: 'MatchMaker', component: MatchMakerView},
   {path: 'MatchMakerTest',  redirectTo: 'MatchMaker/[Lorem, Ipsum]'},
-  {path: '', redirectTo: 'MatchMaker', pathMatch: 'full'}
+  {path: '', redirectTo: 'ScatterPlot', pathMatch: 'full'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

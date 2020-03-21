@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import '../types';
 import {HTTPService} from './http.service';
 import { Study } from '../models/Study.model';
+import {StudyAIServiceMock} from './spec/study.ai.service.mock';
 
 let DEBUG = true;
 
@@ -46,10 +47,14 @@ export class StudyAIService {
   $Selected: Array<string> = [];
   $Scores = null;
   $Q: Array<Array<number>>;
+  ServiceMock: any;
 
   constructor(private http: HTTPService) {
       this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
       this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
+      if(DEBUG) {
+        this.ServiceMock = new StudyAIServiceMock(http);
+      }
   }
 
   ToggleSelection(id: string): Array<string> {
@@ -90,6 +95,10 @@ export class StudyAIService {
   }
 
   GetAvailableData() {
+    if(DEBUG) {
+      return this.ServiceMock.GetAvailableData();
+    }
+
     const url = `${this.$Server}ProjectData/Info`;
     return this.http.get<any>(String(url)).toPromise().then((response) => {
       console.log('StudyAIService.GetAvailableData:SUCCESS');
@@ -110,6 +119,10 @@ export class StudyAIService {
   }
 
   GetProjections(parameter: {id: Array<string>}) {
+    if(DEBUG) {
+      return this.ServiceMock.GetProjections(parameter);
+    }
+
     let url = `${this.$Server}ProjectData`;
     if (parameter.id.length > 0) {
       url = `${url}?id=${parameter.id.join(',')}`;
