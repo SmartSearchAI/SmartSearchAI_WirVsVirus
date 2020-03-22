@@ -34,7 +34,7 @@ export class StudyListComponent implements OnChanges  {
   }
 
   requestData() {
-    this.service.GetStudy({id: this.$IDs, fields: []}).then((data: any) => { 
+    this.service.GetStudy({id: this.$IDs, fields: []}).then((data: any) => {
       this.$Data = data;
     }).catch((reason: any) => {
       console.error(JSON.stringify(reason));
