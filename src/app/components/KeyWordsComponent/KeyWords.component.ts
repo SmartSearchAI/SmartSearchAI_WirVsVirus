@@ -11,7 +11,6 @@ export class KeyWordsComponent implements OnInit{
   @Input() $KeyWords: Array<{key: string, value: number}>;
   @Input() $Settings: any;
   Settings = {
-    size: 'badge-sm',
     n: 'all'
   };
   GetKeyWords() {
@@ -32,9 +31,6 @@ export class KeyWordsComponent implements OnInit{
   ngOnInit() {
     if (this.$Settings.n) {
       this.Settings.n = this.$Settings.n;
-    }
-    if (this.$Settings.size) {
-      this.Settings.size = this.$Settings.size;
     }
   }
   SortKeyWords(){
