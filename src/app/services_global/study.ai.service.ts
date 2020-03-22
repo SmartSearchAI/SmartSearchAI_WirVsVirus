@@ -113,7 +113,10 @@ export class StudyAIService {
     const text = parameter.text;
     const count = parameter.count.toString();
     const url = `${this.$Server}KeyWordsFromText?text=${text}&count=${count}`;
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+
+    const promise = DEBUG ? this.ServiceMock.GetKeyWordsFromText(text) : this.http.get<any>(String(url)).toPromise();
+
+    return promise.then((response) => {
       console.log('StudyAIService.GetKeyWordsFromText:SUCCESS');
       return response.body.data;
     });
