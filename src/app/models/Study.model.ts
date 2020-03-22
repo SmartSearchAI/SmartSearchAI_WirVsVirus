@@ -1,3 +1,5 @@
+import { KeyWordsComponent } from '../components/KeyWordsComponent/KeyWords.component';
+
 export interface Dictionary<T> {
     [Key: string]: T;
 }
@@ -8,10 +10,10 @@ export class Study {
     $Selected: boolean;
     $Rank: number;
     $Q: Array<number>;
-    $Analytics: {Keywords: Array<string>, Values: any};
+    $Analytics: {Keywords: Array<{Key: String, Value: Number}>, Values: any};
 
     // tslint:disable-next-line: max-line-length
-    constructor(Rank, Id: string, BriefTitle: string, Fields: Dictionary<string>, Analytics: {Keywords: Array<string>, Values: any}, Selected = false,  Q = []) {
+    constructor(Rank, Id: string, BriefTitle: string, Fields: Dictionary<string>, Analytics: {Keywords: any, Values: any}, Selected = false,  Q = []) {
         this.$Id = Id;
         this.$BriefTitle = BriefTitle;
         this.$Fields = Fields;
@@ -19,6 +21,11 @@ export class Study {
         this.$Rank = Rank;
         this.$Q = [];
         this.$Analytics = Analytics;
+
+        const Keywords = Object.getOwnPropertyNames(this.$Analytics.Keywords).map((prop) => {
+            return {Key: prop, Value: this.$Analytics.Keywords[prop]};
+        });
+        this.$Analytics.Keywords = Keywords;
     }
 }
 

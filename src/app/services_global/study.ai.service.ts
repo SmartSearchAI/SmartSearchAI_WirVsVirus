@@ -112,10 +112,6 @@ export class StudyAIService {
     });
   }
 
-  GetKeyWords(parameter: {id: Array<string>}) {
-
-  }
-
   GetKeyWordsFromText(parameter: {text: string, count: number}) {
     const text = parameter.text;
     const count = parameter.count.toString();

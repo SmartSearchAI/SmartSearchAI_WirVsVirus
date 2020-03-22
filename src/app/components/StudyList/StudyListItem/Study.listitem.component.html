@@ -1,4 +1,4 @@
-<a [routerLink]="['select/', $Item.$Id]" class="list-group-item list-group-item-action align-items-start" [ngClass]="{'list-group-item-dark': $Item.$Selected}">
+<a [routerLink]="['select/', $Item.$Id]" class="study-item list-group-item list-group-item-action align-items-start" [ngClass]="{'list-group-item-dark': $Item.$Selected}">
     <div class="d-flex w-100 justify-content-between">
         <label>Condition:</label>
         <small><span class="badge badge-primary">{{$Item.$Id}}</span></small>
@@ -6,7 +6,7 @@
     <p>{{$Item.$Fields['condition']}}</p>
     <small><label>{{$Item.$BriefTitle}}</label></small>
     <div class="row">
-        <KeyWords-Component [$KeyWords]="$Item.$Analytics.Keywords"></KeyWords-Component>
+        <KeyWords-Component [$KeyWords]="$Item.$Analytics.Keywords" [$Settings]="{n: 3}"></KeyWords-Component>
     </div>
     <small>Rank: <span class="badge badge-dark badge-pill">{{$Item.$Rank}}</span></small>
 </a>

@@ -29,7 +29,7 @@ export class KeyWordsComponent implements OnInit{
   constructor() {
   }
   ngOnInit() {
-    if (this.$Settings.n) {
+    if (this.$Settings && this.$Settings.n) {
       this.Settings.n = this.$Settings.n;
     }
   }
