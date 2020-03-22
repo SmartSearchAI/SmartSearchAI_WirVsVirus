@@ -1,3 +1,5 @@
+import { KeyWordsComponent } from '../components/KeyWordsComponent/KeyWords.component';
+
 export interface Dictionary<T> {
     [Key: string]: T;
 }
@@ -8,14 +10,22 @@ export class Study {
     $Selected: boolean;
     $Rank: number;
     $Q: Array<number>;
+    $Analytics: {Keywords: Array<{Key: String, Value: Number}>, Values: any};
 
-    constructor(Rank, Id: string, BriefTitle: string, Fields: Dictionary<string>, Selected = false,  Q = []) {
+    // tslint:disable-next-line: max-line-length
+    constructor(Rank, Id: string, BriefTitle: string, Fields: Dictionary<string>, Analytics: {Keywords: any, Values: any}, Selected = false,  Q = []) {
         this.$Id = Id;
         this.$BriefTitle = BriefTitle;
         this.$Fields = Fields;
         this.$Selected = Selected;
         this.$Rank = Rank;
         this.$Q = [];
+        this.$Analytics = Analytics;
+
+        const Keywords = Object.getOwnPropertyNames(this.$Analytics.Keywords).map((prop) => {
+            return {Key: prop, Value: this.$Analytics.Keywords[prop]};
+        });
+        this.$Analytics.Keywords = Keywords;
     }
 }
 
@@ -26,6 +36,7 @@ export class ClinicalTrialStudy extends Study {
         let Rank = 1;
         let BriefTitle: string;
         let props: Array<string>;
+        let analytics : {Keywords: Array<string>, Values: any} = {Keywords: [], Values: []};
         props = Object.getOwnPropertyNames(item);
         props.forEach(prop => {
             const value = item[prop];
@@ -44,6 +55,6 @@ export class ClinicalTrialStudy extends Study {
                 }
             }
         });
-        super(Rank, Id, BriefTitle, fields);
+        super(Rank, Id, BriefTitle, fields, analytics);
     }
 }

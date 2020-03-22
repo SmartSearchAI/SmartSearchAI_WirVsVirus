@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import {StudyAIService} from '../../services_global/study.ai.service';
 import {Dictionary} from '../../models/Study.model';
-
+import * as mock_keywordsdata from '../../services_global/spec/data/GetKeyWordsFromText.response.json';
 @Component({
   selector: 'KeyWordsPrototype-View',
   templateUrl: './KeyWordsPrototype.view.html',
@@ -19,7 +19,7 @@ export class KeyWordsPrototypeView {
   };
   constructor(studyAIService: StudyAIService) {
     this.$Service = studyAIService;
-    this.$Text = '';
+    this.$Text = mock_keywordsdata.text;
     this.$KeyWords = null;
   }
   getKeyCount() {

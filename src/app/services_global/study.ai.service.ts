@@ -50,7 +50,7 @@ export class StudyAIService {
   ServiceMock: any;
 
   constructor(private http: HTTPService) {
-      this.$Server = DEBUG ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
+      this.$Server = true ? 'http://127.0.0.1:5000/' : 'http://13.93.43.192:80/';
       this.$Fields = ['condition', 'brief_summary', 'brief_title', 'detailed_description', 'brief_description'];
       if (DEBUG) {
         this.ServiceMock = new StudyAIServiceMock(http);
@@ -84,6 +84,7 @@ export class StudyAIService {
     fields = parameter.fields && parameter.fields.length ? parameter.fields : fields;
     const id = parameter.id;
     const url = `${this.$Server}Study?id=${id.join(',')}&fields=${ fields.join(',')}`;
+
     const promise = DEBUG ? this.ServiceMock.GetStudy(parameter) : this.http.get<any>(String(url)).toPromise();
 
     return promise.then((response) => {
@@ -91,10 +92,12 @@ export class StudyAIService {
       return response.body.data.map((item, idx) => {
         const selected = this.$Selected.indexOf(id[idx]) >= 0 ? true : false;
         const rank = this.$Scores ? this.$Scores[id[idx]] : idx;
-        return new Study(rank, id[idx], item['brief_title'], item, selected, this.$Q);
+        return new Study(rank, id[idx], item['brief_title'], item, item['analytics'], selected, this.$Q);
       });
     });
   }
+
+
 
   GetAvailableData() {
     const url = `${this.$Server}ProjectData/Info`;
@@ -113,9 +116,16 @@ export class StudyAIService {
     const text = parameter.text;
     const count = parameter.count.toString();
     const url = `${this.$Server}KeyWordsFromText?text=${text}&count=${count}`;
-    return this.http.get<any>(String(url)).toPromise().then((response) => {
+
+    const promise = DEBUG ? this.ServiceMock.GetKeyWordsFromText(text) : this.http.get<any>(String(url)).toPromise();
+
+    return promise.then((response) => {
       console.log('StudyAIService.GetKeyWordsFromText:SUCCESS');
-      return response.body.data;
+      let data = response.body.data;
+      data = Object.getOwnPropertyNames(data).map((prop) => {
+        return {Key: prop, Value: data[prop]};
+      });
+      return data;
     });
   }
 
