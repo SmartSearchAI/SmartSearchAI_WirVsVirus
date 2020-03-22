@@ -125,7 +125,11 @@ export class StudyAIService {
 
     return promise.then((response) => {
       console.log('StudyAIService.GetKeyWordsFromText:SUCCESS');
-      return response.body.data;
+      let data = response.body.data;
+      data = Object.getOwnPropertyNames(data).map((prop) => {
+        return {Key: prop, Value: data[prop]};
+      });
+      return data;
     });
   }
 

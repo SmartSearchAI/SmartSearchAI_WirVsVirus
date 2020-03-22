@@ -3,6 +3,6 @@
     No Key Words Available
   </div>
   <div class="KeyWordBadgeContainer" *ngIf="$KeyWords">
-    <span *ngFor="let item of $KeyWords | keyvalue" title="{{item.value}}" class="badge badge-lg badge-primary">{{item.key}}</span>
+    <span *ngFor="let item of GetKeyWords()" title="{{item.Value}}" class="badge badge-primary">{{item.Key}}</span>
   </div>
 </div>

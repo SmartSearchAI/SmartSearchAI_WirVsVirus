@@ -1,5 +1,5 @@
-import { Component, Input} from '@angular/core';
-import {Dictionary} from '../../models/Study.model';
+import { Component, Input, OnInit} from '@angular/core';
+import { isNumeric } from 'rxjs/util/isNumeric';
 
 @Component({
   selector: 'KeyWords-Component',
@@ -7,13 +7,42 @@ import {Dictionary} from '../../models/Study.model';
   styleUrls: ['./KeyWords.component.scss']
 })
 
-export class KeyWordsComponent {
-  @Input() $KeyWords: Dictionary<number>;
+export class KeyWordsComponent implements OnInit{
+  @Input() $KeyWords: Array<{key: string, value: number}>;
+  @Input() $Settings: any;
+  Settings = {
+    size: 'badge-sm',
+    n: 'all'
+  };
+  GetKeyWords() {
+    if (this.$KeyWords == null) {
+      return [];
+    }
 
+    this.SortKeyWords();
+
+    if (Number(this.Settings.n)) {
+      return this.$KeyWords.slice(0, Number(this.Settings.n));
+    } else {
+      return this.$KeyWords;
+    }
+  }
   constructor() {
   }
-  getKeys() {
-    return this.$KeyWords ? Object.keys(this.$KeyWords) : [];
+  ngOnInit() {
+    if (this.$Settings.n) {
+      this.Settings.n = this.$Settings.n;
+    }
+    if (this.$Settings.size) {
+      this.Settings.size = this.$Settings.size;
+    }
+  }
+  SortKeyWords(){
+    if (this.$KeyWords) {
+      this.$KeyWords = this.$KeyWords.sort((a,b) => {
+        return a.value - b.value;
+      });
+    }
   }
 }
 
