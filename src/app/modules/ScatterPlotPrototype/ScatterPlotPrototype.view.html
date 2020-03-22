@@ -5,6 +5,12 @@
         <p class="text-center">Prototype</p>
         <div *ngIf="$DATA" id="study_ids_DOM">
           <plot-scatter [$Ids]="$DATA.IDs" [$Data]="$DATA.data"></plot-scatter>
+          <button class="float-right" type="submit" (click)="showInfo()"> <i class="fa fa-info" ></i>Info</button>
+          <div *ngIf="$infoShown" class="row container-fluid"  id="shownInfo" >
+            The scatter plot represents the similarity of items displayed. 
+            Clusters of dots belong together and have a high correlation. 
+            Cluster distance displays the difference between the data
+          </div>
         </div>
         <button class="btn btn-primary form-control" type="submit" (click)="updateData()">Get Projections
           <span *ngIf="$SERVICE_STATUS.LOADING" class="float-left"><i class="fa fa-spinner" title="...loading"></i> Loading</span>

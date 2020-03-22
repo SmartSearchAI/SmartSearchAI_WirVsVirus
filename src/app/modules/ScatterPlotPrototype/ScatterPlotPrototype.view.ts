@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {StudyAIService} from '../../services_global/study.ai.service';
 
+
 @Component({
   selector: 'ScatterPlotPrototype-View',
   templateUrl: './ScatterPlotPrototype.view.html',
@@ -8,6 +9,8 @@ import {StudyAIService} from '../../services_global/study.ai.service';
 })
 
 export class ScatterPlotPrototypeView implements OnInit {
+  $infoShown: boolean= false ; // hidden by default NOT working (?)
+
   $DATA: {
     data: Array<Array<number>>,
     IDs: Array<string>
@@ -25,6 +28,7 @@ export class ScatterPlotPrototypeView implements OnInit {
   }
   ngOnInit() {
     this.updateData();
+    this.showInfo();
   }
   getCountData() {
     return this.$DATA ? this.$DATA.IDs.length : 0;
@@ -44,6 +48,12 @@ export class ScatterPlotPrototypeView implements OnInit {
       this.$SERVICE_STATUS.ERROR = true;
       this.$SERVICE_STATUS.STATUS = reason;
     });
+  }
+  showInfo() {
+    console.log("show info")
+    console.log(this.$infoShown)
+    this.$infoShown = ! this.$infoShown;
+    console.log(this.$infoShown)
   }
 }
 
