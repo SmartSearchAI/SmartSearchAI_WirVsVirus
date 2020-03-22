@@ -1,5 +1,4 @@
 import { Component, Input, OnInit} from '@angular/core';
-import { isNumeric } from 'rxjs/util/isNumeric';
 
 @Component({
   selector: 'KeyWords-Component',
