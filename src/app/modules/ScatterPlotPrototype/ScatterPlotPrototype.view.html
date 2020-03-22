@@ -12,6 +12,15 @@
             Cluster distance displays the difference between the data
           </div>
         </div>
+
+        <div id="selectedStudiesMainDiv">
+          Selected Studies Manin Div
+          <div *ngIf="$dotSelected" class="row container-fluid"  id="selectedStudiesDiv" >
+            Selected Studies Div
+          </div>
+        </div>
+
+
         <button class="btn btn-primary form-control" type="submit" (click)="updateData()">Get Projections
           <span *ngIf="$SERVICE_STATUS.LOADING" class="float-left"><i class="fa fa-spinner" title="...loading"></i> Loading</span>
           <span *ngIf="$SERVICE_STATUS.ERROR" class="danger float-left"><i class="fa fa-bug" ></i> Error</span>

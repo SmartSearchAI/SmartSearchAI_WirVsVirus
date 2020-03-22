@@ -14,6 +14,8 @@ export class PlotScatterComponent implements OnChanges, AfterViewInit {
   @Input() $Ids: Array<string>;
   @Input() $Data: Array<Array<number>>;
   @ViewChild(EChartsComponent, {static: false}) $chart:EChartsComponent;
+  $dotSelected: boolean= false ; // hidden by default NOT working (?)
+  
   $xAxis = {
     scale: true,
     axisLabel: {
@@ -45,7 +47,16 @@ export class PlotScatterComponent implements OnChanges, AfterViewInit {
   }
 
   onChartClick(event) {
+    console.log("onChartClick")
     console.log(event.data);
+    console.log(this.$dotSelected);
+    this.$dotSelected = ! this.$dotSelected; 
+    console.log(this.$dotSelected);
+
+    const studiesDiv = document.getElementById("selectedStudiesMainDiv");
+    var studyDiv = document.createElement("div");
+    studyDiv.innerHTML=event.data[2];
+    studiesDiv.appendChild(studyDiv);
   }
   resize() {
     console.log(this.$chart);
