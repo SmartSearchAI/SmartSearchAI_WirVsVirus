@@ -4,6 +4,7 @@ import * as mock_projectdata_info from './data/ProjectData.info.response.json';
 import * as mock_projectdata from './data/ProjectData.response.json';
 import * as mock_studydata from './data/GetStudy.response.json';
 import * as mock_matchesdata from './data/GetMatches.response.json';
+import * as mock_keywordsdata from './data/GetKeyWordsFromText.response.json';
 
 @Injectable({
   providedIn: 'root'
@@ -41,11 +42,8 @@ export class StudyAIServiceMock {
 
 
   GetKeyWordsFromText(parameter: {text: string, count: number}) {
-    const text = parameter.text;
-    const count = parameter.count.toString();
-
     // @TODO Mock Request
-    const test_data = {};
+    const test_data = mock_keywordsdata.response;
     return this.http.get_mock<any>(test_data);
   }
 
