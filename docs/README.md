@@ -1,4 +1,4 @@
-# HelloWorld
+# WirVsVirus - Studienleitsystem
 
 ## Additional Infos
 |<img src="https://devpost-challengepost.netdna-ssl.com/assets/reimagine2/devpost-logo-646bdf6ac6663230947a952f8d354cad.svg" width="200"></img> |
